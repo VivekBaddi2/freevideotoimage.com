@@ -1,0 +1,60 @@
+---
+import FeatureCard from './FeatureCard.astro';
+---
+
+<section id="features" class="section bg-[var(--color-canvas)]" aria-labelledby="features-title">
+  <div class="container">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="eyebrow mb-3 inline-block">Features</span>
+      <h2 id="features-title" class="heading-lg mb-4 text-balance">
+        Everything you need to extract frames
+      </h2>
+      <p class="body-lg">
+        Powerful features built for creators, developers, and anyone who needs frames from video.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <FeatureCard
+        icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2" /><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /></svg>}
+        title="Multiple Extraction Modes"
+        description="Choose manual frame capture, automatic interval extraction, or smart scene detection for keyframes only."
+      />
+      <FeatureCard
+        icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>}
+        title="4 Export Formats"
+        description="Export as PNG for lossless quality, JPG for smaller files, WebP for web optimization, or AVIF for modern compression."
+      />
+      <FeatureCard
+        icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>}
+        title="100% Private"
+        description="Your videos never leave your device. All processing happens in your browser — no uploads, no cloud, no tracking."
+      />
+      <FeatureCard
+        icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>}
+        title="Lightning Fast"
+        description="Powered by Web Workers and Canvas API. Extract hundreds of frames in seconds without blocking your browser."
+      />
+      <FeatureCard
+        icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 9.51 3 7 7 0 0 0 12 21a7 7 0 0 0 9-8.21z" /><path d="M20 6v6h-6" /></svg>}
+        title="Flexible Quality Control"
+        description="Adjust quality per format: JPG/WebP 70-95%, AVIF 50-80%, or lossless PNG. Perfect balance of size and fidelity."
+      />
+      <FeatureCard
+        icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>}
+        title="Batch Download as ZIP"
+        description="Download all extracted frames as a single ZIP file, or pick individual frames. Organized with meaningful timestamps."
+      />
+      <FeatureCard
+        icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>}
+        title="Frame-Perfect Precision"
+        description="Navigate frame-by-frame with keyboard shortcuts. Capture the exact moment you need at full video resolution."
+      />
+      <FeatureCard
+        icon={<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>}
+        title="Works on Any Device"
+        description="Fully responsive design. Touch-friendly scrubbing on mobile, keyboard shortcuts on desktop. No app installation needed."
+      />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,208 @@
+---
+/**
+ * @typedef {Object} Props
+ * @property {'manual'|'interval'|'scene'} [mode='manual']
+ * @property {Function} [onModeChange]
+ * @property {Object} [intervalSettings]
+ * @property {Function} [onIntervalChange]
+ * @property {Object} [sceneSettings]
+ * @property {Function} [onSceneChange]
+ * @property {Object} [outputSettings]
+ * @property {Function} [onOutputChange]
+ * @property {number} [duration=0]
+ * @property {Function} [onExtract]
+ * @property {boolean} [disabled=false]
+ * @property {boolean} [isExtracting=false]
+ * @property {string} ['data-testid']
+ */
+
+const {
+  mode = 'manual',
+  onModeChange,
+  intervalSettings = { interval: 1, startTime: 0, endTime: 0 },
+  onIntervalChange,
+  sceneSettings = { threshold: 0.3, minSceneDuration: 1 },
+  onSceneChange,
+  outputSettings = { format: 'png', quality: 90 },
+  onOutputChange,
+  duration = 0,
+  onExtract,
+  disabled = false,
+  isExtracting = false,
+  'data-testid': testId = 'extraction-controls',
+  ...rest
+} = Astro.props;
+
+const formats = [
+  { value: 'png', label: 'PNG (Lossless)', quality: false },
+  { value: 'jpg', label: 'JPG', quality: true, min: 70, max: 95, default: 90 },
+  { value: 'webp', label: 'WebP', quality: true, min: 70, max: 95, default: 80 },
+  { value: 'avif', label: 'AVIF', quality: true, min: 50, max: 80, default: 60, notice: 'Safari 16.4+' },
+];
+---
+
+<div class="card" data-testid={testId} {...rest}>
+  <div class="mb-6">
+    <label class="label">Extraction Mode</label>
+    <div class="flex flex-wrap gap-2" role="radiogroup" aria-label="Extraction mode">
+      {['manual', 'interval', 'scene'].map(m => (
+        <button
+          type="button"
+          role="radio"
+          aria-checked={mode === m}
+          class={`btn-nav ${mode === m ? 'bg-[var(--color-ink)] text-white border-[var(--color-ink)]' : ''}`}
+          onclick={() => onModeChange?.(m)}
+          disabled={disabled || isExtracting}
+        >
+          {m.charAt(0).toUpperCase() + m.slice(1)}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  {mode === 'manual' && (
+    <div class="space-y-4 animate-fade-in">
+      <p class="body-md text-[var(--color-body)]">
+        Use the video player above to navigate frame-by-frame and capture individual frames.
+      </p>
+      <div class="flex gap-3">
+        <button
+          type="button"
+          class="btn-primary flex-1"
+          onclick={() => onExtract?.('manual')}
+          disabled={disabled || isExtracting}
+        >
+          {isExtracting ? 'Capturing...' : 'Capture Current Frame'}
+        </button>
+      </div>
+    </div>
+  )}
+
+  {mode === 'interval' && (
+    <div class="space-y-4 animate-fade-in">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Input
+          label="Interval (seconds)"
+          type="number"
+          step="0.1"
+          min="0.1"
+          max={duration}
+          value={intervalSettings.interval}
+          onchange={(e) => onIntervalChange?.({ ...intervalSettings, interval: parseFloat(e.target.value) })}
+          disabled={disabled || isExtracting}
+        />
+        <Input
+          label="Start Time (seconds)"
+          type="number"
+          step="0.1"
+          min="0"
+          max={duration}
+          value={intervalSettings.startTime}
+          onchange={(e) => onIntervalChange?.({ ...intervalSettings, startTime: parseFloat(e.target.value) })}
+          disabled={disabled || isExtracting}
+        />
+        <Input
+          label="End Time (seconds)"
+          type="number"
+          step="0.1"
+          min="0"
+          max={duration}
+          value={intervalSettings.endTime || duration}
+          hint={intervalSettings.endTime ? undefined : `Video duration: ${duration.toFixed(1)}s`}
+          onchange={(e) => onIntervalChange?.({ ...intervalSettings, endTime: parseFloat(e.target.value) || duration })}
+          disabled={disabled || isExtracting}
+        />
+      </div>
+
+      <p class="body-sm text-[var(--color-mute)]">
+        Estimated frames: {Math.max(0, Math.floor((intervalSettings.endTime || duration - intervalSettings.startTime) / intervalSettings.interval)) + 1}
+      </p>
+
+      <button
+        type="button"
+        class="btn-primary w-full"
+        onclick={() => onExtract?.('interval')}
+        disabled={disabled || isExtracting}
+      >
+        {isExtracting ? 'Extracting...' : 'Extract Frames'}
+      </button>
+    </div>
+  )}
+
+  {mode === 'scene' && (
+    <div class="space-y-4 animate-fade-in">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Input
+          label="Scene Threshold"
+          type="range"
+          min="0.1"
+          max="0.9"
+          step="0.05"
+          value={sceneSettings.threshold}
+          hint="Lower = more sensitive (more scenes detected)"
+          onchange={(e) => onSceneChange?.({ ...sceneSettings, threshold: parseFloat(e.target.value) })}
+          disabled={disabled || isExtracting}
+        />
+        <Input
+          label="Min Scene Duration (s)"
+          type="number"
+          step="0.1"
+          min="0.1"
+          max={duration}
+          value={sceneSettings.minSceneDuration}
+          onchange={(e) => onSceneChange?.({ ...sceneSettings, minSceneDuration: parseFloat(e.target.value) })}
+          disabled={disabled || isExtracting}
+        />
+      </div>
+
+      <p class="body-sm text-[var(--color-mute)]">
+        Uses AI-powered scene detection to extract key frames at scene boundaries.
+      </p>
+
+      <button
+        type="button"
+        class="btn-primary w-full"
+        onclick={() => onExtract?.('scene')}
+        disabled={disabled || isExtracting}
+      >
+        {isExtracting ? 'Detecting Scenes...' : 'Detect Scenes & Extract'}
+      </button>
+    </div>
+  )}
+
+  <div class="mt-8 pt-6 border-t border-[var(--color-hairline)] animate-fade-in">
+    <label class="label">Output Format</label>
+    <div class="space-y-4">
+      <div class="flex flex-wrap gap-2" role="radiogroup" aria-label="Output format">
+        {formats.map(f => (
+          <button
+            type="button"
+            role="radio"
+            aria-checked={outputSettings.format === f.value}
+            class={`btn-nav ${outputSettings.format === f.value ? 'bg-[var(--color-ink)] text-white border-[var(--color-ink)]' : ''}`}
+            onclick={() => onOutputChange?.({ ...outputSettings, format: f.value, quality: f.quality ? (outputSettings.quality || f.default) : undefined })}
+            disabled={disabled || isExtracting}
+          >
+            {f.label}
+            {f.notice && <span class="ml-1 text-xs text-[var(--color-warning)]">({f.notice})</span>}
+          </button>
+        ))}
+      </div>
+
+      {formats.find(f => f.value === outputSettings.format)?.quality && (
+        <div>
+          <label class="label">Quality: {outputSettings.quality}%</label>
+          <input
+            type="range"
+            min={formats.find(f => f.value === outputSettings.format)?.min || 50}
+            max={formats.find(f => f.value === outputSettings.format)?.max || 95}
+            value={outputSettings.quality}
+            class="w-full h-2 bg-[var(--color-hairline)] rounded-full appearance-none cursor-pointer accent-[var(--color-ink)]"
+            oninput={(e) => onOutputChange?.({ ...outputSettings, quality: parseInt(e.target.value) })}
+            disabled={disabled || isExtracting}
+          />
+        </div>
+      )}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+---
+/**
+ * @typedef {Object} Props
+ * @property {'text'|'email'|'password'|'number'|'file'|'url'|'tel'|'search'} [type='text']
+ * @property {string} [label]
+ * @property {string} [placeholder]
+ * @property {string} [value]
+ * @property {string} [name]
+ * @property {string} [id]
+ * @property {boolean} [required=false]
+ * @property {boolean} [disabled=false]
+ * @property {string} [error]
+ * @property {string} [hint]
+ * @property {string} [class]
+ * @property {string} [accept]
+ * @property {boolean} [multiple]
+ * @property {Function} [onchange]
+ * @property {string} ['data-testid']
+ */
+
+const {
+  type = 'text',
+  label,
+  placeholder,
+  value,
+  name,
+  id = name,
+  required = false,
+  disabled = false,
+  error,
+  hint,
+  class: className = '',
+  accept,
+  multiple,
+  onchange,
+  'data-testid': testId,
+  ...rest
+} = Astro.props;
+
+const inputId = id || name;
+const describedBy = [error && `${inputId}-error`, hint && `${inputId}-hint`].filter(Boolean).join(' ') || undefined;
+---
+
+<div class={className} data-testid={testId}>
+  {label && (
+    <label for={inputId} class="label">
+      {label}
+      {required && <span class="text-[var(--color-error)] ml-1" aria-hidden="true">*</span>}
+    </label>
+  )}
+  <input
+    type={type}
+    id={inputId}
+    name={name}
+    value={value}
+    placeholder={placeholder}
+    required={required}
+    disabled={disabled}
+    accept={accept}
+    multiple={multiple}
+    aria-invalid={error ? 'true' : 'false'}
+    aria-describedby={describedBy}
+    class="input"
+    onchange={onchange}
+    {...rest}
+  />
+  {error && (
+    <p id={`${inputId}-error`} class="mt-2 text-sm text-[var(--color-error)]" role="alert">
+      {error}
+    </p>
+  )}
+  {hint && !error && (
+    <p id={`${inputId}-hint`} class="mt-2 body-sm">
+      {hint}
+    </p>
+  )}
+</div>

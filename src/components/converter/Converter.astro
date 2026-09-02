@@ -1,0 +1,16 @@
+---
+/**
+ * Converter wrapper - uses Preact component for client-side interactivity
+ */
+
+import Converter from './preact/Converter.jsx';
+
+const {
+  'data-testid': testId = 'video-converter',
+  ...rest
+} = Astro.props;
+---
+
+<div data-testid={testId} {...rest}>
+  <Converter client:visible />
+</div>

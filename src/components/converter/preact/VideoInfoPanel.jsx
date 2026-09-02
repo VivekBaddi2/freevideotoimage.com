@@ -1,0 +1,102 @@
+export default function VideoInfoPanel({ videoInfo = {}, 'data-testid': testId = 'video-info-panel' }) {
+  const {
+    duration = 0,
+    width = 0,
+    height = 0,
+    frameRate = 0,
+    codec = 'Unknown',
+    size = 0,
+    name = 'Unknown',
+    type = 'Unknown'
+  } = videoInfo;
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    if (bytes < 1024 * 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    return `${(bytes / (1024 * 1024 * 1024)).toFixed(2)} GB`;
+  }
+
+  function formatDuration(seconds) {
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = Math.floor(seconds % 60);
+    if (hrs > 0) return `${hrs}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  if (!name || name === 'Unknown') {
+    return (
+      <div class="card" data-testid={testId}>
+        <h3 class="heading-md mb-4 flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+            <circle cx="12" cy="13" r="4" />
+          </svg>
+          Video Information
+        </h3>
+        <p class="body-md text-[var(--color-mute)]">Upload a video to see information</p>
+      </div>
+    );
+  }
+
+  return (
+    <div class="card" data-testid={testId}>
+      <h3 class="heading-md mb-4 flex items-center gap-2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+          <circle cx="12" cy="13" r="4" />
+        </svg>
+        Video Information
+      </h3>
+
+      <dl class="grid grid-cols-2 gap-3 md:gap-4 text-sm">
+        <div>
+          <dt class="body-sm text-[var(--color-mute)]">File Name</dt>
+          <dd class="body-md font-mono truncate" title={name}>{name}</dd>
+        </div>
+        <div>
+          <dt class="body-sm text-[var(--color-mute)]">File Type</dt>
+          <dd class="body-md">{type}</dd>
+        </div>
+        <div>
+          <dt class="body-sm text-[var(--color-mute)]">File Size</dt>
+          <dd class="body-md">{formatSize(size)}</dd>
+        </div>
+        <div>
+          <dt class="body-sm text-[var(--color-mute)]">Duration</dt>
+          <dd class="body-md">{formatDuration(duration)} ({duration.toFixed(2)}s)</dd>
+        </div>
+        <div>
+          <dt class="body-sm text-[var(--color-mute)]">Resolution</dt>
+          <dd class="body-md">{width} × {height}</dd>
+        </div>
+        <div>
+          <dt class="body-sm text-[var(--color-mute)]">Frame Rate</dt>
+          <dd class="body-md">{frameRate.toFixed(2)} fps</dd>
+        </div>
+        <div>
+          <dt class="body-sm text-[var(--color-mute)]">Codec</dt>
+          <dd class="body-md font-mono text-xs">{codec}</dd>
+        </div>
+        <div>
+          <dt class="body-sm text-[var(--color-mute)]">Total Frames</dt>
+          <dd class="body-md">{Math.round(duration * frameRate).toLocaleString()}</dd>
+        </div>
+      </dl>
+
+      {size > 500 * 1024 * 1024 && (
+        <div class="mt-4 p-3 bg-[var(--color-warning-soft)] border border-[var(--color-warning)] rounded-[var(--radius-sm)]">
+          <p class="body-sm text-[var(--color-warning-deep)] flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            Large file detected ({formatSize(size)}). Processing may take longer and use significant memory.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}

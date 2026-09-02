@@ -1,0 +1,202 @@
+---
+/**
+ * @typedef {Object} Props
+ * @property {Array} frames
+ * @property {Function} [onSelectionChange]
+ * @property {Function} [onDownloadSingle]
+ * @property {Function} [onDownloadAll]
+ * @property {Function} [onDownloadSelected]
+ * @property {Function} [onRemoveFrame]
+ * @property {Function} [onClearAll]
+ * @property {boolean} [isProcessing=false]
+ * @property {string} ['data-testid']
+ */
+
+const {
+  frames = [],
+  onSelectionChange,
+  onDownloadSingle,
+  onDownloadSelected,
+  onDownloadAll,
+  onRemoveFrame,
+  onClearAll,
+  isProcessing = false,
+  'data-testid': testId = 'frame-gallery',
+  ...rest
+} = Astro.props;
+
+const selectedFrames = frames.filter(f => f.selected);
+const hasSelection = selectedFrames.length > 0;
+---
+
+<div class="card" data-testid={testId} {...rest}>
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+    <div>
+      <h3 class="heading-md">{frames.length} frame{frames.length !== 1 ? 's' : ''} extracted</h3>
+      {hasSelection && (
+        <p class="body-sm text-[var(--color-mute)] mt-1">
+          {selectedFrames.length} selected
+        </p>
+      )}
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      {hasSelection && (
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick={() => onDownloadSelected?.(selectedFrames)}
+          disabled={isProcessing}
+        >
+          Download Selected ({selectedFrames.length})
+        </button>
+      )}
+      <button
+        type="button"
+        class="btn-primary"
+        onclick={() => onDownloadAll?.(frames)}
+        disabled={frames.length === 0 || isProcessing}
+      >
+        Download All as ZIP ({frames.length})
+      </button>
+      {frames.length > 0 && (
+        <button
+          type="button"
+          class="btn-ghost text-[var(--color-error)] hover:text-[var(--color-error-deep)]"
+          onclick={() => onClearAll?.()}
+          disabled={isProcessing}
+        >
+          Clear All
+        </button>
+      )}
+    </div>
+  </div>
+
+  {frames.length === 0 ? (
+    <div class="text-center py-12">
+      <svg
+        class="mx-auto mb-4 text-[var(--color-faint)]"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"
+      >
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <circle cx="8.5" cy="8.5" r="1.5" />
+        <polyline points="21 15 16 10 5 21" />
+      </svg>
+      <p class="body-md text-[var(--color-mute)]">No frames extracted yet</p>
+      <p class="body-sm text-[var(--color-faint)] mt-1">Use the extraction controls to capture frames from your video</p>
+    </div>
+  ) : (
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+      {frames.map((frame, index) => (
+        <article
+          class={`relative group aspect-video rounded-[var(--radius-sm)] overflow-hidden border border-[var(--color-hairline)] bg-[var(--color-canvas)] transition-all duration-200 ${frame.selected ? 'ring-2 ring-[var(--color-ink)]' : ''}`}
+          data-frame-index={index}
+        >
+          <input
+            type="checkbox"
+            class="absolute top-2 left-2 z-10 w-5 h-5 rounded-[var(--radius-sm)] border-[var(--color-hairline)] text-[var(--color-ink)] focus-visible:ring-2 focus-visible:ring-[var(--color-link)] accent-[var(--color-ink)]"
+            checked={frame.selected}
+            onchange={(e) => onSelectionChange?.(index, e.target.checked)}
+            aria-label={`Select frame ${index + 1}`}
+          />
+
+          <img
+            src={frame.thumbnail || frame.url}
+            alt={`Frame ${index + 1} at ${frame.time.toFixed(2)}s`}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+
+          <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent text-white text-xs">
+            <span class="font-mono">{frame.time.toFixed(2)}s</span>
+          </div>
+
+          <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-1">
+            <button
+              type="button"
+              class="p-1.5 bg-[var(--color-canvas-elevated)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] text-[var(--color-body)] hover:text-[var(--color-ink)] hover:bg-[var(--color-hairline-soft)] transition-colors"
+              onclick={(e) => { e.stopPropagation(); onDownloadSingle?.(frame); }}
+              aria-label={`Download frame ${index + 1}`}
+              disabled={isProcessing}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="p-1.5 bg-[var(--color-canvas-elevated)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] text-[var(--color-body)] hover:text-[var(--color-error)] hover:bg-[var(--color-warning-soft)] transition-colors"
+              onclick={(e) => { e.stopPropagation(); onRemoveFrame?.(index); }}
+              aria-label={`Remove frame ${index + 1}`}
+              disabled={isProcessing}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="3 6 5 6 21 6" />
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+              </svg>
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+  )}
+
+  {frames.length > 0 && (
+    <div class="mt-6 pt-6 border-t border-[var(--color-hairline)]">
+      <p class="body-sm text-[var(--color-mute)]">
+        <strong>Tip:</strong> Click checkboxes to select multiple frames. Use Shift+Click for range selection.
+        Download selected frames or all frames as a ZIP archive.
+      </p>
+    </div>
+  )}
+</div>
+
+<script>
+  // Keyboard shortcuts for multi-select
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    const gallery = document.querySelector(`[data-testid="${testId}"]`);
+    if (!gallery) return;
+
+    const checkboxes = gallery.querySelectorAll('input[type="checkbox"]');
+    const checkedIndices = Array.from(checkboxes).map((cb, i) => cb.checked ? i : -1).filter(i => i >= 0);
+    const lastChecked = checkedIndices[checkedIndices.length - 1];
+
+    if (e.key === 'a' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      checkboxes.forEach((cb, i) => {
+        if (!cb.checked) {
+          cb.checked = true;
+          cb.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+    }
+
+    if (e.shiftKey && e.key === 'ArrowRight' && lastChecked !== undefined) {
+      e.preventDefault();
+      const next = lastChecked + 1;
+      if (next < checkboxes.length) {
+        checkboxes[next].checked = true;
+        checkboxes[next].dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+
+    if (e.shiftKey && e.key === 'ArrowLeft' && lastChecked !== undefined) {
+      e.preventDefault();
+      const prev = lastChecked - 1;
+      if (prev >= 0) {
+        checkboxes[prev].checked = true;
+        checkboxes[prev].dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+  });
+</script>

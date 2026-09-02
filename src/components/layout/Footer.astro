@@ -1,0 +1,44 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--color-hairline)] bg-[var(--color-canvas)]" role="contentinfo">
+  <div class="container py-16 md:py-24">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+      <div class="md:col-span-2">
+        <a href="/" class="font-sans text-[var(--text-heading-md)] font-semibold text-[var(--color-ink)] block mb-4">
+          Video to Image
+        </a>
+        <p class="body-md max-w-xs">
+          Extract frames from any video. Client-side, private, free. No uploads, no limits.
+        </p>
+      </div>
+
+      <nav aria-label="Product">
+        <h3 class="eyebrow mb-3">Product</h3>
+        <ul class="space-y-2">
+          <li><a href="/#features" class="body-md hover:text-[var(--color-ink)]">Features</a></li>
+          <li><a href="/#how-it-works" class="body-md hover:text-[var(--color-ink)]">How it Works</a></li>
+          <li><a href="/#faq" class="body-md hover:text-[var(--color-ink)]">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Legal">
+        <h3 class="eyebrow mb-3">Legal</h3>
+        <ul class="space-y-2">
+          <li><a href="/privacy" class="body-md hover:text-[var(--color-ink)]">Privacy Policy</a></li>
+          <li><a href="/terms" class="body-md hover:text-[var(--color-ink)]">Terms of Service</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-[var(--color-hairline)] flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="body-sm text-[var(--color-mute)]">
+        &copy; {currentYear} Video to Image Converter. All rights reserved.
+      </p>
+      <p class="body-sm text-[var(--color-mute)]">
+        Processed entirely in your browser. Your videos never leave your device.
+      </p>
+    </div>
+  </div>
+</footer>

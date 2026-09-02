@@ -1,0 +1,105 @@
+---
+/**
+ * @typedef {Object} Props
+ * @property {boolean} isOpen
+ * @property {string} [title]
+ * @property {string} [description]
+ * @property {any} [children]
+ * @property {Function} [onClose]
+ * @property {'sm'|'md'|'lg'|'xl'|'full'} [size='md']
+ * @property {string} [class]
+ * @property {string} ['data-testid']
+ */
+
+const {
+  isOpen,
+  title,
+  description,
+  children,
+  onClose,
+  size = 'md',
+  class: className = '',
+  'data-testid': testId,
+  ...rest
+} = Astro.props;
+
+if (!isOpen) {
+  // Render nothing when closed
+}
+
+const sizeClasses = {
+  sm: 'max-w-sm',
+  md: 'max-w-md',
+  lg: 'max-w-lg',
+  xl: 'max-w-xl',
+  full: 'max-w-4xl',
+};
+
+const overlayClasses = 'fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in';
+const panelClasses = 'bg-[var(--color-canvas-elevated)] rounded-[var(--radius-lg)] shadow-[0px_2px_2px_rgba(0,0,0,0.04),0px_8px_16px_-4px_rgba(0,0,0,0.08)] w-full animate-slide-up overflow-hidden';
+const closeButtonClasses = 'absolute top-4 right-4 p-2 rounded-full bg-[var(--color-canvas-elevated)] border border-[var(--color-hairline)] text-[var(--color-body)] hover:text-[var(--color-ink)] hover:bg-[var(--color-hairline-soft)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-link)]';
+---
+
+<div
+  class={overlayClasses}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby={title ? 'modal-title' : undefined}
+  aria-describedby={description ? 'modal-description' : undefined}
+  data-testid={testId}
+  {...rest}
+>
+  <div class={`${panelClasses} ${sizeClasses[size]} ${className}`}>
+    {onClose && (
+      <button
+        type="button"
+        class={closeButtonClasses}
+        aria-label="Close dialog"
+        onclick={onClose}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+    )}
+    {(title || description) && (
+      <div class="p-6 border-b border-[var(--color-hairline)]">
+        {title && (
+          <h2 id="modal-title" class="heading-md">
+            {title}
+          </h2>
+        )}
+        {description && (
+          <p id="modal-description" class="mt-2 body-md">
+            {description}
+          </p>
+        )}
+      </div>
+    )}
+    <div class="p-6">
+      <slot>{children}</slot>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Handle Escape key to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.querySelector('[data-testid="modal"]');
+      if (modal) {
+        const closeBtn = modal.querySelector('button[aria-label="Close dialog"]');
+        if (closeBtn) closeBtn.click();
+      }
+    }
+  });
+
+  // Close on overlay click
+  document.addEventListener('click', (e) => {
+    const overlay = e.target;
+    if (overlay.classList.contains('fixed') && overlay.classList.contains('inset-0')) {
+      const closeBtn = overlay.querySelector('button[aria-label="Close dialog"]');
+      if (closeBtn) closeBtn.click();
+    }
+  });
+</script>

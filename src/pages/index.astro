@@ -1,11 +1,128 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/layout/Header.astro';
+import Hero from '../components/layout/Hero.astro';
+import Footer from '../components/layout/Footer.astro';
 ---
 
 <Layout>
-	<Welcome />
+  <Header currentPath="/" />
+  <main class="flex-1">
+    <Hero
+      title="Video to Image Converter"
+      subtitle="Extract frames from any video. Client-side, private, free. No uploads, no limits."
+      ctaText="Upload Video"
+      ctaHref="/converter"
+    />
+    <section id="features" class="section bg-[var(--color-canvas-elevated)]" aria-labelledby="features-title">
+      <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="eyebrow inline-block mb-4">Features</span>
+          <h2 id="features-title" class="heading-lg mb-4">Everything you need to extract frames</h2>
+          <p class="body-lg">Powerful extraction modes, multiple output formats, and smart scene detection — all running in your browser.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="card">
+            <h3 class="heading-md mb-3">Manual Frame Capture</h3>
+            <p class="body-md">Scrub through your video frame-by-frame and capture exact moments with pixel-perfect precision.</p>
+          </article>
+          <article class="card">
+            <h3 class="heading-md mb-3">Interval Extraction</h3>
+            <p class="body-md">Automatically extract frames at set intervals — every second, every 5 seconds, or custom timing.</p>
+          </article>
+          <article class="card">
+            <h3 class="heading-md mb-3">Smart Scene Detection</h3>
+            <p class="body-md">AI-powered scene boundary detection extracts only the key frames when content changes.</p>
+          </article>
+          <article class="card">
+            <h3 class="heading-md mb-3">Multiple Output Formats</h3>
+            <p class="body-md">Export to PNG, JPG (70-95%), WebP (70-95%), or AVIF (50-80%) with quality presets.</p>
+          </article>
+          <article class="card">
+            <h3 class="heading-md mb-3">ZIP Download</h3>
+            <p class="body-md">Download all frames as a convenient ZIP archive with streaming for large extractions.</p>
+          </article>
+          <article class="card">
+            <h3 class="heading-md mb-3">100% Client-Side</h3>
+            <p class="body-md">Your videos never leave your device. All processing happens locally in your browser.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="how-it-works" class="section" aria-labelledby="how-title">
+      <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="eyebrow inline-block mb-4">How it Works</span>
+          <h2 id="how-title" class="heading-lg mb-4">Three steps to your frames</h2>
+          <p class="body-lg">Simple workflow, powerful results.</p>
+        </div>
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <li class="card relative">
+            <span class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">1</span>
+            <div class="pt-8">
+              <h3 class="heading-md mb-3">Upload Your Video</h3>
+              <p class="body-md">Drag and drop or select a video file (up to 2GB). Supports MP4, WebM, MOV, and more.</p>
+            </div>
+          </li>
+          <li class="card relative">
+            <span class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">2</span>
+            <div class="pt-8">
+              <h3 class="heading-md mb-3">Choose Extraction Mode</h3>
+              <p class="body-md">Pick manual capture, interval extraction, or smart scene detection. Adjust quality and format.</p>
+            </div>
+          </li>
+          <li class="card relative">
+            <span class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">3</span>
+            <div class="pt-8">
+              <h3 class="heading-md mb-3">Download Frames</h3>
+              <p class="body-md">Preview extracted frames, select favorites, and download individually or as a ZIP archive.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section id="faq" class="section bg-[var(--color-canvas-elevated)]" aria-labelledby="faq-title">
+      <div class="container max-w-3xl">
+        <div class="text-center mb-16">
+          <span class="eyebrow inline-block mb-4">FAQ</span>
+          <h2 id="faq-title" class="heading-lg mb-4">Common Questions</h2>
+        </div>
+        <dl class="space-y-4">
+          <div class="card">
+            <dt class="heading-md mb-2">Is there a file size limit?</dt>
+            <dd class="body-md">Warning at 500MB, hard limit at 2GB. Larger videos may take longer to process.</dd>
+          </div>
+          <div class="card">
+            <dt class="heading-md mb-2">What video formats are supported?</dt>
+            <dd class="body-md">MP4, WebM, MOV, AVI, MKV, and most formats playable in your browser.</dd>
+          </div>
+          <div class="card">
+            <dt class="heading-md mb-2">Does this upload my video to a server?</dt>
+            <dd class="body-md">No. All processing happens entirely in your browser. Your video never leaves your device.</dd>
+          </div>
+          <div class="card">
+            <dt class="heading-md mb-2">What output formats are available?</dt>
+            <dd class="body-md">PNG (lossless), JPG (70-95% quality), WebP (70-95% quality), AVIF (50-80% quality, Safari 16.4+).</dd>
+          </div>
+          <div class="card">
+            <dt class="heading-md mb-2">Can I extract frames from a specific time range?</dt>
+            <dd class="body-md">Yes, you can set start and end times for extraction in all modes.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="cta-title">
+      <div class="container text-center">
+        <h2 id="cta-title" class="heading-lg mb-4">Ready to extract frames?</h2>
+        <p class="body-lg mb-8 max-w-xl mx-auto">Upload a video and start converting in seconds. No registration, no watermarks, no limits.</p>
+        <a href="/converter" class="btn-primary inline-flex">
+          Start Converting
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
 </Layout>

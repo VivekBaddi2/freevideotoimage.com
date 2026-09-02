@@ -1,0 +1,20 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+}
+const { icon, title, description } = Astro.props;
+---
+
+<article class="card group">
+  <div class="mb-4 text-[var(--color-cyan)]" aria-hidden="true">
+    {icon}
+  </div>
+  <h3 class="heading-md mb-2 group-hover:text-[var(--color-link)] transition-colors">
+    {title}
+  </h3>
+  <p class="body-md">
+    {description}
+  </p>
+</article>

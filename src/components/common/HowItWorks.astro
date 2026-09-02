@@ -1,0 +1,70 @@
+---
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const steps: Step[] = [
+  {
+    number: '01',
+    title: 'Upload Your Video',
+    description: 'Drag and drop any video file (MP4, MOV, AVI, WebM, MKV, MPG, FLV) or click to browse. Files up to 2GB supported.',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></svg>`
+  },
+  {
+    number: '02',
+    title: 'Choose Extraction Mode',
+    description: 'Select Manual for frame-perfect capture, Auto Interval for regular spacing (e.g., every 1s), or Smart Scene Detection to extract only keyframes.',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3" /><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" /></svg>`
+  },
+  {
+    number: '03',
+    title: 'Configure Output',
+    description: 'Pick format (PNG, JPG, WebP, AVIF), adjust quality, set custom start/end times, and preview frames before downloading.',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>`
+  },
+  {
+    number: '04',
+    title: 'Download Frames',
+    description: 'Download individual frames or all frames as a ZIP file. Files named with timestamps for easy organization.',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>`
+  }
+];
+---
+
+<section id="how-it-works" class="section bg-[var(--color-canvas-elevated)]" aria-labelledby="how-it-works-title">
+  <div class="container">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="eyebrow mb-3 inline-block">How it Works</span>
+      <h2 id="how-it-works-title" class="heading-lg mb-4 text-balance">
+        Extract frames in 4 simple steps
+      </h2>
+      <p class="body-lg">
+        No software to install, no account required. Just upload, configure, and download.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {steps.map((step, index) => (
+        <article class="relative group" style={{ '--delay': `${index * 100}ms` }}>
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[var(--color-cyan)] flex items-center justify-center text-white font-mono text-[14px] font-medium">
+            {step.number}
+          </div>
+          <div class="pt-10">
+            <div class="mb-4 text-[var(--color-cyan)]" aria-hidden="true">
+              {step.icon}
+            </div>
+            <h3 class="heading-md mb-2 group-hover:text-[var(--color-link)] transition-colors">
+              {step.title}
+            </h3>
+            <p class="body-md">
+              {step.description}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

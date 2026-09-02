@@ -1,0 +1,109 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: 'What video formats are supported?',
+    answer: 'We support MP4, MOV, AVI, WebM, MKV, MPG, and FLV files. Any format playable in your browser should work.'
+  },
+  {
+    question: 'Is there a file size limit?',
+    answer: 'We recommend files under 500MB for best performance. The hard limit is 2GB due to browser memory constraints. Larger files may cause browser slowdown.'
+  },
+  {
+    question: 'Are my videos uploaded to a server?',
+    answer: 'No. All processing happens entirely in your browser using Web Workers and the Canvas API. Your video files never leave your device.'
+  },
+  {
+    question: 'What is the difference between the three extraction modes?',
+    answer: 'Manual lets you scrub the timeline and capture exact frames. Auto Interval extracts frames at regular time intervals (e.g., every 1 second). Smart Scene Detection analyzes the video and extracts only keyframes where the scene changes, ideal for presentations and screen recordings.'
+  },
+  {
+    question: 'Which export format should I choose?',
+    answer: 'PNG for lossless quality (largest files). JPG for good quality with smaller files (70-95% quality). WebP for excellent web compression (70-95%). AVIF for best modern compression (50-80%) but requires Safari 16.4+, Chrome 85+, or Firefox 93+.'
+  },
+  {
+    question: 'Can I extract frames from a specific time range?',
+    answer: 'Yes. In Auto Interval and Smart modes, you can set custom start and end times to extract frames only from a portion of the video.'
+  },
+  {
+    question: 'How many frames can I extract at once?',
+    answer: 'There is no hard limit, but extracting thousands of frames may consume significant browser memory. For very long videos, we recommend using Smart Scene Detection or larger intervals.'
+  },
+  {
+    question: 'Does this work on mobile devices?',
+    answer: 'Yes! The tool is fully responsive with touch-friendly controls for scrubbing and frame capture on mobile devices.'
+  },
+  {
+    question: 'Are there keyboard shortcuts?',
+    answer: 'Yes. Space = Play/Pause, Arrow Left/Right = ±1 frame, Shift+Arrow = ±1 second, S = Save current frame, ? = Show all shortcuts.'
+  },
+  {
+    question: 'Is this tool free to use?',
+    answer: 'Yes, completely free. No registration, no watermarks, no limits on the number of conversions.'
+  }
+];
+---
+
+<section id="faq" class="section bg-[var(--color-canvas)]" aria-labelledby="faq-title">
+  <div class="container max-w-3xl">
+    <div class="text-center mb-16">
+      <span class="eyebrow mb-3 inline-block">FAQ</span>
+      <h2 id="faq-title" class="heading-lg mb-4 text-balance">
+        Frequently asked questions
+      </h2>
+      <p class="body-lg">
+        Everything you need to know about extracting frames from video.
+      </p>
+    </div>
+
+    <dl class="space-y-4" role="list">
+      {faqs.map((faq, index) => (
+        <div class="card group">
+          <dt>
+            <button
+              class="w-full text-left flex items-center justify-between gap-4 py-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-link)] focus-visible:ring-offset-2 rounded-md"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${index}`}
+              data-faq-toggle
+            >
+              <span class="heading-md text-[var(--color-ink)] group-hover:text-[var(--color-link)] transition-colors">
+                {faq.question}
+              </span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--color-mute)] transition-transform duration-200" aria-hidden="true" data-faq-icon>
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </dt>
+          <dd id={`faq-answer-${index}`} class="overflow-hidden" hidden>
+            <div class="pb-4 body-md animate-slide-up">
+              {faq.answer}
+            </div>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-faq-toggle]').forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('[data-faq-icon]');
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute('aria-expanded', String(!isOpen));
+        answer.hidden = isOpen;
+
+        if (!isOpen) {
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  </script>
+</section>
