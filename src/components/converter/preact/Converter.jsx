@@ -33,6 +33,7 @@ function formatDuration(seconds) {
 
 export default function Converter() {
   const videoUrl = useRef(null);
+  const videoPlayerRef = useRef(null);
   const videoElement = useRef(null);
   const canvas = useRef(null);
   const ctx = useRef(null);
@@ -61,34 +62,37 @@ export default function Converter() {
       if (videoUrl.current) URL.revokeObjectURL(videoUrl.current);
       videoUrl.current = URL.createObjectURL(file);
 
-      videoElement.current = document.getElementById('video-element');
-      if (!videoElement.current) {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        videoElement.current = document.getElementById('video-element');
+      setShowConverter(true);
+
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const video = videoPlayerRef.current?.getVideoElement?.();
+      if (!video) {
+        throw new Error('Video element not found');
       }
 
-      videoElement.current.src = videoUrl.current;
+      videoElement.current = video;
+      video.src = videoUrl.current;
       await new Promise((resolve, reject) => {
-        videoElement.current.onloadedmetadata = resolve;
-        videoElement.current.onerror = reject;
+        video.onloadedmetadata = resolve;
+        video.onerror = reject;
       });
 
-      const duration = videoElement.current.duration;
+      const duration = video.duration;
       setVideoDuration(duration);
       setVideoInfo({
         name: file.name,
         type: file.type,
         size: file.size,
         duration,
-        width: videoElement.current.videoWidth,
-        height: videoElement.current.videoHeight,
+        width: video.videoWidth,
+        height: video.videoHeight,
         frameRate: 30,
         codec: file.type
       });
 
       setIntervalSettings(s => ({ ...s, endTime: duration }));
       setFrames([]);
-      setShowConverter(true);
     } catch (error) {
       console.error('Error loading video:', error);
       alert('Failed to load video. Please try another file.');
@@ -142,10 +146,6 @@ export default function Converter() {
     for (let i = 0; i < times.length; i++) {
       const frame = await captureFrameAtTime(times[i]);
       newFrames.push({ ...frame, selected: true });
-
-      if (i % 5 === 0) {
-        setFrames(prev => [...prev, ...newFrames]);
-      }
     }
 
     setFrames(prev => [...prev, ...newFrames]);
@@ -186,39 +186,85 @@ export default function Converter() {
 
   function captureFrameAtTime(time) {
     return new Promise((resolve, reject) => {
-      videoElement.current.currentTime = time;
-      videoElement.current.onseeked = () => {
-        try {
-          canvas.current.width = videoElement.current.videoWidth;
-          canvas.current.height = videoElement.current.videoHeight;
-          ctx.current.drawImage(videoElement.current, 0, 0);
+      const video = videoElement.current;
+      if (!video) {
+        reject(new Error('Video element not available'));
+        return;
+      }
 
-          const format = outputSettings.format;
-          const quality = outputSettings.quality / 100;
-          const mimeType = format === 'jpg' ? 'image/jpeg' : `image/${format}`;
+      const targetTime = Math.max(0, Math.min(video.duration || time, time));
+      let seekTimeout;
+      let settled = false;
 
-          const dataUrl = canvas.current.toDataURL(mimeType, quality);
+      const cleanup = () => {
+        clearTimeout(seekTimeout);
+        video.removeEventListener('seeked', handleSeeked);
+        video.removeEventListener('error', handleError);
+      };
 
-          const thumbCanvas = document.createElement('canvas');
-          const thumbCtx = thumbCanvas.getContext('2d');
-          const maxThumbSize = 200;
-          const scale = Math.min(maxThumbSize / canvas.current.width, maxThumbSize / canvas.current.height);
-          thumbCanvas.width = canvas.current.width * scale;
-          thumbCanvas.height = canvas.current.height * scale;
-          thumbCtx.drawImage(canvas.current, 0, 0, thumbCanvas.width, thumbCanvas.height);
-          const thumbnail = thumbCanvas.toDataURL('image/jpeg', 0.7);
+      const settle = (callback) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        callback();
+      };
 
-          resolve({
-            time,
-            url: dataUrl,
-            thumbnail,
-            format: outputSettings.format,
-            quality: outputSettings.quality
+      const captureFrame = () => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            try {
+              canvas.current.width = video.videoWidth;
+              canvas.current.height = video.videoHeight;
+              ctx.current.drawImage(video, 0, 0);
+
+              const format = outputSettings.format;
+              const quality = outputSettings.quality / 100;
+              const mimeType = format === 'jpg' ? 'image/jpeg' : `image/${format}`;
+
+              const dataUrl = canvas.current.toDataURL(mimeType, quality);
+
+              const thumbCanvas = document.createElement('canvas');
+              const thumbCtx = thumbCanvas.getContext('2d');
+              const maxThumbSize = 400;
+              const scale = Math.min(maxThumbSize / canvas.current.width, maxThumbSize / canvas.current.height);
+              thumbCanvas.width = canvas.current.width * scale;
+              thumbCanvas.height = canvas.current.height * scale;
+              thumbCtx.drawImage(canvas.current, 0, 0, thumbCanvas.width, thumbCanvas.height);
+              const thumbnail = thumbCanvas.toDataURL('image/jpeg', 0.7);
+
+              resolve({
+                time: targetTime,
+                url: dataUrl,
+                thumbnail,
+                format: outputSettings.format,
+                quality: outputSettings.quality
+              });
+            } catch (error) {
+              reject(error);
+            }
           });
-        } catch (e) {
-          reject(e);
+        });
+      };
+
+      const handleSeeked = () => {
+        if (Math.abs(video.currentTime - targetTime) <= 0.05) {
+          settle(captureFrame);
         }
       };
+      const handleError = () => settle(() => reject(new Error('Video seek failed')));
+
+      video.addEventListener('seeked', handleSeeked);
+      video.addEventListener('error', handleError);
+      seekTimeout = setTimeout(() => {
+        settle(() => reject(new Error(`Unable to seek video to ${targetTime.toFixed(2)}s`)));
+      }, 10000);
+
+      video.pause();
+      video.currentTime = targetTime;
+
+      if (Math.abs(video.currentTime - targetTime) <= 0.05 && video.readyState >= 2) {
+        settle(captureFrame);
+      }
     });
   }
 
@@ -289,9 +335,10 @@ export default function Converter() {
           />
 
           {showConverter && (
-            <div id="converter-content" class="space-y-6 animate-slide-up">
+            <div id="converter-content" class="space-y-6 animate-slide-up max-w-200 mx-auto">
               <VideoPlayer
                 id="video-player"
+                ref={videoPlayerRef}
                 src={videoUrl.current}
                 onTimeUpdate={() => {}}
                 onLoadedMetadata={(duration) => setVideoDuration(duration)}

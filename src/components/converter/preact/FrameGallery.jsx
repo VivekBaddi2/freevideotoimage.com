@@ -125,7 +125,7 @@ export default function FrameGallery({
         </div>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {frames.map((frame, index) => (
           <article
             key={index}
@@ -151,11 +151,11 @@ export default function FrameGallery({
               <span class="font-mono">{frame.time.toFixed(2)}s</span>
             </div>
 
-            <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-1">
+            <div class="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 flex gap-1">
               <Button
-                variant="ghost"
+                variant="nav"
                 size="sm"
-                class="p-1.5 bg-[var(--color-canvas-elevated)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] text-[var(--color-body)] hover:text-[var(--color-ink)] hover:bg-[var(--color-hairline-soft)]"
+                class="p-1.5 sm:size-7 sm:p-0 sm:gap-0 text-[var(--color-body)] hover:text-[var(--color-ink)]"
                 onClick={(e) => { e.stopPropagation(); onDownloadSingle?.(frame); }}
                 aria-label={`Download frame ${index + 1}`}
                 disabled={isProcessing}
@@ -167,9 +167,9 @@ export default function FrameGallery({
                 </svg>
               </Button>
               <Button
-                variant="ghost"
+                variant="nav"
                 size="sm"
-                class="p-1.5 bg-[var(--color-canvas-elevated)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] text-[var(--color-body)] hover:text-[var(--color-error)] hover:bg-[var(--color-warning-soft)]"
+                class="p-1.5 sm:size-7 sm:p-0 sm:gap-0 text-[var(--color-error)] hover:text-[var(--color-error-deep)] hover:bg-[var(--color-warning-soft)]"
                 onClick={(e) => { e.stopPropagation(); onRemoveFrame?.(index); }}
                 aria-label={`Remove frame ${index + 1}`}
                 disabled={isProcessing}

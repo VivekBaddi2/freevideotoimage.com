@@ -1,8 +1,13 @@
-import { useState, useEffect, useRef, useCallback } from 'preact/hooks';
+import { useState, useEffect, useRef, useCallback, useImperativeHandle } from 'preact/hooks';
+import { forwardRef } from 'preact/compat';
 import Button from '../../ui/Button.jsx';
 
-export default function VideoPlayer({ src, currentTime = 0, onTimeUpdate, onLoadedMetadata, onSeeked, 'data-testid': testId = 'video-player' }) {
+const VideoPlayer = forwardRef(function VideoPlayer({ src, currentTime = 0, onTimeUpdate, onLoadedMetadata, onSeeked, 'data-testid': testId = 'video-player' }, ref) {
   const videoRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    getVideoElement: () => videoRef.current
+  }));
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [seekPercent, setSeekPercent] = useState(0);
@@ -105,22 +110,24 @@ export default function VideoPlayer({ src, currentTime = 0, onTimeUpdate, onLoad
     video.currentTime = (newPercent / 100) * video.duration;
   }
 
-  return (
+return (
     <div class="relative" data-testid={testId}>
-      <video
-        ref={videoRef}
-        id="video-element"
-        src={src}
-        class="w-full rounded-[var(--radius-md)] bg-[var(--color-canvas)]"
-        controls
-        preload="metadata"
-      >
-        Your browser does not support the video tag.
-      </video>
+      <div class="flex justify-center">
+        <video
+          ref={videoRef}
+          id="video-element"
+          src={src}
+          class="w-full rounded-(--radius-md) bg-canvas"
+          controls
+          preload="metadata"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-      <div class="mt-4 space-y-3">
-        <div class="flex items-center gap-4">
-          <label htmlFor="time-input" class="body-sm text-[var(--color-mute)] whitespace-nowrap">
+      <div class="mt-4 max-w-200 mx-auto px-(--spacing-lg) space-y-3">
+        <div class="flex items-center justify-center gap-4">
+          <label htmlFor="time-input" class="body-sm text-mute whitespace-nowrap">
             Time:
           </label>
           <input
@@ -133,10 +140,10 @@ export default function VideoPlayer({ src, currentTime = 0, onTimeUpdate, onLoad
             value={videoRef.current?.currentTime?.toFixed(2) || '0.00'}
             onChange={handleTimeInputChange}
           />
-          <span class="body-sm text-[var(--color-mute)]" id="duration-display">/ {formatTime(duration)}</span>
+          <span class="body-sm text-mute" id="duration-display">/ {formatTime(duration)}</span>
         </div>
 
-        <div class="flex items-center gap-3 flex-wrap">
+        <div class="flex items-center justify-center gap-3 flex-wrap">
           <Button
             type="button"
             variant="nav"
@@ -214,7 +221,7 @@ export default function VideoPlayer({ src, currentTime = 0, onTimeUpdate, onLoad
           max="100"
           value={seekPercent}
           step="0.01"
-          class="w-full h-2 bg-[var(--color-hairline)] rounded-full appearance-none cursor-pointer accent-[var(--color-ink)]"
+          class="w-full h-2 bg-hairline rounded-full appearance-none cursor-pointer accent-ink"
           onInput={handleSeek}
           onChange={handleSeek}
           onTouchStart={handleTouchStart}
@@ -224,4 +231,6 @@ export default function VideoPlayer({ src, currentTime = 0, onTimeUpdate, onLoad
       </div>
     </div>
   );
-}
+});
+
+export default VideoPlayer;

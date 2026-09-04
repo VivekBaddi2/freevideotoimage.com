@@ -92,7 +92,7 @@ const hasSelection = selectedFrames.length > 0;
       <p class="body-sm text-[var(--color-faint)] mt-1">Use the extraction controls to capture frames from your video</p>
     </div>
   ) : (
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {frames.map((frame, index) => (
         <article
           class={`relative group aspect-video rounded-[var(--radius-sm)] overflow-hidden border border-[var(--color-hairline)] bg-[var(--color-canvas)] transition-all duration-200 ${frame.selected ? 'ring-2 ring-[var(--color-ink)]' : ''}`}
@@ -117,10 +117,10 @@ const hasSelection = selectedFrames.length > 0;
             <span class="font-mono">{frame.time.toFixed(2)}s</span>
           </div>
 
-          <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-1">
+          <div class="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 flex gap-1">
             <button
               type="button"
-              class="p-1.5 bg-[var(--color-canvas-elevated)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] text-[var(--color-body)] hover:text-[var(--color-ink)] hover:bg-[var(--color-hairline-soft)] transition-colors"
+              class="p-1.5 sm:size-7 sm:p-0 text-[var(--color-body)] bg-[var(--color-canvas-elevated)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] hover:text-[var(--color-ink)] hover:bg-[var(--color-hairline-soft)] transition-colors"
               onclick={(e) => { e.stopPropagation(); onDownloadSingle?.(frame); }}
               aria-label={`Download frame ${index + 1}`}
               disabled={isProcessing}
@@ -133,7 +133,7 @@ const hasSelection = selectedFrames.length > 0;
             </button>
             <button
               type="button"
-              class="p-1.5 bg-[var(--color-canvas-elevated)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] text-[var(--color-body)] hover:text-[var(--color-error)] hover:bg-[var(--color-warning-soft)] transition-colors"
+              class="p-1.5 sm:size-7 sm:p-0 text-[var(--color-error)] bg-[var(--color-canvas-elevated)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] hover:text-[var(--color-error-deep)] hover:bg-[var(--color-warning-soft)] transition-colors"
               onclick={(e) => { e.stopPropagation(); onRemoveFrame?.(index); }}
               aria-label={`Remove frame ${index + 1}`}
               disabled={isProcessing}

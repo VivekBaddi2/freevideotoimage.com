@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import Converter from '../components/converter/Converter.astro';
+import Converter from '../components/converter/preact/Converter.jsx';
 ---
 
 <Layout>
@@ -13,7 +13,7 @@ import Converter from '../components/converter/Converter.astro';
         <div class="max-w-5xl mx-auto">
           <div class="text-center mb-10">
             <h1 class="heading-lg mb-4">Video to Image Converter</h1>
-            <p class="body-lg text-[var(--color-body)]">
+            <p class="body-lg text-body">
               Upload a video and extract frames using manual capture, interval extraction, or smart scene detection.
             </p>
           </div>

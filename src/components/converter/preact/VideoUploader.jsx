@@ -6,6 +6,10 @@ export default function VideoUploader({ onFileSelect, disabled = false, accept =
   const fileInputRef = useRef(null);
   const [isDragOver, setIsDragOver] = useState(false);
 
+  function handleChooseFileClick() {
+    fileInputRef.current?.click();
+  }
+
   const MAX_SIZE_MB = Math.round(maxSize / (1024 * 1024));
   const WARNING_SIZE_MB = 500;
 
@@ -136,6 +140,7 @@ export default function VideoUploader({ onFileSelect, disabled = false, accept =
           type="button"
           variant="secondary"
           disabled={disabled}
+          onClick={handleChooseFileClick}
         >
           Choose File
         </Button>

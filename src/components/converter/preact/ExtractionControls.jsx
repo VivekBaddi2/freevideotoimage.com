@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import Button from '../../ui/Button.jsx';
 import Input from '../../ui/Input.jsx';
 
@@ -27,6 +27,18 @@ export default function ExtractionControls({
   const [localIntervalSettings, setLocalIntervalSettings] = useState(intervalSettings);
   const [localSceneSettings, setLocalSceneSettings] = useState(sceneSettings);
   const [localOutputSettings, setLocalOutputSettings] = useState(outputSettings);
+
+  useEffect(() => {
+    setLocalIntervalSettings(intervalSettings);
+  }, [intervalSettings]);
+
+  useEffect(() => {
+    setLocalSceneSettings(sceneSettings);
+  }, [sceneSettings]);
+
+  useEffect(() => {
+    setLocalOutputSettings(outputSettings);
+  }, [outputSettings]);
 
   function handleIntervalChange(key, value) {
     const newSettings = { ...localIntervalSettings, [key]: value };
