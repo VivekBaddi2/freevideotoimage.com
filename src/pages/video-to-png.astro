@@ -6,6 +6,18 @@ import Converter from '../components/converter/preact/Converter.jsx';
 ---
 
 <Layout>
+  <slot name="head">
+    <title>Video to PNG Converter - Convert Video to PNG Online Free</title>
+    <meta name="description" content="Convert video to PNG online free with our specialized video to PNG converter. Extract frames as lossless PNG images, preserving every detail and color. Ideal for editing, design work, and archival purposes. 100% client-side, no uploads, unlimited conversions.">
+    <meta property="og:title" content="Video to PNG Converter - Convert Video to PNG Online Free">
+    <meta property="og:description" content="Convert video to PNG online free with our specialized video to PNG converter. Extract frames as lossless PNG images, preserving every detail and color. Ideal for editing, design work, and archival purposes. 100% client-side, no uploads, unlimited conversions.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content="https://freevideotoimage.com/video-to-png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Video to PNG Converter - Convert Video to PNG Online Free">
+    <meta name="twitter:description" content="Convert video to PNG online free with our specialized video to PNG converter. Extract frames as lossless PNG images, preserving every detail and color. Ideal for editing, design work, and archival purposes. 100% client-side, no uploads, unlimited conversions.">
+  </slot>
   <Header currentPath="/video-to-png" />
   <main class="flex-1">
     <section class="py-12 md:py-16 lg:py-20">

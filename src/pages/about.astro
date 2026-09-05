@@ -5,6 +5,18 @@ import Footer from '../components/layout/Footer.astro';
 ---
 
 <Layout>
+  <slot name="head">
+    <title>About FreeVideoToImage.com - Privacy-Focused Video to Image Converter</title>
+    <meta name="description" content="Learn about FreeVideoToImage.com, a privacy-focused, client-side video to image converter that allows you to extract frames from videos without uploading. Convert video to JPG, PNG, WebP, AVIF online free with complete data security.">
+    <meta property="og:title" content="About FreeVideoToImage.com - Privacy-Focused Video to Image Converter">
+    <meta property="og:description" content="Learn about FreeVideoToImage.com, a privacy-focused, client-side video to image converter that allows you to extract frames from videos without uploading. Convert video to JPG, PNG, WebP, AVIF online free with complete data security.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content="https://freevideotoimage.com/about">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About FreeVideoToImage.com - Privacy-Focused Video to Image Converter">
+    <meta name="twitter:description" content="Learn about FreeVideoToImage.com, a privacy-focused, client-side video to image converter that allows you to extract frames from videos without uploading. Convert video to JPG, PNG, WebP, AVIF online free with complete data security.">
+  </slot>
   <Header currentPath="/about" />
   <main class="flex-1">
     <!-- Hero Section -->
@@ -12,7 +24,7 @@ import Footer from '../components/layout/Footer.astro';
       <div class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-20">
         <div class="container">
           <div class="text-center">
-            <h1 class="display-xl mb-4 text-center">About FreeVideoToImage.com</h1>
+            <h1 class="text-xl font-semibold mb-4 text-center">About FreeVideoToImage.com</h1>
             <p class="body-lg max-w-[600px] mx-auto text-center">
               A private, client-side video frame extraction tool built for creators who value simplicity and control.
             </p>

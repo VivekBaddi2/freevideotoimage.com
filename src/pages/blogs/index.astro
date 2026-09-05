@@ -1,0 +1,137 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+---
+
+<Layout>
+  <slot name="head">
+    <title>Blogs - Free Video to Image</title>
+    <meta name="description" content="Explore our blog for guides on video frame extraction, privacy, creative applications, and technical tutorials.">
+    <meta property="og:title" content="Blogs - Free Video to Image">
+    <meta property="og:description" content="Explore our blog for guides on video frame extraction, privacy, creative applications, and technical tutorials.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content="https://freevideotoimage.com/blogs">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blogs - Free Video to Image">
+    <meta name="twitter:description" content="Explore our blog for guides on video frame extraction, privacy, creative applications, and technical tutorials.">
+  </slot>
+  <Header currentPath="/blogs" />
+  <main class="flex-1">
+    <section class="relative overflow-hidden border-b border-[var(--color-hairline)]">
+      <div class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-24">
+        <div class="container">
+          <div class="mx-auto max-w-6xl text-center">
+            <p class="eyebrow mb-4">The frame journal</p>
+            <h1 class="heading-xl mb-6 text-balance">Better frames start with better context.</h1>
+            <p class="body-lg mx-auto max-w-[600px]">
+              Practical guides for extracting, protecting, and transforming the moments hidden inside your videos.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Mesh Gradient Background -->
+      <div class="absolute inset-0 -z-0 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="{colors.cyan}" />
+              <stop offset="25%" stop-color="{colors.violet}" />
+              <stop offset="50%" stop-color="{colors.pink}" />
+              <stop offset="75%" stop-color="{colors.magenta}" />
+              <stop offset="100%" stop-color="{colors.cyan}" />
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" fill="url(#gradient)" opacity="0.08" />
+        </svg>
+      </div>
+    </section>
+
+    <section class="pt-16 pb-12 md:pt-20">
+      <div class="container">
+        <div class="mb-8 flex items-end justify-between gap-6">
+          <div>
+            <p class="eyebrow mb-2">Latest articles</p>
+            <h2 class="heading-lg">Read, then make something.</h2>
+          </div>
+          <p class="hidden text-right body-sm md:block">Short, useful notes for turning video into a more flexible creative material.</p>
+        </div>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <article class="blog-card blog-card-featured md:col-span-2 lg:col-span-2">
+            <div class="mb-12 flex items-center justify-between gap-4">
+              <span class="blog-card-meta">Featured guide</span>
+              <span class="body-sm text-white/60">8 min read</span>
+            </div>
+            <h2 class="mb-4 text-3xl font-semibold leading-tight tracking-tight">How to Extract the Perfect Frame from Your Videos</h2>
+            <p class=" body-lg text-white/70">
+                Learn the exact steps to capture high-quality frames from any video using our client-side tool.
+                From manual capture to smart scene detection, we cover all extraction methods.
+            </p>
+            <a href="/blogs/how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide" class="blog-card-link">Read the guide <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="blog-card">
+            <span class="blog-card-meta">Privacy & security</span>
+            <h3 class="mt-8 mb-3 heading-md">Why Client-Side Video Processing Matters for Your Privacy</h3>
+            <p class="body-sm">
+                Discover why processing videos entirely in your browser is crucial for protecting sensitive content
+                and maintaining complete control over your media files.
+            </p>
+            <a href="/blogs/why-client-side-video-processing-matters-for-your-privacy" class="blog-card-link">Read article <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="blog-card">
+            <span class="blog-card-meta">Creative applications</span>
+            <h3 class="mt-8 mb-3 heading-md">Top 5 Creative Uses for Extracted Video Frames</h3>
+            <p class="body-sm">
+                From mood boards to digital art, explore innovative ways to incorporate video frames into your
+                creative workflow and design projects.
+            </p>
+            <a href="/blogs/top-5-creative-uses-for-extracted-video-frames-in-design-projects" class="blog-card-link">Read article <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="blog-card">
+            <span class="blog-card-meta">Technical guide</span>
+            <h3 class="mt-8 mb-3 heading-md">When to Use PNG vs JPG vs WebP vs AVIF</h3>
+            <p class="body-sm">
+                A comprehensive guide to choosing the right output format for your extracted frames based on
+                quality, file size, and use case requirements.
+            </p>
+            <a href="/blogs/understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif" class="blog-card-link">Read article <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="blog-card">
+            <span class="blog-card-meta">Creative transformation</span>
+            <h3 class="mt-8 mb-3 heading-md">From Video to Art: Turning Frames into Digital Masterpieces</h3>
+            <p class="body-sm">
+                Learn how to transform ordinary video frames into stunning digital artwork using simple editing
+                techniques and free online tools.
+            </p>
+            <a href="/blogs/from-video-to-art-turning-frames-into-digital-masterpieces" class="blog-card-link">Read article <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="heading-lg mb-4">Start Exploring</h2>
+          <p class="body-md max-w-[500px] mx-auto mb-6">
+            Dive into our blog to learn more about video frame extraction, privacy best practices,
+            and creative applications.
+          </p>
+          <a href="/blogs/how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide" class="btn-primary inline-flex items-center">
+            Read First Article
+            <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

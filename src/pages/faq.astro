@@ -5,6 +5,18 @@ import Footer from '../components/layout/Footer.astro';
 ---
 
 <Layout>
+  <slot name="head">
+    <title>Frequently Asked Questions - Video to Image Converter | FreeVideoToImage.com</title>
+    <meta name="description" content="Find answers to common questions about our video to image converter, video to JPG converter, video to PNG converter, and frame extraction tools. Learn about privacy, file formats, and usage limits.">
+    <meta property="og:title" content="Frequently Asked Questions - Video to Image Converter | FreeVideoToImage.com">
+    <meta property="og:description" content="Find answers to common questions about our video to image converter, video to JPG converter, video to PNG converter, and frame extraction tools. Learn about privacy, file formats, and usage limits.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content="https://freevideotoimage.com/faq">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Frequently Asked Questions - Video to Image Converter | FreeVideoToImage.com">
+    <meta name="twitter:description" content="Find answers to common questions about our video to image converter, video to JPG converter, video to PNG converter, and frame extraction tools. Learn about privacy, file formats, and usage limits.">
+  </slot>
   <Header currentPath="/faq" />
   <main class="flex-1">
     <!-- Hero Section -->

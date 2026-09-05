@@ -5,6 +5,18 @@ import Footer from '../components/layout/Footer.astro';
 ---
 
 <Layout>
+  <slot name="head">
+    <title>How Our Video to Image Converter Works - Step-by-Step Guide</title>
+    <meta name="description" content="Learn how our video to image converter works in three simple steps: upload video, choose extraction method, download frames. Discover how to convert video to JPG, PNG, and other formats client-side.">
+    <meta property="og:title" content="How Our Video to Image Converter Works - Step-by-Step Guide">
+    <meta property="og:description" content="Learn how our video to image converter works in three simple steps: upload video, choose extraction method, download frames. Discover how to convert video to JPG, PNG, and other formats client-side.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content="https://freevideotoimage.com/how-it-works">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How Our Video to Image Converter Works - Step-by-Step Guide">
+    <meta name="twitter:description" content="Learn how our video to image converter works in three simple steps: upload video, choose extraction method, download frames. Discover how to convert video to JPG, PNG, and other formats client-side.">
+  </slot>
   <Header currentPath="/how-it-works" />
   <main class="flex-1">
     <!-- Hero Section -->

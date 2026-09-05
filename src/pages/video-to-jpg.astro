@@ -6,6 +6,18 @@ import Converter from '../components/converter/preact/Converter.jsx';
 ---
 
 <Layout>
+  <slot name="head">
+    <title>Video to JPG Converter - Convert Video to JPG Online Free</title>
+    <meta name="description" content="Convert video to JPG online free with our specialized video to JPG converter. Extract frames from any video and save as high-quality JPG images with adjustable compression (70-95% quality). 100% client-side, no uploads, unlimited conversions.">
+    <meta property="og:title" content="Video to JPG Converter - Convert Video to JPG Online Free">
+    <meta property="og:description" content="Convert video to JPG online free with our specialized video to JPG converter. Extract frames from any video and save as high-quality JPG images with adjustable compression (70-95% quality). 100% client-side, no uploads, unlimited conversions.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content="https://freevideotoimage.com/video-to-jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Video to JPG Converter - Convert Video to JPG Online Free">
+    <meta name="twitter:description" content="Convert video to JPG online free with our specialized video to JPG converter. Extract frames from any video and save as high-quality JPG images with adjustable compression (70-95% quality). 100% client-side, no uploads, unlimited conversions.">
+  </slot>
   <Header currentPath="/video-to-jpg" />
   <main class="flex-1">
     <section class="py-12 md:py-16 lg:py-20">

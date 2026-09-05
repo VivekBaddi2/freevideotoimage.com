@@ -6,6 +6,18 @@ import Converter from '../components/converter/preact/Converter.jsx';
 ---
 
 <Layout>
+  <slot name="head">
+    <title>Video Screenshot Tool - Capture Screenshots from Videos Online Free</title>
+    <meta name="description" content="Capture precise screenshots from any video frame with our video screenshot tool. Features manual frame-by-frame navigation for exact moment capture and smart scene detection for key moments. 100% client-side, no uploads, unlimited conversions.">
+    <meta property="og:title" content="Video Screenshot Tool - Capture Screenshots from Videos Online Free">
+    <meta property="og:description" content="Capture precise screenshots from any video frame with our video screenshot tool. Features manual frame-by-frame navigation for exact moment capture and smart scene detection for key moments. 100% client-side, no uploads, unlimited conversions.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content="https://freevideotoimage.com/video-screenshot-tool">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Video Screenshot Tool - Capture Screenshots from Videos Online Free">
+    <meta name="twitter:description" content="Capture precise screenshots from any video frame with our video screenshot tool. Features manual frame-by-frame navigation for exact moment capture and smart scene detection for key moments. 100% client-side, no uploads, unlimited conversions.">
+  </slot>
   <Header currentPath="/video-screenshot-tool" />
   <main class="flex-1">
     <section class="py-12 md:py-16 lg:py-20">
