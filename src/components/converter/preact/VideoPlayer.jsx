@@ -11,41 +11,11 @@ const VideoPlayer = forwardRef(function VideoPlayer({ src, currentTime = 0, onTi
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [seekPercent, setSeekPercent] = useState(0);
-  const [videoWidth, setVideoWidth] = useState(0);
-  const [videoHeight, setVideoHeight] = useState(0);
 
   function formatTime(seconds) {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
-  }
-
-  function getVideoDimensions() {
-    // Default dimensions (fallback)
-    let width = 200;
-    let height = 150;
-
-    // If we have video dimensions, calculate based on aspect ratio
-    if (videoWidth > 0 && videoHeight > 0) {
-      const aspectRatio = videoWidth / videoHeight;
-
-      // Check if video is horizontal (wider than tall) or vertical (taller than wide)
-      if (aspectRatio > 1) {
-        // Horizontal video - use 16:9 ratio
-        width = 200;
-        height = Math.round(200 / (16/9)); // 200 * 9/16 = 112.5 -> 113
-      } else {
-        // Vertical video - use 3:4 ratio
-        width = Math.round(150 * (3/4)); // 150 * 3/4 = 112.5 -> 113
-        height = 150;
-      }
-
-      // Ensure minimum dimensions
-      width = Math.max(width, 100);
-      height = Math.max(height, 100);
-    }
-
-    return { width, height };
   }
 
   useEffect(() => {
@@ -54,8 +24,6 @@ const VideoPlayer = forwardRef(function VideoPlayer({ src, currentTime = 0, onTi
 
     const handleLoadedMetadata = () => {
       setDuration(video.duration);
-      setVideoWidth(video.videoWidth);
-      setVideoHeight(video.videoHeight);
       onLoadedMetadata?.(video.duration);
     };
 
@@ -149,8 +117,7 @@ return (
           ref={videoRef}
           id="video-element"
           src={src}
-          class="rounded-(--radius-md) bg-canvas"
-          style={{ width: `${getVideoDimensions().width}px`, height: `${getVideoDimensions().height}px` }}
+          class="aspect-video w-full rounded-(--radius-md) bg-canvas object-contain"
           controls
           preload="metadata"
         >

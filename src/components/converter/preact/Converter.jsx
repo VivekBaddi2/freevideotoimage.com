@@ -366,62 +366,107 @@ export default function Converter() {
   }
 
   return (
-    <div class="card" data-testid="video-converter">
-      <div class="grid lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-2 space-y-6">
+    <div class="card overflow-hidden p-0 shadow-[0px_2px_2px_rgba(0,0,0,0.04),0px_12px_28px_-12px_rgba(0,0,0,0.12)]" data-testid="video-converter">
+      <div class="space-y-8 p-4 sm:p-6 lg:p-8">
+        <section aria-labelledby="upload-heading">
+          <div class="mb-4 flex items-center justify-between gap-4">
+            <div>
+              <p class="eyebrow mb-1">Start here</p>
+              <h2 id="upload-heading" class="heading-md">Upload a video</h2>
+            </div>
+            <span class="hidden body-sm sm:block">MP4, WebM, MOV and more</span>
+          </div>
           <VideoUploader
             onFileSelect={handleFileSelect}
             disabled={isProcessing}
             data-testid="video-uploader"
           />
+        </section>
 
-          {showConverter && (
-            <div id="converter-content" class="space-y-6 animate-slide-up max-w-200 mx-auto">
-              <VideoPlayer
-                id="video-player"
-                ref={videoPlayerRef}
-                src={videoUrl.current}
-                onTimeUpdate={() => { }}
-                onLoadedMetadata={(duration) => setVideoDuration(duration)}
-                onSeeked={() => { }}
-                data-testid="video-player"
-              />
+        {showConverter && (
+          <section id="converter-content" class="animate-slide-up" aria-label="Video workspace">
+            <div class="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(280px,3fr)] lg:items-start">
+              <div class="space-y-4">
+                <div class="flex items-end justify-between gap-4">
+                  <div>
+                    <p class="eyebrow mb-1">Preview</p>
+                    <h2 class="heading-md">Choose your frame</h2>
+                  </div>
+                  <span class="hidden body-sm sm:block">Use the timeline to find the exact moment</span>
+                </div>
+                <VideoPlayer
+                  id="video-player"
+                  ref={videoPlayerRef}
+                  src={videoUrl.current}
+                  onTimeUpdate={() => { }}
+                  onLoadedMetadata={(duration) => setVideoDuration(duration)}
+                  onSeeked={() => { }}
+                  data-testid="video-player"
+                />
+              </div>
 
-              <ExtractionControls
-                id="extraction-controls"
-                mode={extractionMode}
-                onModeChange={setExtractionMode}
-                intervalSettings={intervalSettings}
-                onIntervalChange={setIntervalSettings}
-                sceneSettings={sceneSettings}
-                onSceneChange={setSceneSettings}
-                outputSettings={outputSettings}
-                onOutputChange={setOutputSettings}
-                duration={videoDuration}
-                onExtract={handleExtract}
-                disabled={!videoUrl.current || isProcessing}
-                isExtracting={isProcessing}
-                data-testid="extraction-controls"
-              />
+              <div>
+                <p class="eyebrow mb-1">Extraction settings</p>
+                <h2 class="heading-md mb-4">How should we capture frames?</h2>
+                <ExtractionControls
+                  id="extraction-controls"
+                  mode={extractionMode}
+                  onModeChange={setExtractionMode}
+                  intervalSettings={intervalSettings}
+                  onIntervalChange={setIntervalSettings}
+                  sceneSettings={sceneSettings}
+                  onSceneChange={setSceneSettings}
+                  outputSettings={outputSettings}
+                  onOutputChange={setOutputSettings}
+                  duration={videoDuration}
+                  onExtract={handleExtract}
+                  disabled={!videoUrl.current || isProcessing}
+                  isExtracting={isProcessing}
+                  data-testid="extraction-controls"
+                />
+              </div>
             </div>
-          )}
+          </section>
+        )}
 
-          <FrameGallery
-            id="frame-gallery"
-            frames={frames}
-            onSelectionChange={handleSelectionChange}
-            onDownloadSingle={handleDownloadSingle}
-            onDownloadSelected={handleDownloadSelected}
-            onDownloadAll={handleDownloadAll}
-            onRemoveFrame={handleRemoveFrame}
-            onClearAll={handleClearAll}
-            onDeselectAll={handleDeselectAll}
-            onViewPopup={() => setShowFramePopup(true)}
-            isProcessing={isProcessing}
-            data-testid="frame-gallery"
-          />
+        {showConverter && (
+          <>
+            <section aria-labelledby="frames-heading">
+              <div class="mb-4">
+                <p class="eyebrow mb-1">Results</p>
+                <h2 id="frames-heading" class="heading-md">Extracted frames</h2>
+              </div>
+              <FrameGallery
+                id="frame-gallery"
+                frames={frames}
+                onSelectionChange={handleSelectionChange}
+                onDownloadSingle={handleDownloadSingle}
+                onDownloadSelected={handleDownloadSelected}
+                onDownloadAll={handleDownloadAll}
+                onSelectAll={() => setFrames(prev => prev.map(frame => ({ ...frame, selected: true })))}
+                onRemoveFrame={handleRemoveFrame}
+                onClearAll={handleClearAll}
+                onDeselectAll={handleDeselectAll}
+                onViewPopup={() => setShowFramePopup(true)}
+                isProcessing={isProcessing}
+                data-testid="frame-gallery"
+              />
+            </section>
 
-          {showFramePopup && (
+            <section aria-labelledby="video-info-heading">
+              <div class="mb-4">
+                <p class="eyebrow mb-1">File details</p>
+                <h2 id="video-info-heading" class="heading-md">Video information</h2>
+              </div>
+              <VideoInfoPanel
+                videoInfo={videoInfo}
+                data-testid="video-info-panel"
+              />
+            </section>
+          </>
+        )}
+
+        {showFramePopup && (
             <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
               <div class="relative flex h-[90vh] max-h-[90vh] w-[calc(100%-2rem)] max-w-[95%] flex-col overflow-hidden rounded-lg bg-white">
                 <div class="flex shrink-0 items-center justify-between border-b bg-[var(--color-canvas-elevated)] p-4">
@@ -524,15 +569,7 @@ export default function Converter() {
                   </div>
               </div>
             </div>
-          )}
-        </div>
-
-        <aside class="lg:col-span-1">
-          <VideoInfoPanel
-            videoInfo={videoInfo}
-            data-testid="video-info-panel"
-          />
-        </aside>
+        )}
       </div>
     </div>
   );

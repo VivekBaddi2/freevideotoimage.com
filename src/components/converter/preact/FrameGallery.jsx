@@ -7,6 +7,7 @@ export default function FrameGallery({
   onDownloadSingle,
   onDownloadSelected,
   onDownloadAll,
+  onSelectAll,
   onDeselectAll,
   onViewPopup,
   onRemoveFrame,
@@ -87,7 +88,7 @@ export default function FrameGallery({
 
   return (
     <div class="card" data-testid={testId}>
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      <div class="flex flex-col sm:flex-col gap-4 mb-6">
         <div>
           <h3 class="heading-md">{frames.length} frame{frames.length !== 1 ? 's' : ''} extracted</h3>
           {hasSelection && (
@@ -97,53 +98,114 @@ export default function FrameGallery({
           )}
         </div>
 
-        <div class="flex flex-wrap gap-2">
-          {hasSelection && (
-            <>
+        <div class="flex flex-wrap justify-between gap-2">
+
+          <div class={"flex gap-2"}>
+            {/* Download zip button */}
+            <Button
+              variant="primary"
+              onClick={() => onDownloadAll?.(frames)}
+              disabled={frames.length === 0 || isProcessing}
+              class='text-sm'
+              size='md'
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M12 3v12" />
+                <path d="m7 10 5 5 5-5" />
+                <path d="M5 21h14" />
+              </svg>
+              Download All as ZIP ({frames.length})
+            </Button>
+
+            {/* Download Selected button */}
+            {hasSelection && (
+              <>
+                <Button
+                  variant="secondary"
+                  onClick={() => onDownloadSelected?.(selectedFrames)}
+                  class='text-sm'
+                  size='md'
+                  disabled={isProcessing}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M12 3v12" />
+                    <path d="m7 10 5 5 5-5" />
+                    <path d="M5 21h14" />
+                  </svg>
+                  Download Selected ({selectedFrames.length})
+                </Button>
+              </>
+            )}
+          </div>
+
+          {/* right side */}
+          <div class={"flex gap-2"}>
+            {
+              selectedFrames.length !== frames.length ? (
+                <Button
+                  variant="secondary"
+                  onClick={() => onSelectAll?.()}
+                  class={`text-sm`}
+                  size="md"
+                  disabled={isProcessing || frames.length === 0 || selectedFrames.length === frames.length}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="m8 12 2.5 2.5L16 9" />
+                  </svg>
+                  Select All
+                </Button>
+              ) :
+                (<Button
+                  variant="secondary"
+                  onClick={() => onDeselectAll?.()}
+                  class='text-sm'
+                  size='md'
+                  disabled={isProcessing || !hasSelection}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="m8 12 2.5 2.5L16 9" />
+                  </svg>
+                  Deselect All
+                </Button>)
+            }
+            <Button
+              variant="secondary"
+              onClick={() => {
+                if (onViewPopup) {
+                  onViewPopup();
+                }
+              }}
+              class='text-sm'
+              size='md'
+              disabled={isProcessing || frames.length === 0}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M8 8h8v8H8z" />
+              </svg>
+              View All in Popup
+            </Button>
+            {frames.length > 0 && (
               <Button
-                variant="secondary"
-                onClick={() => onDownloadSelected?.(selectedFrames)}
+                variant="ghost"
+                size='md'
+                class="text-red-600 text-sm hover:text-red-700 cursor-pointer"
+                onClick={() => onClearAll?.()}
                 disabled={isProcessing}
               >
-                Download Selected ({selectedFrames.length})
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M3 6h18" />
+                  <path d="M8 6V4h8v2" />
+                  <path d="m19 6-1 15H6L5 6" />
+                  <path d="M10 11v6M14 11v6" />
+                </svg>
+                Clear All
               </Button>
-              <Button
-                variant="secondary"
-                onClick={() => onDeselectAll?.()}
-                disabled={isProcessing || !hasSelection}
-              >
-                Deselect All
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  if (onViewPopup) {
-                    onViewPopup();
-                  }
-                }}
-                disabled={isProcessing || frames.length === 0}
-              >
-                View All in Popup
-              </Button>
-            </>
-          )}
-          <Button
-            variant="primary"
-            onClick={() => onDownloadAll?.(frames)}
-            disabled={frames.length === 0 || isProcessing}
-          >
-            Download All as ZIP ({frames.length})
-          </Button>
-          {frames.length > 0 && (
-            <Button
-              variant="ghost"
-              class="text-[var(--color-error)] hover:text-[var(--color-error-deep)]"
-              onClick={() => onClearAll?.()}
-              disabled={isProcessing}
-            >
-              Clear All
-            </Button>
-          )}
+            )}
+
+          </div>
         </div>
       </div>
 
@@ -156,7 +218,7 @@ export default function FrameGallery({
           >
             <input
               type="checkbox"
-              class="absolute top-2 left-2 z-10 w-5 h-5 rounded-[var(--radius-sm)] border-[var(--color-hairline)] text-[var(--color-ink)] focus-visible:ring-2 focus-visible:ring-[var(--color-link)] accent-[var(--color-ink)]"
+              class="absolute top-2 left-2 z-10 w-5 h-5 rounded-[var(--radius-sm)] border-[var(--color-hairline)] text-[var(--color-ink)] focus-visible:ring-2 focus-visible:ring-[var(--color-link)] accent-red-500"
               checked={frame.selected}
               onChange={(e) => handleCheckboxChange(index, e.target.checked)}
               aria-label={`Select frame ${index + 1}`}

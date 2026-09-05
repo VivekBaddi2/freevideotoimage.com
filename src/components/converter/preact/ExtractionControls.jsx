@@ -61,16 +61,17 @@ export default function ExtractionControls({
   const currentFormat = formats.find(f => f.value === localOutputSettings.format);
 
   return (
-    <div class="card" data-testid={testId}>
+    <div class="card p-4" data-testid={testId}>
       <div class="mb-6">
         <label class="label">Extraction Mode</label>
         <div class="flex flex-wrap gap-2" role="radiogroup" aria-label="Extraction mode">
-          {['manual', 'interval', 'scene'].map(m => (
+          {['manual', 'interval', 'automatic'].map(m => (
             <Button
               key={m}
               type="button"
+              size='md'
               variant="nav"
-              class={mode === m ? 'bg-[var(--color-ink)] text-white border-[var(--color-ink)]' : ''}
+              class={mode === m ? ' bg-[var(--color-ink)] text-white hover:bg-[var(--color-ink)] border-[var(--color-ink)] text-sm' : 'text-sm text-gray-600 border-0'}
               onClick={() => onModeChange?.(m)}
               disabled={disabled || isExtracting}
               role="radio"
@@ -90,7 +91,8 @@ export default function ExtractionControls({
           <div class="flex gap-3">
             <Button
               type="button"
-              class="flex-1"
+              size='md'
+              class='text-sm cursor-pointer'
               onClick={() => onExtract?.('manual')}
               disabled={disabled || isExtracting}
             >
@@ -102,7 +104,7 @@ export default function ExtractionControls({
 
       {mode === 'interval' && (
         <div class="space-y-4 animate-fade-in">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 gap-2">
             <Input
               label="Interval (seconds)"
               type="number"
@@ -142,7 +144,8 @@ export default function ExtractionControls({
 
           <Button
             type="button"
-            class="w-full"
+            size='md'
+            class='text-sm cursor-pointer'
             onClick={() => onExtract?.('interval')}
             disabled={disabled || isExtracting}
           >
@@ -151,9 +154,9 @@ export default function ExtractionControls({
         </div>
       )}
 
-      {mode === 'scene' && (
+      {mode === 'automatic' && (
         <div class="space-y-4 animate-fade-in">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 gap-4">
             <div>
               <label class="label">Scene Threshold: {localSceneSettings.threshold.toFixed(2)}</label>
               <input
@@ -186,7 +189,8 @@ export default function ExtractionControls({
 
           <Button
             type="button"
-            class="w-full"
+            size='md'
+            class='text-sm cursor-pointer'
             onClick={() => onExtract?.('scene')}
             disabled={disabled || isExtracting}
           >
@@ -204,7 +208,8 @@ export default function ExtractionControls({
                 key={f.value}
                 type="button"
                 variant="nav"
-                class={localOutputSettings.format === f.value ? 'bg-[var(--color-ink)] text-white border-[var(--color-ink)]' : ''}
+                size='sm'
+                class={localOutputSettings.format === f.value ? 'bg-[var(--color-ink)] text-white hover:bg-[var(--color-ink)] border-[var(--color-ink)] text-sm' : 'text-sm text-gray-600 border-0'}
                 onClick={() => handleOutputChange('format', f.value)}
                 disabled={disabled || isExtracting}
                 role="radio"
