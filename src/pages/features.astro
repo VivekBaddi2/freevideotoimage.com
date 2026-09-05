@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<Layout>
+  <Header currentPath="/features" />
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="relative">
+      <div class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-20">
+        <div class="container">
+          <div class="text-center">
+            <h1 class="text-xl font-semibold mb-3 text-center">Features</h1>
+            <p class="body-lg max-w-[600px] mx-auto text-center">
+              Powerful extraction modes, multiple output formats, and smart scene detection — all running in your browser.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Mesh Gradient Background -->
+      <div class="absolute inset-0 -z-0 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="{colors.cyan}" />
+              <stop offset="25%" stop-color="{colors.violet}" />
+              <stop offset="50%" stop-color="{colors.pink}" />
+              <stop offset="75%" stop-color="{colors.magenta}" />
+              <stop offset="100%" stop-color="{colors.cyan}" />
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" fill="url(#gradient)" opacity="0.08" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="pt-16 md:pt-20 pb-12">
+      <div class="container">
+        <div class="text-center mb-12">
+          <span class="mono-eyebrow mb-3">What You Can Do</span>
+          <h2 class="heading-lg mb-4 text-center">Everything you need to extract frames</h2>
+          <p class="body-md max-w-[500px] mx-auto text-center">
+            Our video frame extractor provides professional-grade tools for every use case.
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Manual Frame Capture -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Manual Frame Capture</h3>
+              <p class="body-md">
+                Scrub through your video frame-by-frame and capture exact moments with pixel-perfect precision.
+                Perfect for catching that split-second action or subtle expression.
+              </p>
+            </div>
+          </article>
+
+          <!-- Interval Extraction -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Interval Extraction</h3>
+              <p class="body-md">
+                Automatically extract frames at set intervals — every second, every 5 seconds, or custom timing.
+                Ideal for creating timelapses or documenting processes over time.
+              </p>
+            </div>
+          </article>
+
+          <!-- Smart Scene Detection -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Smart Scene Detection</h3>
+              <p class="body-md">
+                AI-powered scene boundary detection extracts only the key frames when content changes.
+                Reduces redundancy by focusing on meaningful visual transitions.
+              </p>
+            </div>
+          </article>
+
+          <!-- Multiple Output Formats -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Multiple Output Formats</h3>
+              <p class="body-md">
+                Export to PNG (lossless), JPG (70-95% quality), WebP (70-95% quality), or AVIF (50-80% quality).
+                Choose the right balance of quality and file size for your needs.
+              </p>
+            </div>
+          </article>
+
+          <!-- ZIP Download -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">ZIP Download</h3>
+              <p class="body-md">
+                Download all frames as a convenient ZIP archive with streaming for large extractions.
+                No more clicking through hundreds of individual downloads.
+              </p>
+            </div>
+          </article>
+
+          <!-- 100% Client-Side -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">100% Client-Side</h3>
+              <p class="body-md">
+                Your videos never leave your device. All processing happens locally in your browser.
+                Complete privacy and security — no uploads, no servers, no data collection.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Details -->
+    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="text-center mb-12">
+          <span class="mono-eyebrow mb-3">Technical Excellence</span>
+          <h2 class="heading-lg mb-4 text-center">Built for Performance</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2">
+          <div class="space-y-6">
+            <h3 class="heading-md mb-3">High Performance</h3>
+            <p class="body-md">
+              Optimized JavaScript and WebAssembly ensure smooth performance even with large video files.
+              Frame extraction happens in real-time with minimal latency.
+            </p>
+          </div>
+          <div class="space-y-6">
+            <h3 class="heading-md mb-3">Format Support</h3>
+            <p class="body-md">
+              Supports all major video formats: MP4, WebM, MOV, AVI, MKV, and more.
+              Any video playable in your browser can be processed.
+            </p>
+          </div>
+          <div class="space-y-6">
+            <h3 class="heading-md mb-3">Privacy First</h3>
+            <p class="body-md">
+              Zero data leaves your browser. We don't use analytics, tracking, or cookies.
+              Your creative work stays completely private and under your control.
+            </p>
+          </div>
+          <div class="space-y-6">
+            <h3 class="heading-md mb-3">No Limits</h3>
+            <p class="body-md">
+              Process videos up to 2GB in size. Extract hundreds of frames without restrictions.
+              No watermarks, no registration, no hidden limitations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

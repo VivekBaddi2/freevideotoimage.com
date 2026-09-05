@@ -1,0 +1,215 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<Layout>
+  <Header currentPath="/about" />
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="relative">
+      <div class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-20">
+        <div class="container">
+          <div class="text-center">
+            <h1 class="display-xl mb-4 text-center">About FreeVideoToImage.com</h1>
+            <p class="body-lg max-w-[600px] mx-auto text-center">
+              A private, client-side video frame extraction tool built for creators who value simplicity and control.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Mesh Gradient Background -->
+      <div class="absolute inset-0 -z-0 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="{colors.cyan}" />
+              <stop offset="25%" stop-color="{colors.violet}" />
+              <stop offset="50%" stop-color="{colors.pink}" />
+              <stop offset="75%" stop-color="{colors.magenta}" />
+              <stop offset="100%" stop-color="{colors.cyan}" />
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" fill="url(#gradient)" opacity="0.08" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="pt-16 md:pt-20 pb-12">
+      <div class="container">
+        <div class="text-center mb-12">
+          <span class="mono-eyebrow mb-3">Our Mission</span>
+          <h2 class="heading-lg mb-4 text-center">Privacy-First Frame Extraction</h2>
+        </div>
+        <div class="prose lg:prose-xl mx-auto max-w-none">
+          <p>
+            FreeVideoToImage.com was created with a simple belief: creators should have complete control over their media without compromising privacy.
+            We built this tool to address the growing need for secure, accessible video frame extraction that doesn't require uploading sensitive content to third-party servers.
+          </p>
+          <p>
+            In an era where data privacy concerns are paramount, we decided to take a different approach. Instead of building another cloud-based service that stores your videos on remote servers,
+            we engineered a solution that runs entirely in your browser using modern web technologies.
+          </p>
+          <p>
+            This means your creative work stays completely private — no uploads, no data collection, no tracking, and no risk of exposure. Whether you're extracting frames for personal projects,
+            professional work, or sensitive content, you can trust that your media remains yours alone.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Built It -->
+    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="text-center mb-12">
+          <span class="mono-eyebrow mb-3">Technical Approach</span>
+          <h2 class="heading-lg mb-4 text-center">Engineered for Privacy and Performance</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="heading-md mb-3">Client-Side Processing</h3>
+            <p class="body-md">
+              All video processing happens locally in your browser using JavaScript and WebAssembly.
+              We leverage the HTML5 Video API and Canvas API to decode, manipulate, and encode video frames without ever sending data to a server.
+            </p>
+          </div>
+          <div>
+            <h3 class="heading-md mb-3">Modern Web Technologies</h3>
+            <p class="body-md">
+              Built with Astro for optimal performance and SEO, using Preact for interactive components.
+              We chose these technologies for their lightweight nature and excellent developer experience,
+              resulting in a fast, responsive application that works across all modern devices.
+            </p>
+          </div>
+          <div>
+            <h3 class="heading-md mb-3">No External Dependencies</h3>
+            <p class="body-md">
+              Unlike many online tools that rely on third-party APIs or services, our solution is self-contained.
+              This eliminates points of failure and ensures the tool will continue to work even if external services change or disappear.
+            </p>
+          </div>
+          <div>
+            <h3 class="heading-md mb-3">Open Web Standards</h3>
+            <p class="body-md">
+              We adhere strictly to open web standards, ensuring compatibility across browsers and devices.
+              No proprietary plugins or extensions are required — if your browser can play the video, it can process it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Philosophy -->
+    <section class="pt-12 md:pt-16 pb-10">
+      <div class="container">
+        <div class="text-center mb-12">
+          <span class="mono-eyebrow mb-3">Design Principles</span>
+          <h2 class="heading-lg mb-4 text-center">Following the Geist Design Language</h2>
+        </div>
+        <div class="prose lg:prose-xl mx-auto max-w-none">
+          <p>
+            FreeVideoToImage.com follows the principles outlined in the Vercel Design System (Geist),
+            focusing on simplicity, clarity, and functional beauty. Our interface embraces the following characteristics:
+          </p>
+          <ul class="list-disc list-inside space-y-4">
+            <li><strong>Minimal Chrome:</strong> We use a single near-black ink color for headings, body text, and borders on a near-white canvas.</li>
+            <li><strong>Purposeful Typography:</strong> Geist Sans for clean, readable text with tight tracking on headings for visual impact.</li>
+            <li><strong>Functional Layout:</strong> Ample whitespace and clear visual hierarchy guide users naturally through the workflow.</li>
+            <li><strong>Subtle Interactions:</strong> Thoughtful hover states and transitions provide feedback without distraction.</li>
+            <li><strong>Accessibility First:</strong> Proper color contrast, keyboard navigation, and screen reader support throughout.</li>
+          </ul>
+          <p>
+            The result is an interface that feels both professional and approachable — powerful enough for creators yet simple enough for anyone to use.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="text-center mb-12">
+          <span class="mono-eyebrow mb-3">Who Is This For?</span>
+          <h2 class="heading-lg mb-4 text-center">Perfect for Various Creative Workflows</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Content Creators</h3>
+              <p class="body-md">
+                Extract thumbnail images for YouTube videos, create promotional materials,
+                or capture reference frames for editing projects without leaving your browser.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Designers & Artists</h3>
+              <p class="body-md">
+                Pull inspiration frames from videos, create mood boards, or gather visual references
+                for digital art, graphic design, and multimedia projects.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Researchers & Analysts</h3>
+              <p class="body-md">
+                Capture specific moments from recorded interviews, presentations, or experimental footage
+                for documentation, analysis, or evidence collection.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Educators</h3>
+              <p class="body-md">
+                Create visual aids from educational videos, extract frames for lesson materials,
+                or build slide presentations from video content.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Developers</h3>
+              <p class="body-md">
+                Grab frames for application testing, create sprite sheets for game development,
+                or extract UI references from tutorial videos.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="space-y-4">
+              <h3 class="heading-md mb-2">Privacy-Conscious Users</h3>
+              <p class="body-md">
+                Process sensitive or confidential video content with complete peace of mind,
+                knowing nothing leaves your device or gets stored on external servers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="heading-lg mb-4">Experience Private Frame Extraction</h2>
+          <p class="body-md max-w-[500px] mx-auto mb-6">
+            Try our tool now and discover why creators trust FreeVideoToImage.com for their frame extraction needs.
+          </p>
+          <a href="/video-to-image-converter" class="btn-primary inline-flex items-center">
+            Start Extracting Frames
+            <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

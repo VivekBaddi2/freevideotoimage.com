@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<Layout>
+  <Header currentPath="/tools" />
+  <main class="flex-1">
+    <section class="py-12 md:py-16 lg:py-20">
+      <div class="container">
+        <div class="mx-auto max-w-6xl">
+          <div class="mx-auto mb-16 text-center">
+            <p class="eyebrow mb-3">All Video Tools</p>
+            <h1 class="text-3xl font-semibold mb-4">Free Video to Image Conversion Tools</h1>
+            <p class="body-lg text-body max-w-[600px] mx-auto">
+              Extract frames from any video with our specialized tools. Each tool is optimized for specific use cases while maintaining the same powerful functionality.
+            </p>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Video to Image Converter (Main Tool) -->
+            <article class="card hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow">
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="heading-md mb-1">Video to Image Converter</h3>
+                    <p class="text-sm text-muted-foreground">Our flagship frame extraction tool</p>
+                  </div>
+                </div>
+                <p class="body-sm mb-4">
+                  Extract frames using manual capture, interval extraction, or smart scene detection. Supports PNG, JPG, WebP, and AVIF formats.
+                </p>
+                <a href="/video-to-image-converter" class="flex items-center btn btn-outline btn-sm">
+                  Use Tool
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="ml-2 h-4 w-4">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Video to JPG -->
+            <article class="card hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow">
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="heading-md mb-1">Video to JPG</h3>
+                    <p class="text-sm text-muted-foreground">Optimized for JPEG output</p>
+                  </div>
+                </div>
+                <p class="body-sm mb-4">
+                  Extract frames and save them as high-quality JPG images with adjustable compression (70-95% quality). Perfect for web use and sharing.
+                </p>
+                <a href="/video-to-jpg" class="flex items-center btn btn-outline btn-sm">
+                  Use Tool
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="ml-2 h-4 w-4">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Video to PNG -->
+            <article class="card hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow">
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="heading-md mb-1">Video to PNG</h3>
+                    <p class="text-sm text-muted-foreground">Lossless frame extraction</p>
+                  </div>
+                </div>
+                <p class="body-sm mb-4">
+                  Extract frames as lossless PNG images, preserving every detail and color. Ideal for editing, design work, and archival purposes.
+                </p>
+                <a href="/video-to-png" class="flex items-center btn btn-outline btn-sm">
+                  Use Tool
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="ml-2 h-4 w-4">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Video Screenshot Tool -->
+            <article class="card hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow">
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="heading-md mb-1">Video Screenshot Tool</h3>
+                    <p class="text-sm text-muted-foreground">Capture perfect screenshots</p>
+                  </div>
+                </div>
+                <p class="body-sm mb-4">
+                  Take precise screenshots from any video frame. Features manual frame-by-frame navigation for exact moment capture.
+                </p>
+                <a href="/video-screenshot-tool" class="flex items-center btn btn-outline btn-sm">
+                  Use Tool
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="ml-2 h-4 w-4">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Video Frame Extractor -->
+            <article class="card hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow">
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="heading-md mb-1">Video Frame Extractor</h3>
+                    <p class="text-sm text-muted-foreground">Professional frame extraction</p>
+                  </div>
+                </div>
+                <p class="body-sm mb-4">
+                  Professional-grade frame extraction with advanced settings for interval timing, scene detection, and batch processing.
+                </p>
+                <a href="/video-frame-extractor" class="flex items-center btn btn-outline btn-sm">
+                  Use Tool
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="ml-2 h-4 w-4">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

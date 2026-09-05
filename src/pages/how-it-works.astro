@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<Layout>
+  <Header currentPath="/how-it-works" />
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="relative">
+      <div class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-20">
+        <div class="container">
+          <div class="text-center">
+            <h1 class="text-xl font-semibold mb-3 text-center">How It Works</h1>
+            <p class="body-lg max-w-[600px] mx-auto text-center">
+              Simple workflow, powerful results. Extract frames in three easy steps.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Mesh Gradient Background -->
+      <div class="absolute inset-0 -z-0 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="{colors.cyan}" />
+              <stop offset="25%" stop-color="{colors.violet}" />
+              <stop offset="50%" stop-color="{colors.pink}" />
+              <stop offset="75%" stop-color="{colors.magenta}" />
+              <stop offset="100%" stop-color="{colors.cyan}" />
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" fill="url(#gradient)" opacity="0.08" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="pt-16 md:pt-20 pb-12">
+      <div class="container">
+        <div class="text-center mb-16">
+          <span class="mono-eyebrow mb-3">Step-by-Step Guide</span>
+          <h2 class="heading-lg mb-4 text-center">How to Extract Frames from Video</h2>
+          <p class="body-md max-w-[500px] mx-auto text-center">
+            Follow these simple steps to extract frames from any video using our client-side tool.
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2">
+          <!-- Step 1: Upload -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="relative">
+              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
+                1
+              </div>
+              <div class="pt-8">
+                <h3 class="heading-md mb-3">Upload Your Video</h3>
+                <p class="body-md">
+                  Click the upload area or drag & drop your video file. Supported formats include MP4, WebM, MOV, AVI, and more. Maximum file size is 2GB.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 2: Choose Extraction Mode -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="relative">
+              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
+                2
+              </div>
+              <div class="pt-8">
+                <h3 class="heading-md mb-3">Select Extraction Method</h3>
+                <p class="body-md">
+                  Choose from three extraction modes: Manual Capture (frame-by-frame), Interval Extraction (automatic at set intervals), or Smart Scene Detection (key moments only).
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 3: Adjust Settings -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="relative">
+              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
+                3
+              </div>
+              <div class="pt-8">
+                <h3 class="heading-md mb-3">Configure Settings</h3>
+                <p class="body-md">
+                  Adjust extraction parameters like interval time, scene sensitivity, output format (PNG/JPG/WebP/AVIF), and quality level to match your needs.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 4: Extract -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="relative">
+              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
+                4
+              </div>
+              <div class="pt-8">
+                <h3 class="heading-md mb-3">Extract Frames</h3>
+                <p class="body-md">
+                  Click the extract button to begin processing. The tool works entirely in your browser - no data leaves your computer.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 5: Review -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="relative">
+              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
+                5
+              </div>
+              <div class="pt-8">
+                <h3 class="heading-md mb-3">Preview & Select</h3>
+                <p class="body-md">
+                  Review extracted frames in the gallery. Use checkboxes to select specific frames for download, or choose all frames.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 6: Download -->
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+            <div class="relative">
+              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-white text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
+                6
+              </div>
+              <div class="pt-8">
+                <h3 class="heading-md mb-3">Download Your Frames</h3>
+                <p class="body-md">
+                  Download selected frames individually or as a ZIP archive. All processing is client-side ensuring complete privacy.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Tutorial -->
+    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="text-center mb-12">
+          <span class="mono-eyebrow mb-3">Detailed Tutorial</span>
+          <h2 class="heading-lg mb-4 text-center">Step-by-Step Instructions</h2>
+        </div>
+        <div class="prose lg:prose-lg mx-auto">
+          <h3 class="heading-md mb-4">Getting Started</h3>
+          <p>
+            Begin by navigating to the <a href="/video-to-image-converter" class="text-[var(--color-primary)] hover:underline">Video to Image Converter</a>
+            tool. The interface is divided into three main sections: Upload, Extraction Controls, and Results Gallery.
+          </p>
+
+          <h3 class="heading-md mb-4">Step 1: Upload Your Video</h3>
+          <p>
+            Click the large upload area or drag and drop your video file onto it. The tool supports all major video formats
+            including MP4, WebM, MOV, AVI, MKV, and more. Maximum file size is 2GB. Once uploaded, you'll see video information
+            including duration, resolution, and file size displayed below the upload area.
+          </p>
+
+          <h3 class="heading-md mb-4">Step 2: Choose Your Extraction Method</h3>
+          <p>
+            Select one of three extraction modes based on your needs:
+          </p>
+          <ol class="list-decimal list-inside space-y-2">
+            <li><strong>Manual Capture:</strong> Ideal when you need exact control over which frames to extract. Use the frame-accurate
+                scrubber to navigate to specific moments and click "Capture Frame" to save each one.</li>
+            <li><strong>Interval Extraction:</strong> Perfect for creating timelapses or extracting frames at regular intervals.
+                Set the interval time (e.g., every 5 seconds) and define start/end times if you only want to process a portion of the video.</li>
+            <li><strong>Smart Scene Detection:</strong> Best for extracting only key moments when the scene changes significantly.
+                Adjust the sensitivity threshold to control what qualifies as a scene change.</li>
+          </ol>
+
+          <h3 class="heading-md mb-4">Step 3: Configure Output Settings</h3>
+          <p>
+            Before extracting, choose your preferred output format and quality:
+          </p>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>PNG:</strong> Lossless format ideal for editing, design work, and archival purposes</li>
+            <li><strong>JPG:</strong> Adjustable quality from 70-95% - perfect for web use and sharing where file size matters</li>
+            <li><strong>WebP:</strong> Modern format offering superior compression with good quality - great for web applications</li>
+            <li><strong>AVIF:</strong> Next-generation format with the best compression ratios (available in Safari 16.4+ and Chrome)</li>
+          </ul>
+          <p>
+            For JPG, WebP, and AVIF formats, you can adjust the quality slider to balance between file size and image quality.
+          </p>
+
+          <h3 class="heading-md mb-4">Step 4: Extract Your Frames</h3>
+          <p>
+            Click the "Extract Frames" button to begin processing. Depending on your video length and selected method,
+            extraction may take a few moments. The progress indicator will show you how far along the process is.
+            Importantly, all processing happens in your browser - your video never leaves your computer.
+          </p>
+
+          <h3 class="heading-md mb-4">Step 5: Review and Select Frames</h3>
+          <p>
+            Once extraction completes, you'll see all extracted frames in the gallery below. Each frame shows:
+          </p>
+          <ul class="list-disc list-inside space-y-2">
+            <li>The timestamp showing where in the video the frame was captured</li>
+            <li>A checkbox to select/deselect the frame for download</li>
+            <li>A download icon to save that individual frame immediately</li>
+          </ul>
+          <p>
+            Use the "Select All" or "Deselect All" buttons to quickly choose which frames you want to download.
+            Selected frames are highlighted with a blue ring.
+          </p>
+
+          <h3 class="heading-md mb-4">Step 6: Download Your Results</h3>
+          <p>
+            When you've selected the frames you want to save, you have two download options:
+          </p>
+          <ol class="list-decimal list-inside space-y-2">
+            <li><strong>Download Selected:</strong> Saves only the frames you've checked as a ZIP archive</li>
+            <li><strong>Download All as ZIP:</strong> Saves every extracted frame in a single ZIP file</li>
+          </ol>
+          <p>
+            For large extractions, the tool uses streaming download to handle the transfer efficiently without
+            consuming excessive memory. All downloads happen immediately and are saved to your default download folder.
+          </p>
+
+          <h3 class="heading-md mb-4">Tips for Best Results</h3>
+          <p>
+            <strong>For precise frame selection:</strong> Use Manual Capture mode and the arrow keys for frame-by-frame navigation</p>
+          <p>
+            <strong>For timelapse creation:</strong> Use Interval Extraction with intervals matching your desired playback speed</p>
+          <p>
+            <strong>For highlighting key moments:</strong> Use Smart Scene Detection and adjust sensitivity until you get the desired number of frames</p>
+          <p>
+            <strong>For editing workflows:</strong> Choose PNG format for lossless quality that won't degrade through multiple edits</p>
+          <p>
+            <strong>For web sharing:</strong> Choose JPG at 85% quality or WebP for excellent compression with good visual quality</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
