@@ -7,6 +7,8 @@ export default function FrameGallery({
   onDownloadSingle,
   onDownloadSelected,
   onDownloadAll,
+  onDeselectAll,
+  onViewPopup,
   onRemoveFrame,
   onClearAll,
   isProcessing = false,
@@ -97,13 +99,33 @@ export default function FrameGallery({
 
         <div class="flex flex-wrap gap-2">
           {hasSelection && (
-            <Button
-              variant="secondary"
-              onClick={() => onDownloadSelected?.(selectedFrames)}
-              disabled={isProcessing}
-            >
-              Download Selected ({selectedFrames.length})
-            </Button>
+            <>
+              <Button
+                variant="secondary"
+                onClick={() => onDownloadSelected?.(selectedFrames)}
+                disabled={isProcessing}
+              >
+                Download Selected ({selectedFrames.length})
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => onDeselectAll?.()}
+                disabled={isProcessing || !hasSelection}
+              >
+                Deselect All
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  if (onViewPopup) {
+                    onViewPopup();
+                  }
+                }}
+                disabled={isProcessing || frames.length === 0}
+              >
+                View All in Popup
+              </Button>
+            </>
           )}
           <Button
             variant="primary"

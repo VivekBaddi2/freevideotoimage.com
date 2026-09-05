@@ -24,7 +24,7 @@ const {
   <video
     id="video-element"
     src={src}
-    class="w-full rounded-[var(--radius-md)] bg-[var(--color-canvas)]"
+    class="w-[200px] h-[150px] rounded-[var(--radius-md)] bg-[var(--color-canvas)] object-contain"
     controls
     preload="metadata"
     ontimeupdate={(e) => onTimeUpdate?.(e.target.currentTime)}
@@ -198,6 +198,24 @@ const {
     video.addEventListener('seeked', () => {
       onSeeked?.(video.currentTime);
     });
+
+    // Touch scrubbing support
+    let touchStartX = 0;
+    let touchStartTime = 0;
+
+    seekSlider.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartTime = video.currentTime;
+    }, { passive: true });
+
+    seekSlider.addEventListener('touchmove', (e) => {
+      if (!video.duration) return;
+      const deltaX = e.touches[0].clientX - touchStartX;
+      const percentDelta = (deltaX / seekSlider.offsetWidth) * 100;
+      const newPercent = Math.max(0, Math.min(100, parseFloat(seekSlider.value) + percentDelta));
+      seekSlider.value = newPercent;
+      video.currentTime = (newPercent / 100) * video.duration;
+    }, { passive: true });
   }
 
   function formatTime(seconds) {
@@ -205,22 +223,4 @@ const {
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   }
-
-  // Touch scrubbing support
-  let touchStartX = 0;
-  let touchStartTime = 0;
-
-  seekSlider.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartTime = video.currentTime;
-  }, { passive: true });
-
-  seekSlider.addEventListener('touchmove', (e) => {
-    if (!video.duration) return;
-    const deltaX = e.touches[0].clientX - touchStartX;
-    const percentDelta = (deltaX / seekSlider.offsetWidth) * 100;
-    const newPercent = Math.max(0, Math.min(100, parseFloat(seekSlider.value) + percentDelta));
-    seekSlider.value = newPercent;
-    video.currentTime = (newPercent / 100) * video.duration;
-  }, { passive: true });
 </script>

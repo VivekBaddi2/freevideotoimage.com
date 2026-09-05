@@ -115,7 +115,7 @@ const formats = [
       </div>
 
       <p class="body-sm text-[var(--color-mute)]">
-        Estimated frames: {Math.max(0, Math.floor((intervalSettings.endTime || duration - intervalSettings.startTime) / intervalSettings.interval)) + 1}
+        Estimated frames: {Math.max(0, Math.floor(((intervalSettings.endTime || duration) - intervalSettings.startTime) / intervalSettings.interval)) + 1}
       </p>
 
       <button

@@ -137,7 +137,7 @@ export default function ExtractionControls({
           </div>
 
           <p class="body-sm text-[var(--color-mute)]">
-            Estimated frames: {Math.max(0, Math.floor((localIntervalSettings.endTime || duration - localIntervalSettings.startTime) / localIntervalSettings.interval)) + 1}
+            Estimated frames: {Math.max(0, Math.floor(((localIntervalSettings.endTime || duration) - localIntervalSettings.startTime) / localIntervalSettings.interval)) + 1}
           </p>
 
           <Button

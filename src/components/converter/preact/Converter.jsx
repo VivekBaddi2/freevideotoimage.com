@@ -47,6 +47,7 @@ export default function Converter() {
   const [outputSettings, setOutputSettings] = useState({ format: 'png', quality: 90 });
   const [isProcessing, setIsProcessing] = useState(false);
   const [showConverter, setShowConverter] = useState(false);
+  const [showFramePopup, setShowFramePopup] = useState(false);
 
   function initCanvas() {
     if (!canvas.current) {
@@ -168,20 +169,56 @@ export default function Converter() {
 
       const slides = await extractSlides(blob, options);
 
-      const newFrames = slides.map(slide => ({
-        time: slide.timestamp,
-        url: slide.imageData,
-        thumbnail: slide.imageData,
-        selected: true,
-        format: outputSettings.format,
-        quality: outputSettings.quality
-      }));
+      const newFrames = [];
+      for (const slide of slides) {
+        const frame = await convertImageToFormat(slide.imageData, outputSettings.format, outputSettings.quality);
+        newFrames.push({ ...frame, time: slide.timestamp, selected: true });
+      }
 
       setFrames(prev => [...prev, ...newFrames]);
     } catch (error) {
       console.error('Scene detection failed:', error);
       await extractIntervalFrames();
     }
+  }
+
+  async function convertImageToFormat(imageDataUrl, format, quality) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          initCanvas();
+          canvas.current.width = img.width;
+          canvas.current.height = img.height;
+          ctx.current.drawImage(img, 0, 0);
+
+          const mimeType = format === 'jpg' ? 'image/jpeg' : `image/${format}`;
+          const qualityValue = quality / 100;
+          const dataUrl = canvas.current.toDataURL(mimeType, qualityValue);
+
+          const thumbCanvas = document.createElement('canvas');
+          const thumbCtx = thumbCanvas.getContext('2d');
+          const maxThumbSize = 400;
+          const scale = Math.min(maxThumbSize / canvas.current.width, maxThumbSize / canvas.current.height);
+          thumbCanvas.width = canvas.current.width * scale;
+          thumbCanvas.height = canvas.current.height * scale;
+          thumbCtx.drawImage(canvas.current, 0, 0, thumbCanvas.width, thumbCanvas.height);
+          const thumbnail = thumbCanvas.toDataURL('image/jpeg', 0.7);
+
+          resolve({
+            time: 0, // Time is not relevant for converted images, but we need to set it
+            url: dataUrl,
+            thumbnail,
+            format,
+            quality
+          });
+        } catch (error) {
+          reject(error);
+        }
+      };
+      img.onerror = () => reject(new Error('Failed to load image for conversion'));
+      img.src = imageDataUrl;
+    });
   }
 
   function captureFrameAtTime(time) {
@@ -296,6 +333,10 @@ export default function Converter() {
     setFrames([]);
   }
 
+  function handleDeselectAll() {
+    setFrames(prev => prev.map(frame => ({ ...frame, selected: false })));
+  }
+
   async function downloadFramesAsZip(framesToDownload) {
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
@@ -340,9 +381,9 @@ export default function Converter() {
                 id="video-player"
                 ref={videoPlayerRef}
                 src={videoUrl.current}
-                onTimeUpdate={() => {}}
+                onTimeUpdate={() => { }}
                 onLoadedMetadata={(duration) => setVideoDuration(duration)}
-                onSeeked={() => {}}
+                onSeeked={() => { }}
                 data-testid="video-player"
               />
 
@@ -374,9 +415,116 @@ export default function Converter() {
             onDownloadAll={handleDownloadAll}
             onRemoveFrame={handleRemoveFrame}
             onClearAll={handleClearAll}
+            onDeselectAll={handleDeselectAll}
+            onViewPopup={() => setShowFramePopup(true)}
             isProcessing={isProcessing}
             data-testid="frame-gallery"
           />
+
+          {showFramePopup && (
+            <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+              <div class="relative flex h-[90vh] max-h-[90vh] w-[calc(100%-2rem)] max-w-[95%] flex-col overflow-hidden rounded-lg bg-white">
+                <div class="flex shrink-0 items-center justify-between border-b bg-[var(--color-canvas-elevated)] p-4">
+                  <h3 class="heading-md">All Extracted Frames</h3>
+                  <button
+                    type="button"
+                    class="btn-ghost text-[var(--color-error)] hover:text-[var(--color-error-deep)]"
+                    onClick={() => setShowFramePopup(false)}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="min-h-0 flex-1 overflow-y-auto p-4">
+                  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-4">
+                    {frames.map((frame, index) => (
+                      <div
+                        key={index}
+                        class={`relative overflow-hidden rounded border border-[var(--color-hairline)] bg-[var(--color-canvas)] ${frame.selected ? 'ring-2 ring-[var(--color-ink)]' : ''}`}
+                      >
+                        <img
+                          src={frame.thumbnail || frame.url}
+                          alt={`Frame ${index + 1} at ${frame.time.toFixed(2)}s`}
+                          class="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-black/80 to-transparent p-3 pt-8 text-white">
+                          <span class="font-mono text-xs">Frame {index + 1} · {frame.time.toFixed(2)}s</span>
+                          <div class="flex items-center gap-2">
+                            <input
+                              type="checkbox"
+                              class="w-5 h-5 rounded border-white/70 text-[var(--color-ink)] focus-visible:ring-2 focus-visible:ring-white accent-[var(--color-ink)]"
+                              checked={frame.selected}
+                              onChange={(e) => handleSelectionChange(index, e.target.checked)}
+                              aria-label={`Select frame ${index + 1}`}
+                            />
+                            <button
+                              type="button"
+                              class="btn-ghost p-1 text-white hover:text-white"
+                              onClick={() => handleDownloadSingle(frame)}
+                              title={`Download frame ${index + 1}`}
+                            >
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                  <div class="flex shrink-0 flex-col gap-3 border-t bg-[var(--color-canvas-elevated)] p-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div class="flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        class="btn-secondary"
+                        onClick={() => {
+                          // Select all frames
+                          frames.forEach((_, index) => handleSelectionChange(index, true));
+                        }}
+                        disabled={isProcessing || frames.length === 0}
+                      >
+                        Select All
+                      </button>
+                      <button
+                        type="button"
+                        class="btn-secondary"
+                        onClick={() => {
+                          // Deselect all frames
+                          frames.forEach((_, index) => handleSelectionChange(index, false));
+                        }}
+                        disabled={isProcessing || frames.length === 0}
+                      >
+                        Deselect All
+                      </button>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        class="btn-secondary"
+                        onClick={() => handleDownloadSelected?.(frames.filter(f => f.selected))}
+                        disabled={isProcessing || frames.filter(f => f.selected).length === 0}
+                      >
+                        Download Selected
+                      </button>
+                      <button
+                        type="button"
+                        class="btn-primary"
+                        onClick={() => handleDownloadAll?.(frames)}
+                        disabled={isProcessing || frames.length === 0}
+                      >
+                        Download All as ZIP
+                      </button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <aside class="lg:col-span-1">
