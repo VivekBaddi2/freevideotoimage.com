@@ -16,6 +16,159 @@ import Footer from '../components/layout/Footer.astro';
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Frequently Asked Questions - Video to Image Converter | FreeVideoToImage.com">
     <meta name="twitter:description" content="Find answers to common questions about our video to image converter, video to JPG converter, video to PNG converter, and frame extraction tools. Learn about privacy, file formats, and usage limits.">
+    <!-- FAQ Schema for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "how does an video to image converter ai work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our tool extracts frames using client-side JavaScript and the HTML5 Canvas API—no AI or server uploads. Processing happens entirely in your browser for privacy and speed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "what is an video to image converter ai tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's a free online utility that converts video frames to images (JPG, PNG, etc.) directly in your browser, requiring no uploads or registration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert a video to JPG images?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload your video, choose JPG as output format, select extraction mode (manual, interval, or scene detection), then download the frames."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert a video to an image sequence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use interval extraction or scene detection to capture frames in order, then download them as a numbered ZIP sequence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a good online video to picture converter for batch extraction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes—our tool supports batch extraction of hundreds of frames and lets you download all as a ZIP file, completely free and client-side."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use an online video to picture converter on my phone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. The site is mobile‑friendly and works in any modern browser on Android or iOS."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the easiest way to convert video to pictures online for free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Drag‑and‑drop your video, pick an extraction method, choose image format, and click download—no sign‑up needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I convert a video to high-quality JPG images?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Select JPG output and set the quality slider to 90‑95% for high‑quality compression; the tool processes locally."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I convert MP4 to JPG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MP4 is fully supported; choose JPG as the output format and extract frames as needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I convert Video to Image file on linux, Mac OS or Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes—any OS with a modern browser (Chrome, Firefox, Safari, Edge) works, including Linux, macOS, Windows, and Android."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I capture a photo from a phone video?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Transfer the video to your device or open it directly in the browser, then use manual frame capture to save any frame as an image."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get a still photo from a video?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload the video, scrub to the desired frame, and download it as a PNG, JPG, WebP, or AVIF image."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will the JPG images keep the original video quality?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JPG uses lossy compression; you can adjust quality (70‑95%). For lossless, choose PNG instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I extract frames as JPG or PNG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose PNG for maximum quality (lossless) or JPG for smaller files with adjustable quality; WebP and AVIF offer modern compression."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best free alternative for extracting video frames?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our tool is completely free, client‑side, and offers multiple extraction modes—no registration, no watermarks, and no usage limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I control how many JPG frames are extracted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes—set the interval (e.g., every 1 second) or use scene detection to limit frames, and optionally define a start/end time range."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download all JPG frames as a ZIP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. After extraction, click “Download ZIP” to get all frames in a single archive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my video uploaded to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All processing happens in your browser; your video never leaves your device, ensuring complete privacy."
+          }
+        }
+      ]
+    }
+    </script>
   </slot>
   <Header currentPath="/faq" />
   <main class="flex-1">
@@ -60,131 +213,234 @@ import Footer from '../components/layout/Footer.astro';
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              Is there a file size limit?
+              how does an video to image converter ai work?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              Warning at 500MB, hard limit at 2GB. Larger videos may take longer to process and require more memory.
+              Our tool extracts frames using client-side JavaScript and the HTML5 Canvas API—no AI or server uploads. Processing happens entirely in your browser for privacy and speed.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              What video formats are supported?
+              what is an video to image converter ai tool?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              MP4, WebM, MOV, AVI, MKV, and most formats playable in your browser. We support all common video codecs.
+              It's a free online utility that converts video frames to images (JPG, PNG, etc.) directly in your browser, requiring no uploads or registration.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              Does this upload my video to a server?
+              How do I convert a video to JPG images?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              No. All processing happens entirely in your browser. Your video never leaves your device, ensuring complete privacy.
+              Upload your video, choose JPG as output format, select extraction mode (manual, interval, or scene detection), then download the frames.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              What output formats are available?
+              How do I convert a video to an image sequence?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              PNG (lossless), JPG (70-95% quality), WebP (70-95% quality), AVIF (50-80% quality, Safari 16.4+). Choose based on your quality and size needs.
+              Use interval extraction or scene detection to capture frames in order, then download them as a numbered ZIP sequence.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              Can I extract frames from a specific time range?
+              Is there a good online video to picture converter for batch extraction?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              Yes. You can set custom start and end times for extraction in all modes (manual, interval, and scene detection).
+              Yes—our tool supports batch extraction of hundreds of frames and lets you download all as a ZIP file, completely free and client-side.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              Is there a limit to how many frames I can extract?
+              Can I use an online video to picture converter on my phone?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              No hard limit on frame count. Practical limits depend on your device's memory and the video length. We recommend extracting in batches for very large projects.
+              Absolutely. The site is mobile‑friendly and works in any modern browser on Android or iOS.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              Do I need to create an account?
+              What's the easiest way to convert video to pictures online for free?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              No account required. The tool is completely free and accessible immediately without registration or email submission.
+              Drag‑and‑drop your video, pick an extraction method, choose image format, and click download—no sign‑up needed.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              Can I use this on mobile devices?
+              How can I convert a video to high-quality JPG images?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              Yes! The tool works on any modern browser including mobile Safari and Chrome. For best performance on mobile, we recommend shorter videos.
+              Select JPG output and set the quality slider to 90‑95% for high‑quality compression; the tool processes locally.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              Are there any watermarks or branding on exported frames?
+              Can I convert MP4 to JPG?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              Absolutely not. Exported frames are clean and free of any watermarks, logos, or branding. You get pure, unaltered frames from your video.
+              Yes. MP4 is fully supported; choose JPG as the output format and extract frames as needed.
             </div>
           </div>
 
           <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
             <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
                     onclick="toggleFaq(this)">
-              How does smart scene detection work?
+              Can I convert Video to Image file on linux, Mac OS or Android?
               <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-answer mt-2 text-[var(--color-body)]">
-              Scene detection analyzes visual differences between consecutive frames. When the change exceeds your sensitivity threshold, it marks a scene boundary.
-              You can adjust the threshold to make detection more or less sensitive to changes.
+              Yes—any OS with a modern browser (Chrome, Firefox, Safari, Edge) works, including Linux, macOS, Windows, and Android.
+            </div>
+          </div>
+
+          <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
+            <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    onclick="toggleFaq(this)">
+              Can I capture a photo from a phone video?
+              <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer mt-2 text-[var(--color-body)]">
+              Transfer the video to your device or open it directly in the browser, then use manual frame capture to save any frame as an image.
+            </div>
+          </div>
+
+          <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
+            <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    onclick="toggleFaq(this)">
+              How do I get a still photo from a video?
+              <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer mt-2 text-[var(--color-body)]">
+              Upload the video, scrub to the desired frame, and download it as a PNG, JPG, WebP, or AVIF image.
+            </div>
+          </div>
+
+          <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
+            <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    onclick="toggleFaq(this)">
+              Will the JPG images keep the original video quality?
+              <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer mt-2 text-[var(--color-body)]">
+              JPG uses lossy compression; you can adjust quality (70‑95%). For lossless, choose PNG instead.
+            </div>
+          </div>
+
+          <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
+            <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    onclick="toggleFaq(this)">
+              Should I extract frames as JPG or PNG?
+              <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer mt-2 text-[var(--color-body)]">
+              Choose PNG for maximum quality (lossless) or JPG for smaller files with adjustable quality; WebP and AVIF offer modern compression.
+            </div>
+          </div>
+
+          <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
+            <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    onclick="toggleFaq(this)">
+              What is the best free alternative for extracting video frames?
+              <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer mt-2 text-[var(--color-body)]">
+              Our tool is completely free, client‑side, and offers multiple extraction modes—no registration, no watermarks, and no usage limits.
+            </div>
+          </div>
+
+          <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
+            <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    onclick="toggleFaq(this)">
+              Can I control how many JPG frames are extracted?
+              <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer mt-2 text-[var(--color-body)]">
+              Yes—set the interval (e.g., every 1 second) or use scene detection to limit frames, and optionally define a start/end time range.
+            </div>
+          </div>
+
+          <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
+            <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    onclick="toggleFaq(this)">
+              Can I download all JPG frames as a ZIP?
+              <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer mt-2 text-[var(--color-body)]">
+              Absolutely. After extraction, click “Download ZIP” to get all frames in a single archive.
+            </div>
+          </div>
+
+          <div class="faq-item border-b border-[var(--color-hairline)] pb-4 last:border-b-0 last:pb-0">
+            <button class="faq-question w-full text-left flex items-center justify-between text-[var(--color-ink)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    onclick="toggleFaq(this)">
+              Is my video uploaded to a server?
+              <svg class="faq-icon w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-answer mt-2 text-[var(--color-body)]">
+              No. All processing happens in your browser; your video never leaves your device, ensuring complete privacy.
             </div>
           </div>
         </div>
@@ -238,15 +494,17 @@ import Footer from '../components/layout/Footer.astro';
         });
 
         // FAQ toggle functionality
-        window.toggleFaq = function(button) {
+        function toggleFaq(button: HTMLButtonElement) {
           const answer = button.nextElementSibling;
           const icon = button.querySelector('.faq-icon');
+
+          if (!answer || !icon) return;
 
           // Close all other open answers
           document.querySelectorAll('.faq-answer').forEach(el => {
             if (el !== answer && el.classList.contains('show')) {
               el.classList.remove('show');
-              el.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
+              el.previousElementSibling?.querySelector('.faq-icon')?.classList.remove('rotate-180');
             }
           });
 
@@ -254,6 +512,8 @@ import Footer from '../components/layout/Footer.astro';
           answer.classList.toggle('show');
           icon.classList.toggle('rotate-180');
         };
+
+        (window as unknown as Window & { toggleFaq: (button: HTMLButtonElement) => void }).toggleFaq = toggleFaq;
       });
     </script>
 </Layout>

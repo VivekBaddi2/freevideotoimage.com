@@ -65,7 +65,7 @@ export default function ExtractionControls({
       <div class="mb-6">
         <label class="label">Extraction Mode</label>
         <div class="flex flex-wrap gap-2" role="radiogroup" aria-label="Extraction mode">
-          {['manual', 'interval', 'automatic'].map(m => (
+          {['manual', 'interval', 'auto'].map(m => (
             <Button
               key={m}
               type="button"
@@ -154,7 +154,7 @@ export default function ExtractionControls({
         </div>
       )}
 
-      {mode === 'automatic' && (
+      {mode === 'auto' && (
         <div class="space-y-4 animate-fade-in">
           <div class="grid grid-cols-1 gap-4">
             <div>

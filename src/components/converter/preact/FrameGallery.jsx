@@ -100,13 +100,13 @@ export default function FrameGallery({
 
         <div class="flex flex-wrap justify-between gap-2">
 
-          <div class={"flex gap-2"}>
+          <div class={"flex w-full flex-wrap gap-2 sm:w-auto"}>
             {/* Download zip button */}
             <Button
               variant="primary"
               onClick={() => onDownloadAll?.(frames)}
               disabled={frames.length === 0 || isProcessing}
-              class='text-sm'
+              class='max-w-full text-sm'
               size='md'
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -123,7 +123,7 @@ export default function FrameGallery({
                 <Button
                   variant="secondary"
                   onClick={() => onDownloadSelected?.(selectedFrames)}
-                  class='text-sm'
+                  class='max-w-full text-sm'
                   size='md'
                   disabled={isProcessing}
                 >
@@ -139,13 +139,13 @@ export default function FrameGallery({
           </div>
 
           {/* right side */}
-          <div class={"flex gap-2"}>
+          <div class={"flex w-full flex-wrap gap-2 sm:w-auto"}>
             {
               selectedFrames.length !== frames.length ? (
                 <Button
                   variant="secondary"
                   onClick={() => onSelectAll?.()}
-                  class={`text-sm`}
+                  class={`max-w-full text-sm`}
                   size="md"
                   disabled={isProcessing || frames.length === 0 || selectedFrames.length === frames.length}
                 >
@@ -159,7 +159,7 @@ export default function FrameGallery({
                 (<Button
                   variant="secondary"
                   onClick={() => onDeselectAll?.()}
-                  class='text-sm'
+                  class='max-w-full text-sm'
                   size='md'
                   disabled={isProcessing || !hasSelection}
                 >
@@ -177,7 +177,7 @@ export default function FrameGallery({
                   onViewPopup();
                 }
               }}
-              class='text-sm'
+              class='max-w-full text-sm'
               size='md'
               disabled={isProcessing || frames.length === 0}
             >
@@ -191,7 +191,7 @@ export default function FrameGallery({
               <Button
                 variant="ghost"
                 size='md'
-                class="text-red-600 text-sm hover:text-red-700 cursor-pointer"
+                class="max-w-full text-red-600 text-sm hover:text-red-700 cursor-pointer"
                 onClick={() => onClearAll?.()}
                 disabled={isProcessing}
               >

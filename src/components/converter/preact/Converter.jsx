@@ -366,7 +366,7 @@ export default function Converter() {
   }
 
   return (
-    <div class="card overflow-hidden p-0 shadow-[0px_2px_2px_rgba(0,0,0,0.04),0px_12px_28px_-12px_rgba(0,0,0,0.12)]" data-testid="video-converter">
+    <div class="card min-w-0 overflow-hidden p-0 shadow-[0px_2px_2px_rgba(0,0,0,0.04),0px_12px_28px_-12px_rgba(0,0,0,0.12)]" data-testid="video-converter">
       <div class="space-y-8 p-4 sm:p-6 lg:p-8">
         <section aria-labelledby="upload-heading">
           <div class="mb-4 flex items-center justify-between gap-4">
@@ -385,8 +385,8 @@ export default function Converter() {
 
         {showConverter && (
           <section id="converter-content" class="animate-slide-up" aria-label="Video workspace">
-            <div class="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(280px,3fr)] lg:items-start">
-              <div class="space-y-4">
+            <div class="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(280px,3fr)] lg:items-start">
+              <div class="min-w-0 space-y-4">
                 <div class="flex items-end justify-between gap-4">
                   <div>
                     <p class="eyebrow mb-1">Preview</p>
@@ -405,7 +405,7 @@ export default function Converter() {
                 />
               </div>
 
-              <div>
+              <div class="min-w-0">
                 <p class="eyebrow mb-1">Extraction settings</p>
                 <h2 class="heading-md mb-4">How should we capture frames?</h2>
                 <ExtractionControls
@@ -467,9 +467,9 @@ export default function Converter() {
         )}
 
         {showFramePopup && (
-            <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-              <div class="relative flex h-[90vh] max-h-[90vh] w-[calc(100%-2rem)] max-w-[95%] flex-col overflow-hidden rounded-lg bg-white">
-                <div class="flex shrink-0 items-center justify-between border-b bg-[var(--color-canvas-elevated)] p-4">
+            <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 backdrop-blur-sm sm:p-4">
+              <div class="relative flex h-[calc(100vh-1rem)] max-h-[90vh] w-full max-w-[95%] min-w-0 flex-col overflow-hidden rounded-lg bg-white sm:h-[90vh]">
+                <div class="flex shrink-0 items-center justify-between gap-3 border-b bg-[var(--color-canvas-elevated)] p-3 sm:p-4">
                   <h3 class="heading-md">All Extracted Frames</h3>
                   <button
                     type="button"
@@ -482,7 +482,7 @@ export default function Converter() {
                     </svg>
                   </button>
                 </div>
-                <div class="min-h-0 flex-1 overflow-y-auto p-4">
+                <div class="min-h-0 flex-1 overflow-y-auto p-3 sm:p-4">
                   <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-4">
                     {frames.map((frame, index) => (
                       <div
@@ -523,7 +523,7 @@ export default function Converter() {
                     ))}
                   </div>
                 </div>
-                  <div class="flex shrink-0 flex-col gap-3 border-t bg-[var(--color-canvas-elevated)] p-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div class="flex shrink-0 flex-col gap-3 border-t bg-[var(--color-canvas-elevated)] p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
                     <div class="flex flex-wrap items-center gap-3">
                       <button
                         type="button"

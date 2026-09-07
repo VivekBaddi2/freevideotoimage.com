@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<Layout>
+  <slot name="head">
+    <title>Page Not Found - FreeVideoToImage.com</title>
+    <meta name="description" content="The page you're looking for doesn't exist on FreeVideoToImage.com.">
+    <meta property="og:title" content="Page Not Found - FreeVideoToImage.com">
+    <meta property="og:description" content="The page you're looking for doesn't exist on FreeVideoToImage.com.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content="https://freevideotoimage.com/404">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Page Not Found - FreeVideoToImage.com">
+    <meta name="twitter:description" content="The page you're looking for doesn't exist on FreeVideoToImage.com.">
+  </slot>
+  <Header currentPath="/404" />
+  <main class="flex-1">
+    <section class="pt-16 md:pt-20 pb-12">
+      <div class="container">
+        <div class="text-center">
+          <h1 class="text-3xl font-bold mb-6">404</h1>
+          <p class="heading-lg mb-6">Page Not Found</p>
+          <p class="body-lg max-w-[500px] mx-auto mb-8 text-[var(--color-mute)]">
+            We couldn't find the page you're looking for. It may have been moved, deleted, or never existed.
+          </p>
+          <a href="/" class="btn-primary inline-flex items-center">
+            Go to Homepage
+            <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -111,7 +111,7 @@ const VideoPlayer = forwardRef(function VideoPlayer({ src, currentTime = 0, onTi
   }
 
 return (
-    <div class="relative" data-testid={testId}>
+    <div class="relative min-w-0" data-testid={testId}>
       <div class="flex justify-center">
         <video
           ref={videoRef}
@@ -125,8 +125,8 @@ return (
         </video>
       </div>
 
-      <div class="mt-4 max-w-200 mx-auto px-(--spacing-lg) space-y-3">
-        <div class="flex items-center justify-center gap-4">
+      <div class="mx-auto mt-4 max-w-200 space-y-3 px-3 sm:px-(--spacing-lg)">
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
           <label htmlFor="time-input" class="body-sm text-mute whitespace-nowrap">
             Time:
           </label>
