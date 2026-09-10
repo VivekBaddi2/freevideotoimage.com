@@ -20,11 +20,12 @@ import Footer from '../components/layout/Footer.astro';
   <Header currentPath="/how-it-works" />
   <main class="flex-1">
     <!-- Hero Section -->
-    <section class="relative">
-      <div class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-20">
+    <section class="page-hero">
+      <div class="page-hero-content">
         <div class="container">
           <div class="text-center">
-            <h1 class="text-xl font-semibold mb-3 text-center">How It Works</h1>
+            <p class="eyebrow mb-4">A simple three-part workflow</p>
+            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">How It Works</h1>
             <p class="body-lg max-w-[600px] mx-auto text-center">
               Simple workflow, powerful results. Extract frames in three easy steps.
             </p>
@@ -49,9 +50,9 @@ import Footer from '../components/layout/Footer.astro';
     </section>
 
     <!-- How It Works Section -->
-    <section class="pt-16 md:pt-20 pb-12">
+    <section class="page-section">
       <div class="container">
-        <div class="text-center mb-16">
+        <div class="section-heading">
           <span class="mono-eyebrow mb-3">Step-by-Step Guide</span>
           <h2 class="heading-lg mb-4 text-center">How to Extract Frames from Video</h2>
           <p class="body-md max-w-[500px] mx-auto text-center">
@@ -60,12 +61,10 @@ import Footer from '../components/layout/Footer.astro';
         </div>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2">
           <!-- Step 1: Upload -->
-          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
-            <div class="relative">
-              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-[var(--color-on-primary)] text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
-                1
-              </div>
-              <div class="pt-8">
+          <article class="feature-card step-card">
+            <div>
+              <div class="step-number">1</div>
+              <div>
                 <h3 class="heading-md mb-3">Upload Your Video</h3>
                 <p class="body-md">
                   Click the upload area or drag & drop your video file. Supported formats include MP4, WebM, MOV, AVI, and more. Maximum file size is 2GB.
@@ -75,12 +74,10 @@ import Footer from '../components/layout/Footer.astro';
           </article>
 
           <!-- Step 2: Choose Extraction Mode -->
-          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
-            <div class="relative">
-              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-[var(--color-on-primary)] text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
-                2
-              </div>
-              <div class="pt-8">
+          <article class="feature-card step-card">
+            <div>
+              <div class="step-number">2</div>
+              <div>
                 <h3 class="heading-md mb-3">Select Extraction Method</h3>
                 <p class="body-md">
                   Choose from three extraction modes: Manual Capture (frame-by-frame), Interval Extraction (automatic at set intervals), or Smart Scene Detection (key moments only).
@@ -90,12 +87,10 @@ import Footer from '../components/layout/Footer.astro';
           </article>
 
           <!-- Step 3: Adjust Settings -->
-          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
-            <div class="relative">
-              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-[var(--color-on-primary)] text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
-                3
-              </div>
-              <div class="pt-8">
+          <article class="feature-card step-card">
+            <div>
+              <div class="step-number">3</div>
+              <div>
                 <h3 class="heading-md mb-3">Configure Settings</h3>
                 <p class="body-md">
                   Adjust extraction parameters like interval time, scene sensitivity, output format (PNG/JPG/WebP/AVIF), and quality level to match your needs.
@@ -105,12 +100,10 @@ import Footer from '../components/layout/Footer.astro';
           </article>
 
           <!-- Step 4: Extract -->
-          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
-            <div class="relative">
-              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-[var(--color-on-primary)] text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
-                4
-              </div>
-              <div class="pt-8">
+          <article class="feature-card step-card">
+            <div>
+              <div class="step-number">4</div>
+              <div>
                 <h3 class="heading-md mb-3">Extract Frames</h3>
                 <p class="body-md">
                   Click the extract button to begin processing. The tool works entirely in your browser - no data leaves your computer.
@@ -120,12 +113,10 @@ import Footer from '../components/layout/Footer.astro';
           </article>
 
           <!-- Step 5: Review -->
-          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
-            <div class="relative">
-              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-[var(--color-on-primary)] text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
-                5
-              </div>
-              <div class="pt-8">
+          <article class="feature-card step-card">
+            <div>
+              <div class="step-number">5</div>
+              <div>
                 <h3 class="heading-md mb-3">Preview & Select</h3>
                 <p class="body-md">
                   Review extracted frames in the gallery. Use checkboxes to select specific frames for download, or choose all frames.
@@ -135,12 +126,10 @@ import Footer from '../components/layout/Footer.astro';
           </article>
 
           <!-- Step 6: Download -->
-          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
-            <div class="relative">
-              <div class="absolute -top-4 left-6 bg-[var(--color-ink)] text-[var(--color-on-primary)] text-3xl font-bold w-12 h-12 rounded-full flex items-center justify-center">
-                6
-              </div>
-              <div class="pt-8">
+          <article class="feature-card step-card">
+            <div>
+              <div class="step-number">6</div>
+              <div>
                 <h3 class="heading-md mb-3">Download Your Frames</h3>
                 <p class="body-md">
                   Download selected frames individually or as a ZIP archive. All processing is client-side ensuring complete privacy.
@@ -153,9 +142,9 @@ import Footer from '../components/layout/Footer.astro';
     </section>
 
     <!-- Detailed Tutorial -->
-    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
       <div class="container">
-        <div class="text-center mb-12">
+        <div class="section-heading">
           <span class="mono-eyebrow mb-3">Detailed Tutorial</span>
           <h2 class="heading-lg mb-4 text-center">Step-by-Step Instructions</h2>
         </div>

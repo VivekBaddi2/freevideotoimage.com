@@ -20,11 +20,12 @@ import Footer from '../components/layout/Footer.astro';
   <Header currentPath="/about" />
   <main class="flex-1">
     <!-- Hero Section -->
-    <section class="relative">
-      <div class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-20">
+    <section class="page-hero">
+      <div class="page-hero-content">
         <div class="container">
           <div class="text-center">
-            <h1 class="text-xl font-semibold mb-4 text-center">About FreeVideoToImage.com</h1>
+            <p class="eyebrow mb-4">Private by design</p>
+            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">About FreeVideoToImage.com</h1>
             <p class="body-lg max-w-[600px] mx-auto text-center">
               A private, client-side video frame extraction tool built for creators who value simplicity and control.
             </p>
@@ -49,13 +50,13 @@ import Footer from '../components/layout/Footer.astro';
     </section>
 
     <!-- Our Story -->
-    <section class="pt-16 md:pt-20 pb-12">
+    <section class="page-section">
       <div class="container">
-        <div class="text-center mb-12">
+        <div class="section-heading">
           <span class="mono-eyebrow mb-3">Our Mission</span>
           <h2 class="heading-lg mb-4 text-center">Privacy-First Frame Extraction</h2>
         </div>
-        <div class="prose lg:prose-xl mx-auto max-w-none">
+        <div class="editorial-copy">
           <p>
             FreeVideoToImage.com was created with a simple belief: creators should have complete control over their media without compromising privacy.
             We built this tool to address the growing need for secure, accessible video frame extraction that doesn't require uploading sensitive content to third-party servers.
@@ -73,21 +74,21 @@ import Footer from '../components/layout/Footer.astro';
     </section>
 
     <!-- How We Built It -->
-    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
       <div class="container">
-        <div class="text-center mb-12">
+        <div class="section-heading">
           <span class="mono-eyebrow mb-3">Technical Approach</span>
           <h2 class="heading-lg mb-4 text-center">Engineered for Privacy and Performance</h2>
         </div>
-        <div class="grid gap-8 md:grid-cols-2">
-          <div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="feature-card">
             <h3 class="heading-md mb-3">Client-Side Processing</h3>
             <p class="body-md">
               All video processing happens locally in your browser using JavaScript and WebAssembly.
               We leverage the HTML5 Video API and Canvas API to decode, manipulate, and encode video frames without ever sending data to a server.
             </p>
           </div>
-          <div>
+          <div class="feature-card">
             <h3 class="heading-md mb-3">Modern Web Technologies</h3>
             <p class="body-md">
               Built with Astro for optimal performance and SEO, using Preact for interactive components.
@@ -95,14 +96,14 @@ import Footer from '../components/layout/Footer.astro';
               resulting in a fast, responsive application that works across all modern devices.
             </p>
           </div>
-          <div>
+          <div class="feature-card">
             <h3 class="heading-md mb-3">No External Dependencies</h3>
             <p class="body-md">
               Unlike many online tools that rely on third-party APIs or services, our solution is self-contained.
               This eliminates points of failure and ensures the tool will continue to work even if external services change or disappear.
             </p>
           </div>
-          <div>
+          <div class="feature-card">
             <h3 class="heading-md mb-3">Open Web Standards</h3>
             <p class="body-md">
               We adhere strictly to open web standards, ensuring compatibility across browsers and devices.
@@ -114,13 +115,13 @@ import Footer from '../components/layout/Footer.astro';
     </section>
 
     <!-- Design Philosophy -->
-    <section class="pt-12 md:pt-16 pb-10">
+    <section class="page-section">
       <div class="container">
-        <div class="text-center mb-12">
+        <div class="section-heading">
           <span class="mono-eyebrow mb-3">Design Principles</span>
           <h2 class="heading-lg mb-4 text-center">Following the Geist Design Language</h2>
         </div>
-        <div class="prose lg:prose-xl mx-auto max-w-none">
+        <div class="editorial-copy">
           <p>
             FreeVideoToImage.com follows the principles outlined in the Vercel Design System (Geist),
             focusing on simplicity, clarity, and functional beauty. Our interface embraces the following characteristics:
@@ -140,9 +141,9 @@ import Footer from '../components/layout/Footer.astro';
     </section>
 
     <!-- Use Cases -->
-    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
       <div class="container">
-        <div class="text-center mb-12">
+        <div class="section-heading">
           <span class="mono-eyebrow mb-3">Who Is This For?</span>
           <h2 class="heading-lg mb-4 text-center">Perfect for Various Creative Workflows</h2>
         </div>
@@ -206,7 +207,7 @@ import Footer from '../components/layout/Footer.astro';
     </section>
 
     <!-- Call to Action -->
-    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
       <div class="container">
         <div class="text-center">
           <h2 class="heading-lg mb-4">Experience Private Frame Extraction</h2>
