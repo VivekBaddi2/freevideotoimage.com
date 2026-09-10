@@ -2,6 +2,7 @@
 
 @theme {
   --color-ink: #171717;
+  --color-on-primary: #ffffff;
   --color-body: #4d4d4d;
   --color-mute: #8f8f8f;
   --color-faint: #a1a1a1;
@@ -111,6 +112,7 @@
     font-family: var(--font-sans);
     background-color: var(--color-canvas);
     color: var(--color-ink);
+    color-scheme: light;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -142,7 +144,7 @@
 @layer components {
   .btn-primary {
     background-color: var(--color-ink);
-    color: white;
+    color: var(--color-on-primary);
     font-family: var(--font-sans);
     font-size: var(--text-button-lg);
     font-weight: 500;
@@ -172,6 +174,10 @@
   .btn-primary:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  .dark .btn-primary {
+    color: var(--color-on-primary);
   }
 
   .btn-secondary {
@@ -226,6 +232,23 @@
 
   .btn-nav:hover {
     background-color: var(--color-hairline-soft);
+  }
+
+  .extraction-option {
+    background-color: transparent;
+    color: var(--color-body);
+    border-color: transparent;
+  }
+
+  .extraction-option:hover {
+    background-color: var(--color-hairline-soft);
+    color: var(--color-ink);
+  }
+
+  .extraction-option[aria-checked="true"] {
+    background-color: var(--color-ink);
+    color: var(--color-on-primary);
+    border-color: var(--color-ink);
   }
 
   .btn-ghost {
@@ -397,12 +420,12 @@
   .blog-card-featured {
     border-color: var(--color-ink);
     background: var(--color-ink);
-    color: white;
+    color: var(--color-on-primary);
   }
 
   .blog-card-featured h2,
   .blog-card-featured p {
-    color: white;
+    color: var(--color-on-primary);
   }
 
   .blog-card-featured .blog-card-meta {
@@ -433,7 +456,25 @@
   }
 
   .blog-card-featured .blog-card-link {
-    color: white;
+    color: var(--color-on-primary);
+  }
+
+  .dark .blog-card-featured {
+    border-color: var(--color-hairline);
+    background: #111111;
+    color: var(--color-ink);
+  }
+
+  .dark .blog-card-featured h2 {
+    color: var(--color-ink);
+  }
+
+  .dark .blog-card-featured p {
+    color: var(--color-body);
+  }
+
+  .dark .blog-card-featured .blog-card-link {
+    color: var(--color-ink);
   }
 
   .blog-card-link:hover {
@@ -579,4 +620,50 @@
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background-color: var(--color-mute);
   }
+}
+
+.dark {
+  color-scheme: dark;
+  --color-canvas: #000000;
+  --color-ink: #ededed;
+  --color-on-primary: #000000;
+  --color-body: #a1a1a1;
+  --color-mute: #888888;
+  --color-faint: #666666;
+  --color-hairline: #333333;
+  --color-hairline-soft: #1f1f1f;
+  --color-canvas-elevated: #0a0a0a;
+  --color-link: #3291ff;
+  --color-link-deep: #0070f3;
+  --color-link-soft: #06284a;
+  --color-error: #ff6b6b;
+  --color-error-deep: #ff4d4d;
+  --color-warning: #f5a623;
+  --color-warning-soft: #332600;
+  --color-warning-deep: #f5a623;
+  --color-violet: #a78bfa;
+  --color-violet-soft: #241c3b;
+  --color-cyan: #50e3c2;
+  --color-cyan-soft: #123d35;
+  --color-pink: #ff0080;
+  --color-magenta: #eb367f;
+}
+
+html .btn-primary {
+  background-color: #171717 !important;
+  border-color: #171717 !important;
+  color: #ffffff !important;
+}
+
+html .extraction-option[aria-checked="true"] {
+  background-color: #171717 !important;
+  border-color: #171717 !important;
+  color: #ffffff !important;
+}
+
+html.dark .btn-primary,
+html.dark .extraction-option[aria-checked="true"] {
+  background-color: #ededed !important;
+  border-color: #ededed !important;
+  color: #000000 !important;
 }

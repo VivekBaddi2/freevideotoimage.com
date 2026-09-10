@@ -71,7 +71,7 @@ export default function ExtractionControls({
               type="button"
               size='md'
               variant="nav"
-              class={mode === m ? ' bg-[var(--color-ink)] text-white hover:bg-[var(--color-ink)] border-[var(--color-ink)] text-sm' : 'text-sm text-gray-600 border-0'}
+              class="extraction-option text-sm"
               onClick={() => onModeChange?.(m)}
               disabled={disabled || isExtracting}
               role="radio"
@@ -209,7 +209,7 @@ export default function ExtractionControls({
                 type="button"
                 variant="nav"
                 size='sm'
-                class={localOutputSettings.format === f.value ? 'bg-[var(--color-ink)] text-white hover:bg-[var(--color-ink)] border-[var(--color-ink)] text-sm' : 'text-sm text-gray-600 border-0'}
+                class="extraction-option text-sm"
                 onClick={() => handleOutputChange('format', f.value)}
                 disabled={disabled || isExtracting}
                 role="radio"

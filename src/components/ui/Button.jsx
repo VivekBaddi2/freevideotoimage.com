@@ -15,7 +15,7 @@ export default function Button({
   const baseClasses = 'inline-flex items-center justify-center font-sans font-medium transition-all duration-150 ease-out whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-link)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-canvas)] disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed';
 
   const variantClasses = {
-    primary: 'bg-[var(--color-ink)] text-white rounded-[var(--radius-pill)] border-none hover:opacity-90 active:opacity-70',
+    primary: 'btn-primary bg-[var(--color-ink)] text-[var(--color-on-primary)] rounded-[var(--radius-pill)] border-none hover:opacity-90 active:opacity-70',
     secondary: 'bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] rounded-[var(--radius-pill)] border border-[var(--color-hairline)] hover:bg-[var(--color-hairline-soft)] active:bg-[var(--color-hairline)]',
     nav: 'bg-[var(--color-canvas-elevated)] text-[var(--color-ink)] rounded-[var(--radius-sm)] border border-[var(--color-hairline)] hover:bg-[var(--color-hairline-soft)] active:bg-[var(--color-hairline)]',
     ghost: 'bg-transparent text-[var(--color-body)] rounded-[var(--radius-full)] border-none hover:bg-[var(--color-hairline-soft)] hover:text-[var(--color-ink)] active:bg-[var(--color-hairline)]',

@@ -50,7 +50,7 @@ const formats = [
           type="button"
           role="radio"
           aria-checked={mode === m}
-          class={`btn-nav ${mode === m ? 'bg-[var(--color-ink)] text-white border-[var(--color-ink)]' : ''}`}
+          class="btn-nav extraction-option"
           onclick={() => onModeChange?.(m)}
           disabled={disabled || isExtracting}
         >
@@ -179,7 +179,7 @@ const formats = [
             type="button"
             role="radio"
             aria-checked={outputSettings.format === f.value}
-            class={`btn-nav ${outputSettings.format === f.value ? 'bg-[var(--color-ink)] text-white border-[var(--color-ink)]' : ''}`}
+            class="btn-nav extraction-option"
             onclick={() => onOutputChange?.({ ...outputSettings, format: f.value, quality: f.quality ? (outputSettings.quality || f.default) : undefined })}
             disabled={disabled || isExtracting}
           >

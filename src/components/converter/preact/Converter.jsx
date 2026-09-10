@@ -468,7 +468,7 @@ export default function Converter() {
 
         {showFramePopup && (
             <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 backdrop-blur-sm sm:p-4">
-              <div class="relative flex h-[calc(100vh-1rem)] max-h-[90vh] w-full max-w-[95%] min-w-0 flex-col overflow-hidden rounded-lg bg-white sm:h-[90vh]">
+              <div class="relative flex h-[calc(100vh-1rem)] max-h-[90vh] w-full max-w-[95%] min-w-0 flex-col overflow-hidden rounded-lg bg-[var(--color-canvas-elevated)] sm:h-[90vh]">
                 <div class="flex shrink-0 items-center justify-between gap-3 border-b bg-[var(--color-canvas-elevated)] p-3 sm:p-4">
                   <h3 class="heading-md">All Extracted Frames</h3>
                   <button

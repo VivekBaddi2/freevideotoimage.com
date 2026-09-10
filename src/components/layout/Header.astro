@@ -82,6 +82,29 @@ const { currentPath = "/" } = Astro.props;
           >
             Blogs
           </a>
+          {/* Dark mode toggle */}
+          <button
+            id="dark-mode-toggle"
+            class="btn-ghost-sm ml-4"
+            aria-label="Toggle dark mode"
+          >
+            <!-- Moon icon (show by default) -->
+            <svg class="moon-icon h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun icon (hidden by default) -->
+            <svg class="sun-icon hidden h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="5.64" y1="18.36" x2="4.22" y2="19.78"></line>
+              <line x1="19.78" y1="5.64" x2="18.36" y2="4.22"></line>
+            </svg>
+          </button>
         </div>
 
         {/* Mobile hamburger button: hidden on desktop */}
@@ -153,52 +176,137 @@ const { currentPath = "/" } = Astro.props;
           <a href="/video-to-image-converter" class="btn-primary mt-2 w-full"
             >Convert</a
           >
+          {/* Dark mode toggle for mobile */}
+          <button
+            id="dark-mode-toggle-mobile"
+            class="btn-ghost-sm justify-start mt-4"
+            aria-label="Toggle dark mode"
+          >
+            <!-- Moon icon (show by default) -->
+            <svg class="moon-icon h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun icon (hidden by default) -->
+            <svg class="sun-icon hidden h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="5.64" y1="18.36" x2="4.22" y2="19.78"></line>
+              <line x1="19.78" y1="5.64" x2="18.36" y2="4.22"></line>
+            </svg>
+          </button>
         </nav>
       </div>
     </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const button = document.getElementById("mobile-menu-button");
-        const menu = document.getElementById("mobile-menu");
-        const links = menu.querySelectorAll("a");
+        // Mobile menu variables
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
 
-        const setMenuOpen = (isOpen) => {
-          menu.setAttribute("aria-hidden", String(!isOpen));
-          button.setAttribute("aria-expanded", String(isOpen));
-          button.setAttribute(
+        // Dark mode toggle variables
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const darkModeToggleMobile = document.getElementById("dark-mode-toggle-mobile");
+
+        // Function to set mobile menu open/close
+        const setMobileMenuOpen = (isOpen) => {
+          mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+          mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
+          mobileMenuButton.setAttribute(
             "aria-label",
             isOpen ? "Close main menu" : "Open main menu",
           );
-          menu.classList.toggle("pointer-events-none", !isOpen);
-          menu.classList.toggle("pointer-events-auto", isOpen);
-          menu.classList.toggle("-translate-y-2", !isOpen);
-          menu.classList.toggle("translate-y-0", isOpen);
-          menu.classList.toggle("opacity-0", !isOpen);
-          menu.classList.toggle("opacity-100", isOpen);
+          mobileMenu.classList.toggle("pointer-events-none", !isOpen);
+          mobileMenu.classList.toggle("pointer-events-auto", isOpen);
+          mobileMenu.classList.toggle("-translate-y-2", !isOpen);
+          mobileMenu.classList.toggle("translate-y-0", isOpen);
+          mobileMenu.classList.toggle("opacity-0", !isOpen);
+          mobileMenu.classList.toggle("opacity-100", isOpen);
         };
 
-        button.addEventListener("click", () => {
-          setMenuOpen(button.getAttribute("aria-expanded") !== "true");
+        // Mobile menu event listeners
+        mobileMenuButton.addEventListener("click", () => {
+          setMobileMenuOpen(mobileMenuButton.getAttribute("aria-expanded") !== "true");
         });
 
-        links.forEach((link) => {
-          link.addEventListener("click", () => setMenuOpen(false));
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", () => setMobileMenuOpen(false));
         });
 
         document.addEventListener("keydown", (event) => {
           if (
             event.key === "Escape" &&
-            button.getAttribute("aria-expanded") === "true"
+            mobileMenuButton.getAttribute("aria-expanded") === "true"
           ) {
-            setMenuOpen(false);
-            button.focus();
+            setMobileMenuOpen(false);
+            mobileMenuButton.focus();
           }
         });
 
         window.addEventListener("resize", () => {
-          if (window.innerWidth >= 768) setMenuOpen(false);
+          if (window.innerWidth >= 768) setMobileMenuOpen(false);
         });
+
+        // Dark mode functionality
+        const htmlElement = document.documentElement;
+        const THEME_KEY = 'theme';
+
+        // Function to set the theme
+        const setTheme = (theme) => {
+          if (theme === 'dark') {
+            htmlElement.classList.add('dark');
+            // Update icons to show sun (light mode icon) when in dark mode
+            if (darkModeToggle) {
+              darkModeToggle.querySelector('.moon-icon').classList.add('hidden');
+              darkModeToggle.querySelector('.sun-icon').classList.remove('hidden');
+            }
+            if (darkModeToggleMobile) {
+              darkModeToggleMobile.querySelector('.moon-icon').classList.add('hidden');
+              darkModeToggleMobile.querySelector('.sun-icon').classList.remove('hidden');
+            }
+          } else {
+            htmlElement.classList.remove('dark');
+            // Update icons to show moon (dark mode icon) when in light mode
+            if (darkModeToggle) {
+              darkModeToggle.querySelector('.moon-icon').classList.remove('hidden');
+              darkModeToggle.querySelector('.sun-icon').classList.add('hidden');
+            }
+            if (darkModeToggleMobile) {
+              darkModeToggleMobile.querySelector('.moon-icon').classList.remove('hidden');
+              darkModeToggleMobile.querySelector('.sun-icon').classList.add('hidden');
+            }
+          }
+          // Save preference to localStorage
+          localStorage.setItem(THEME_KEY, theme);
+        };
+
+        // Function to toggle between light and dark theme
+        const toggleTheme = () => {
+          const isDark = htmlElement.classList.contains('dark');
+          setTheme(isDark ? 'light' : 'dark');
+        };
+
+        // Determine initial theme
+        const getSystemPreference = () =>
+          window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        const initialTheme = savedTheme ? savedTheme : getSystemPreference();
+        setTheme(initialTheme);
+
+        // Event listeners for dark mode toggle buttons
+        if (darkModeToggle) {
+          darkModeToggle.addEventListener('click', toggleTheme);
+        }
+        if (darkModeToggleMobile) {
+          darkModeToggleMobile.addEventListener('click', toggleTheme);
+        }
       });
     </script>
   </div>
