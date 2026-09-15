@@ -8,6 +8,7 @@ import FrameGallery from './FrameGallery.jsx';
 import VideoInfoPanel from './VideoInfoPanel.jsx';
 import Button from '../../ui/Button.jsx';
 import Card from '../../ui/Card.jsx';
+import { getConverterStrings } from '../../../i18n/converterStrings';
 
 const formats = [
   { value: 'png', label: 'PNG (Lossless)', quality: false },
@@ -31,7 +32,8 @@ function formatDuration(seconds) {
   return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
-export default function Converter() {
+export default function Converter({ lang }) {
+  const t = getConverterStrings(lang);
   const videoUrl = useRef(null);
   const videoPlayerRef = useRef(null);
   const videoElement = useRef(null);
@@ -96,7 +98,7 @@ export default function Converter() {
       setFrames([]);
     } catch (error) {
       console.error('Error loading video:', error);
-      alert('Failed to load video. Please try another file.');
+      alert(t.alertFailedLoad);
     } finally {
       setIsProcessing(false);
     }
@@ -121,7 +123,7 @@ export default function Converter() {
       }
     } catch (error) {
       console.error('Extraction error:', error);
-      alert('Failed to extract frames. Please try again.');
+      alert(t.alertFailedExtract);
     } finally {
       setIsProcessing(false);
     }
@@ -371,14 +373,15 @@ export default function Converter() {
         <section aria-labelledby="upload-heading">
           <div class="mb-4 flex items-center justify-between gap-4">
             <div>
-              <p class="eyebrow mb-1">Start here</p>
-              <h2 id="upload-heading" class="heading-md">Upload a video</h2>
+              <p class="eyebrow mb-1">{t.startHere}</p>
+              <h2 id="upload-heading" class="heading-md">{t.uploadVideo}</h2>
             </div>
-            <span class="hidden body-sm sm:block">MP4, WebM, MOV and more</span>
+            <span class="hidden body-sm sm:block">{t.videoFormatsNotice}</span>
           </div>
           <VideoUploader
             onFileSelect={handleFileSelect}
             disabled={isProcessing}
+            lang={lang}
             data-testid="video-uploader"
           />
         </section>
@@ -389,10 +392,10 @@ export default function Converter() {
               <div class="min-w-0 space-y-4">
                 <div class="flex items-end justify-between gap-4">
                   <div>
-                    <p class="eyebrow mb-1">Preview</p>
-                    <h2 class="heading-md">Choose your frame</h2>
+                    <p class="eyebrow mb-1">{t.previewEyebrow}</p>
+                    <h2 class="heading-md">{t.chooseFrameHeading}</h2>
                   </div>
-                  <span class="hidden body-sm sm:block">Use the timeline to find the exact moment</span>
+                  <span class="hidden body-sm sm:block">{t.timelineHint}</span>
                 </div>
                 <VideoPlayer
                   id="video-player"
@@ -401,13 +404,14 @@ export default function Converter() {
                   onTimeUpdate={() => { }}
                   onLoadedMetadata={(duration) => setVideoDuration(duration)}
                   onSeeked={() => { }}
+                  lang={lang}
                   data-testid="video-player"
                 />
               </div>
 
               <div class="min-w-0">
-                <p class="eyebrow mb-1">Extraction settings</p>
-                <h2 class="heading-md mb-4">How should we capture frames?</h2>
+                <p class="eyebrow mb-1">{t.extractionSettingsEyebrow}</p>
+                <h2 class="heading-md mb-4">{t.howToCapture}</h2>
                 <ExtractionControls
                   id="extraction-controls"
                   mode={extractionMode}
@@ -422,6 +426,7 @@ export default function Converter() {
                   onExtract={handleExtract}
                   disabled={!videoUrl.current || isProcessing}
                   isExtracting={isProcessing}
+                  lang={lang}
                   data-testid="extraction-controls"
                 />
               </div>
@@ -433,8 +438,8 @@ export default function Converter() {
           <>
             <section aria-labelledby="frames-heading">
               <div class="mb-4">
-                <p class="eyebrow mb-1">Results</p>
-                <h2 id="frames-heading" class="heading-md">Extracted frames</h2>
+                <p class="eyebrow mb-1">{t.resultsEyebrow}</p>
+                <h2 id="frames-heading" class="heading-md">{t.extractedFramesHeading}</h2>
               </div>
               <FrameGallery
                 id="frame-gallery"
@@ -449,17 +454,19 @@ export default function Converter() {
                 onDeselectAll={handleDeselectAll}
                 onViewPopup={() => setShowFramePopup(true)}
                 isProcessing={isProcessing}
+                lang={lang}
                 data-testid="frame-gallery"
               />
             </section>
 
             <section aria-labelledby="video-info-heading">
               <div class="mb-4">
-                <p class="eyebrow mb-1">File details</p>
-                <h2 id="video-info-heading" class="heading-md">Video information</h2>
+                <p class="eyebrow mb-1">{t.fileDetailsEyebrow}</p>
+                <h2 id="video-info-heading" class="heading-md">{t.videoInfoHeading}</h2>
               </div>
               <VideoInfoPanel
                 videoInfo={videoInfo}
+                lang={lang}
                 data-testid="video-info-panel"
               />
             </section>
@@ -470,7 +477,7 @@ export default function Converter() {
             <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 backdrop-blur-sm sm:p-4">
               <div class="relative flex h-[calc(100vh-1rem)] max-h-[90vh] w-full max-w-[95%] min-w-0 flex-col overflow-hidden rounded-lg bg-[var(--color-canvas-elevated)] sm:h-[90vh]">
                 <div class="flex shrink-0 items-center justify-between gap-3 border-b bg-[var(--color-canvas-elevated)] p-3 sm:p-4">
-                  <h3 class="heading-md">All Extracted Frames</h3>
+                  <h3 class="heading-md">{t.allExtractedFramesTitle}</h3>
                   <button
                     type="button"
                     class="btn-ghost text-[var(--color-error)] hover:text-[var(--color-error-deep)]"
@@ -534,7 +541,7 @@ export default function Converter() {
                         }}
                         disabled={isProcessing || frames.length === 0}
                       >
-                        Select All
+                        {t.selectAll}
                       </button>
                       <button
                         type="button"
@@ -545,7 +552,7 @@ export default function Converter() {
                         }}
                         disabled={isProcessing || frames.length === 0}
                       >
-                        Deselect All
+                        {t.deselectAll}
                       </button>
                     </div>
                     <div class="flex flex-wrap gap-2">
@@ -555,7 +562,7 @@ export default function Converter() {
                         onClick={() => handleDownloadSelected?.(frames.filter(f => f.selected))}
                         disabled={isProcessing || frames.filter(f => f.selected).length === 0}
                       >
-                        Download Selected
+                        {t.downloadSelected(frames.filter(f => f.selected).length)}
                       </button>
                       <button
                         type="button"
@@ -563,7 +570,7 @@ export default function Converter() {
                         onClick={() => handleDownloadAll?.(frames)}
                         disabled={isProcessing || frames.length === 0}
                       >
-                        Download All as ZIP
+                        {t.downloadAllZip}
                       </button>
                     </div>
                   </div>

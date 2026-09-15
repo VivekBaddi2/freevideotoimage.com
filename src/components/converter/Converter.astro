@@ -4,13 +4,24 @@
  */
 
 import Converter from './preact/Converter.jsx';
+import { getLangFromUrl } from '../../i18n/utils';
+import type { SupportedLanguage } from '../../i18n/ui';
+
+interface Props {
+  'data-testid'?: string;
+  lang?: SupportedLanguage;
+  [key: string]: any;
+}
 
 const {
   'data-testid': testId = 'video-converter',
+  lang: propLang,
   ...rest
 } = Astro.props;
+
+const lang = propLang || getLangFromUrl(Astro.url);
 ---
 
 <div data-testid={testId} {...rest}>
-  <Converter client:visible />
+  <Converter client:visible lang={lang} />
 </div>

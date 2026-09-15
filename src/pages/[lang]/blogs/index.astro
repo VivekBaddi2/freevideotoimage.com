@@ -1,0 +1,116 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/layout/Header.astro';
+import Footer from '../../../components/layout/Footer.astro';
+import { useTranslations, useTranslatedPath } from '../../../i18n/utils';
+import { blogPosts } from '../../../i18n/blogsData';
+import type { SupportedLanguage } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'ja' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'ko' } },
+    { params: { lang: 'it' } },
+    { params: { lang: 'hi' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const featuredPost = blogPosts.find(p => p.featured) || blogPosts[0];
+const regularPosts = blogPosts.filter(p => !p.featured);
+---
+
+<Layout lang={lang}>
+  <slot name="head">
+    <title>Blogs - Free Video to Image</title>
+    <meta name="description" content="Explore our blog for guides on video frame extraction, privacy, creative applications, and technical tutorials.">
+    <meta property="og:title" content="Blogs - Free Video to Image">
+    <meta property="og:description" content="Explore our blog for guides on video frame extraction, privacy, creative applications, and technical tutorials.">
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content={`https://freevideotoimage.com/${lang}/blogs`}>
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blogs - Free Video to Image">
+    <meta name="twitter:description" content="Explore our blog for guides on video frame extraction, privacy, creative applications, and technical tutorials.">
+  </slot>
+  <Header lang={lang} currentPath={`/${lang}/blogs`} />
+  <main class="flex-1">
+    <section class="relative overflow-hidden border-b border-[var(--color-hairline)]">
+      <div class="relative z-10 pt-20 pb-16 md:pt-28 md:pb-24">
+        <div class="container">
+          <div class="mx-auto max-w-6xl text-center">
+            <p class="eyebrow mb-4">The frame journal</p>
+            <h1 class="heading-xl mb-6 text-balance">Better frames start with better context.</h1>
+            <p class="body-lg mx-auto max-w-[600px]">
+              Practical guides for extracting, protecting, and transforming the moments hidden inside your videos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-16 pb-12 md:pt-20">
+      <div class="container">
+        <div class="mb-8 flex items-end justify-between gap-6">
+          <div>
+            <p class="eyebrow mb-2">Latest articles</p>
+            <h2 class="heading-lg">Read, then make something.</h2>
+          </div>
+          <p class="hidden text-right body-sm md:block">Short, useful notes for turning video into a more flexible creative material.</p>
+        </div>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {featuredPost && (
+            <article class="blog-card blog-card-featured md:col-span-2 lg:col-span-2">
+              <div class="mb-12 flex items-center justify-between gap-4">
+                <span class="blog-card-meta">{featuredPost.category}</span>
+                <span class="body-sm text-[var(--color-mute)]">{featuredPost.readTime}</span>
+              </div>
+              <h2 class="mb-4 text-3xl font-semibold leading-tight tracking-tight">{featuredPost.cardTitle}</h2>
+              <p class="body-lg text-[var(--color-body)]">
+                {featuredPost.cardExcerpt}
+              </p>
+              <a href={translatePath(`/blogs/${featuredPost.slug}`)} class="blog-card-link">Read the guide <span aria-hidden="true">↗</span></a>
+            </article>
+          )}
+
+          {regularPosts.map((post) => (
+            <article class="blog-card">
+              <span class="blog-card-meta">{post.category}</span>
+              <h3 class="mt-8 mb-3 heading-md">{post.cardTitle}</h3>
+              <p class="body-sm">
+                {post.cardExcerpt}
+              </p>
+              <a href={translatePath(`/blogs/${post.slug}`)} class="blog-card-link">Read article <span aria-hidden="true">↗</span></a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="pt-12 md:pt-16 pb-10 bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="heading-lg mb-4">Start Exploring</h2>
+          <p class="body-md max-w-[500px] mx-auto mb-6">
+            Dive into our blog to learn more about video frame extraction, privacy best practices,
+            and creative applications.
+          </p>
+          <a href={translatePath(`/blogs/${featuredPost.slug}`)} class="btn-primary inline-flex items-center">
+            Read First Article
+            <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</Layout>

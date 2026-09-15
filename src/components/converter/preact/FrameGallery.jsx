@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'preact/hooks';
 import Button from '../../ui/Button.jsx';
+import { getConverterStrings } from '../../../i18n/converterStrings';
 
 export default function FrameGallery({
   frames = [],
@@ -13,8 +14,10 @@ export default function FrameGallery({
   onRemoveFrame,
   onClearAll,
   isProcessing = false,
+  lang,
   'data-testid': testId = 'frame-gallery'
 }) {
+  const t = getConverterStrings(lang);
   const [lastCheckedIndex, setLastCheckedIndex] = useState(-1);
 
   const selectedFrames = frames.filter(f => f.selected);
@@ -79,8 +82,8 @@ export default function FrameGallery({
             <circle cx="8.5" cy="8.5" r="1.5" />
             <polyline points="21 15 16 10 5 21" />
           </svg>
-          <p class="body-md text-[var(--color-mute)]">No frames extracted yet</p>
-          <p class="body-sm text-[var(--color-faint)] mt-1">Use the extraction controls to capture frames from your video</p>
+          <p class="body-md text-[var(--color-mute)]">{t.noFramesTitle}</p>
+          <p class="body-sm text-[var(--color-faint)] mt-1">{t.noFramesSubtitle}</p>
         </div>
       </div>
     );
@@ -90,10 +93,10 @@ export default function FrameGallery({
     <div class="card" data-testid={testId}>
       <div class="flex flex-col sm:flex-col gap-4 mb-6">
         <div>
-          <h3 class="heading-md">{frames.length} frame{frames.length !== 1 ? 's' : ''} extracted</h3>
+          <h3 class="heading-md">{t.framesExtracted(frames.length)}</h3>
           {hasSelection && (
             <p class="body-sm text-[var(--color-mute)] mt-1">
-              {selectedFrames.length} selected
+              {t.selectedCount(selectedFrames.length)}
             </p>
           )}
         </div>
@@ -114,7 +117,7 @@ export default function FrameGallery({
                 <path d="m7 10 5 5 5-5" />
                 <path d="M5 21h14" />
               </svg>
-              Download All as ZIP ({frames.length})
+              {t.downloadAllZip} ({frames.length})
             </Button>
 
             {/* Download Selected button */}
@@ -132,7 +135,7 @@ export default function FrameGallery({
                     <path d="m7 10 5 5 5-5" />
                     <path d="M5 21h14" />
                   </svg>
-                  Download Selected ({selectedFrames.length})
+                  {t.downloadSelected(selectedFrames.length)}
                 </Button>
               </>
             )}
@@ -153,7 +156,7 @@ export default function FrameGallery({
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <path d="m8 12 2.5 2.5L16 9" />
                   </svg>
-                  Select All
+                  {t.selectAll}
                 </Button>
               ) :
                 (<Button
@@ -167,7 +170,7 @@ export default function FrameGallery({
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <path d="m8 12 2.5 2.5L16 9" />
                   </svg>
-                  Deselect All
+                  {t.deselectAll}
                 </Button>)
             }
             <Button
@@ -185,7 +188,7 @@ export default function FrameGallery({
                 <rect x="3" y="3" width="18" height="18" rx="2" />
                 <path d="M8 8h8v8H8z" />
               </svg>
-              View All in Popup
+              {t.viewPopup}
             </Button>
             {frames.length > 0 && (
               <Button
@@ -201,7 +204,7 @@ export default function FrameGallery({
                   <path d="m19 6-1 15H6L5 6" />
                   <path d="M10 11v6M14 11v6" />
                 </svg>
-                Clear All
+                {t.clearAll}
               </Button>
             )}
 
@@ -270,8 +273,7 @@ export default function FrameGallery({
 
       <div class="mt-6 pt-6 border-t border-[var(--color-hairline)]">
         <p class="body-sm text-[var(--color-mute)]">
-          <strong>Tip:</strong> Click checkboxes to select multiple frames. Use Shift+Click for range selection.
-          Download selected frames or all frames as a ZIP archive.
+          {t.galleryTip}
         </p>
       </div>
     </div>

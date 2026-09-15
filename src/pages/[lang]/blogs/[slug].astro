@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/layout/Header.astro';
+import Footer from '../../../components/layout/Footer.astro';
+import { blogPosts } from '../../../i18n/blogsData';
+import type { SupportedLanguage } from '../../../i18n/ui';
+
+import HowToExtractContent from '../../../components/blogs/HowToExtractContent.astro';
+import WhyClientSideContent from '../../../components/blogs/WhyClientSideContent.astro';
+import Top5CreativeUsesContent from '../../../components/blogs/Top5CreativeUsesContent.astro';
+import UnderstandingVideoFormatsContent from '../../../components/blogs/UnderstandingVideoFormatsContent.astro';
+import FromVideoToArtContent from '../../../components/blogs/FromVideoToArtContent.astro';
+
+export function getStaticPaths() {
+  const locales: SupportedLanguage[] = ['es', 'ja', 'fr', 'de', 'pt', 'ko', 'it', 'hi'];
+  const paths = [];
+
+  for (const lang of locales) {
+    for (const post of blogPosts) {
+      paths.push({
+        params: { lang, slug: post.slug },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { lang, slug } = Astro.params as { lang: SupportedLanguage; slug: string };
+const post = blogPosts.find(p => p.slug === slug);
+
+if (!post) {
+  return Astro.redirect(`/${lang}/blogs`);
+}
+---
+
+<Layout lang={lang}>
+  <slot name="head">
+    <title>{post.title}</title>
+    <meta name="description" content={post.description}>
+    <meta property="og:title" content={post.title}>
+    <meta property="og:description" content={post.description}>
+    <meta property="og:image" content="/logo.svg">
+    <meta property="og:url" content={`https://freevideotoimage.com/${lang}/blogs/${post.slug}`}>
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={post.title}>
+    <meta name="twitter:description" content={post.description}>
+  </slot>
+  <Header lang={lang} currentPath={`/${lang}/blogs/${post.slug}`} />
+  <main class="flex-1">
+    {slug === 'how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide' && <HowToExtractContent lang={lang} />}
+    {slug === 'why-client-side-video-processing-matters-for-your-privacy' && <WhyClientSideContent lang={lang} />}
+    {slug === 'top-5-creative-uses-for-extracted-video-frames-in-design-projects' && <Top5CreativeUsesContent lang={lang} />}
+    {slug === 'understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif' && <UnderstandingVideoFormatsContent lang={lang} />}
+    {slug === 'from-video-to-art-turning-frames-into-digital-masterpieces' && <FromVideoToArtContent lang={lang} />}
+  </main>
+  <Footer lang={lang} />
+</Layout>

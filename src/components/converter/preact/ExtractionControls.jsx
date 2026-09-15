@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 import Button from '../../ui/Button.jsx';
 import Input from '../../ui/Input.jsx';
+import { getConverterStrings } from '../../../i18n/converterStrings';
 
 const formats = [
   { value: 'png', label: 'PNG (Lossless)', quality: false },
@@ -22,11 +23,13 @@ export default function ExtractionControls({
   onExtract,
   disabled = false,
   isExtracting = false,
+  lang,
   'data-testid': testId = 'extraction-controls'
 }) {
   const [localIntervalSettings, setLocalIntervalSettings] = useState(intervalSettings);
   const [localSceneSettings, setLocalSceneSettings] = useState(sceneSettings);
   const [localOutputSettings, setLocalOutputSettings] = useState(outputSettings);
+  const t = getConverterStrings(lang);
 
   useEffect(() => {
     setLocalIntervalSettings(intervalSettings);
@@ -60,10 +63,16 @@ export default function ExtractionControls({
 
   const currentFormat = formats.find(f => f.value === localOutputSettings.format);
 
+  const modeLabels = {
+    manual: t.manual,
+    interval: t.interval,
+    auto: t.auto,
+  };
+
   return (
     <div class="card p-4" data-testid={testId}>
       <div class="mb-6">
-        <label class="label">Extraction Mode</label>
+        <label class="label">{t.extractionMode}</label>
         <div class="flex flex-wrap gap-2" role="radiogroup" aria-label="Extraction mode">
           {['manual', 'interval', 'auto'].map(m => (
             <Button
@@ -77,7 +86,7 @@ export default function ExtractionControls({
               role="radio"
               aria-checked={mode === m}
             >
-              {m.charAt(0).toUpperCase() + m.slice(1)}
+              {modeLabels[m] || m}
             </Button>
           ))}
         </div>
@@ -86,7 +95,7 @@ export default function ExtractionControls({
       {mode === 'manual' && (
         <div class="space-y-4 animate-fade-in">
           <p class="body-md text-[var(--color-body)]">
-            Use the video player above to navigate frame-by-frame and capture individual frames.
+            {t.manualHint}
           </p>
           <div class="flex gap-3">
             <Button
@@ -96,7 +105,7 @@ export default function ExtractionControls({
               onClick={() => onExtract?.('manual')}
               disabled={disabled || isExtracting}
             >
-              {isExtracting ? 'Capturing...' : 'Capture Current Frame'}
+              {isExtracting ? t.capturing : t.captureCurrent}
             </Button>
           </div>
         </div>
@@ -106,7 +115,7 @@ export default function ExtractionControls({
         <div class="space-y-4 animate-fade-in">
           <div class="grid grid-cols-1 gap-2">
             <Input
-              label="Interval (seconds)"
+              label={`${t.timeInterval} (${t.secondsBetween})`}
               type="number"
               step="0.1"
               min="0.1"
@@ -116,7 +125,7 @@ export default function ExtractionControls({
               disabled={disabled || isExtracting}
             />
             <Input
-              label="Start Time (seconds)"
+              label={`${t.startSeconds}`}
               type="number"
               step="0.1"
               min="0"
@@ -126,7 +135,7 @@ export default function ExtractionControls({
               disabled={disabled || isExtracting}
             />
             <Input
-              label="End Time (seconds)"
+              label={`${t.endSeconds}`}
               type="number"
               step="0.1"
               min="0"
@@ -139,7 +148,7 @@ export default function ExtractionControls({
           </div>
 
           <p class="body-sm text-[var(--color-mute)]">
-            Estimated frames: {Math.max(0, Math.floor(((localIntervalSettings.endTime || duration) - localIntervalSettings.startTime) / localIntervalSettings.interval)) + 1}
+            {t.framesExtracted(Math.max(0, Math.floor(((localIntervalSettings.endTime || duration) - localIntervalSettings.startTime) / localIntervalSettings.interval)) + 1)}
           </p>
 
           <Button
@@ -149,7 +158,7 @@ export default function ExtractionControls({
             onClick={() => onExtract?.('interval')}
             disabled={disabled || isExtracting}
           >
-            {isExtracting ? 'Extracting...' : 'Extract Frames'}
+            {isExtracting ? t.extracting : t.extractFrames}
           </Button>
         </div>
       )}
@@ -158,7 +167,7 @@ export default function ExtractionControls({
         <div class="space-y-4 animate-fade-in">
           <div class="grid grid-cols-1 gap-4">
             <div>
-              <label class="label">Scene Threshold: {localSceneSettings.threshold.toFixed(2)}</label>
+              <label class="label">{t.sensitivity}: {localSceneSettings.threshold.toFixed(2)}</label>
               <input
                 type="range"
                 min="0.1"
@@ -169,10 +178,9 @@ export default function ExtractionControls({
                 onInput={(e) => handleSceneChange('threshold', parseFloat(e.target.value))}
                 disabled={disabled || isExtracting}
               />
-              <p class="body-sm text-[var(--color-mute)] mt-1">Lower = more sensitive (more scenes detected)</p>
             </div>
             <Input
-              label="Min Scene Duration (s)"
+              label={t.minSceneDuration}
               type="number"
               step="0.1"
               min="0.1"
@@ -183,10 +191,6 @@ export default function ExtractionControls({
             />
           </div>
 
-          <p class="body-sm text-[var(--color-mute)]">
-            Uses AI-powered scene detection to extract key frames at scene boundaries.
-          </p>
-
           <Button
             type="button"
             size='md'
@@ -194,13 +198,13 @@ export default function ExtractionControls({
             onClick={() => onExtract?.('scene')}
             disabled={disabled || isExtracting}
           >
-            {isExtracting ? 'Detecting Scenes...' : 'Detect Scenes & Extract'}
+            {isExtracting ? t.extracting : t.extractFrames}
           </Button>
         </div>
       )}
 
       <div class="mt-8 pt-6 border-t border-[var(--color-hairline)] animate-fade-in">
-        <label class="label">Output Format</label>
+        <label class="label">{t.outputSettings}</label>
         <div class="space-y-4">
           <div class="flex flex-wrap gap-2" role="radiogroup" aria-label="Output format">
             {formats.map(f => (
@@ -223,7 +227,7 @@ export default function ExtractionControls({
 
           {currentFormat?.quality && (
             <div>
-              <label class="label">Quality: {localOutputSettings.quality}%</label>
+              <label class="label">{t.quality}: {localOutputSettings.quality}%</label>
               <input
                 type="range"
                 min={currentFormat.min}

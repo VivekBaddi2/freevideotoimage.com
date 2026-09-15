@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'preact/hooks';
 import Button from '../../ui/Button.jsx';
+import { getConverterStrings } from '../../../i18n/converterStrings';
 
-export default function VideoUploader({ onFileSelect, disabled = false, accept = 'video/*', maxSize = 2147483648, 'data-testid': testId = 'video-uploader' }) {
+export default function VideoUploader({ onFileSelect, disabled = false, accept = 'video/*', maxSize = 2147483648, lang, 'data-testid': testId = 'video-uploader' }) {
   const dropZoneRef = useRef(null);
   const fileInputRef = useRef(null);
   const [isDragOver, setIsDragOver] = useState(false);
+  const t = getConverterStrings(lang);
 
   function handleChooseFileClick() {
     fileInputRef.current?.click();
@@ -17,17 +19,17 @@ export default function VideoUploader({ onFileSelect, disabled = false, accept =
     if (!file) return;
 
     if (!file.type.startsWith('video/')) {
-      alert('Please select a valid video file.');
+      alert(t.alertInvalidFile);
       return;
     }
 
     if (file.size > maxSize) {
-      alert(`File size exceeds the maximum limit of ${MAX_SIZE_MB}MB.`);
+      alert(t.alertExceedsMax(MAX_SIZE_MB));
       return;
     }
 
     if (file.size > WARNING_SIZE_MB * 1024 * 1024) {
-      if (!confirm(`This file is ${(file.size / (1024 * 1024)).toFixed(1)}MB. Large files may take longer to process. Continue?`)) {
+      if (!confirm(t.confirmLargeFile((file.size / (1024 * 1024)).toFixed(1)))) {
         return;
       }
     }
@@ -131,9 +133,9 @@ export default function VideoUploader({ onFileSelect, disabled = false, accept =
           <line x1="12" y1="3" x2="12" y2="15" />
         </svg>
 
-        <p class="heading-md mb-2">Drop your video here</p>
+        <p class="heading-md mb-2">{t.dropTitle}</p>
         <p class="body-md text-[var(--color-body)] mb-6">
-          or click to browse. Supports MP4, WebM, MOV, AVI, MKV (up to {MAX_SIZE_MB}MB)
+          {t.dropSubtitle(MAX_SIZE_MB)}
         </p>
 
         <Button
@@ -142,12 +144,12 @@ export default function VideoUploader({ onFileSelect, disabled = false, accept =
           disabled={disabled}
           onClick={handleChooseFileClick}
         >
-          Choose File
+          {t.chooseFile}
         </Button>
       </label>
 
       <p class="mt-4 body-sm text-[var(--color-mute)]">
-        Maximum file size: {MAX_SIZE_MB}MB. Warning at {WARNING_SIZE_MB}MB.
+        {t.maxFileSizeHint(MAX_SIZE_MB, WARNING_SIZE_MB)}
       </p>
     </div>
   );

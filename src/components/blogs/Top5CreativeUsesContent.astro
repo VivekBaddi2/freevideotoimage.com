@@ -1,0 +1,246 @@
+---
+import { useTranslatedPath } from '../../i18n/utils';
+import type { SupportedLanguage } from '../../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const translatePath = useTranslatedPath(lang);
+---
+
+<!-- Blog Post Content -->
+<section class="pt-16 md:pt-20 pb-12">
+  <div class="container blog-article">
+    <div class="">
+      <span class="mono-eyebrow mb-3">Creative Applications</span>
+      <h1 class="mb-6 text-xl md:text-2xl lg:text-4xl">
+        Top 5 Creative Uses for Extracted Video Frames in Design Projects
+      </h1>
+      <p class="body-md max-w-[600px] mb-4">
+        From mood boards to digital art, explore innovative ways to
+        incorporate video frames into your creative workflow and design
+        projects.
+      </p>
+    </div>
+
+    <!-- Introduction -->
+    <div class="prose mx-auto mb-12">
+      <p>
+        Video is a rich source of visual inspiration, offering dynamic
+        compositions, unique lighting situations, and candid moments that
+        are difficult to replicate through traditional photography or
+        illustration. By extracting frames from videos, designers and
+        artists can tap into this wealth of visual material to enhance their
+        creative projects in surprising and innovative ways.
+      </p>
+      <p>
+        Our client-side video to image converter makes it easy to harvest
+        these visual gems, giving you access to authentic, spontaneous
+        moments that can elevate your design work.
+      </p>
+    </div>
+
+    <!-- Creative Use Cases -->
+    <section class="mb-12">
+      <h2 class="heading-lg mb-4">Top 5 Creative Applications</h2>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Mood Boards -->
+        <article
+          class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6"
+        >
+          <span class="blog-card-meta mb-3 inline-block"
+            >Concept Development</span
+          >
+          <h3 class="heading-md mb-3">1. Dynamic Mood Boards</h3>
+          <p class="body-md mb-4">
+            Create rich, evocative mood boards by extracting frames that
+            capture specific lighting, color palettes, or emotional tones
+            from cinematography.
+          </p>
+          <div class="space-y-2">
+            <p class="body-sm font-semibold">How to use:</p>
+            <ul
+              class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]"
+            >
+              <li>Extract color palette inspiration</li>
+              <li>Capture cinematic lighting setups</li>
+              <li>Gather textural references</li>
+              <li>Establish emotional tone for branding</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Motion Reference -->
+        <article
+          class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6"
+        >
+          <span class="blog-card-meta mb-3 inline-block"
+            >Animation & UI</span
+          >
+          <h3 class="heading-md mb-3">2. Animation Reference Sequences</h3>
+          <p class="body-md mb-4">
+            Extract sequential frames using interval mode to study natural
+            motion, timing, and weight distribution for 2D/3D animation and
+            UI motion design.
+          </p>
+          <div class="space-y-2">
+            <p class="body-sm font-semibold">How to use:</p>
+            <ul
+              class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]"
+            >
+              <li>Study natural human locomotion</li>
+              <li>Analyze secondary motion</li>
+              <li>Reference squash and stretch</li>
+              <li>Create realistic UI transitions</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Digital Collages -->
+        <article
+          class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6"
+        >
+          <span class="blog-card-meta mb-3 inline-block"
+            >Mixed Media</span
+          >
+          <h3 class="heading-md mb-3">3. High-Res Digital Collages</h3>
+          <p class="body-md mb-4">
+            Extract lossless PNG frames to use as raw source material for
+            surreal digital collages, poster designs, and editorial
+            illustrations.
+          </p>
+          <div class="space-y-2">
+            <p class="body-sm font-semibold">How to use:</p>
+            <ul
+              class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]"
+            >
+              <li>Layer candid human expressions</li>
+              <li>Isolate interesting backgrounds</li>
+              <li>Blend unexpected textures</li>
+              <li>Construct visual narratives</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Social Media Graphics -->
+        <article
+          class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6"
+        >
+          <span class="blog-card-meta mb-3 inline-block"
+            >Marketing</span
+          >
+          <h3 class="heading-md mb-3">4. Custom Video Thumbnails</h3>
+          <p class="body-md mb-4">
+            Capture the exact peak frame of emotional impact or action to
+            design custom, high-converting thumbnails for YouTube and social
+            media.
+          </p>
+          <div class="space-y-2">
+            <p class="body-sm font-semibold">How to use:</p>
+            <ul
+              class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]"
+            >
+              <li>Find zero-blur peak moments</li>
+              <li>Extract hero expressions</li>
+              <li>Overlay branding and typography</li>
+              <li>A/B test different thumbnail styles</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Texture & Asset Harvesting -->
+        <article
+          class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6 md:col-span-2 lg:col-span-2"
+        >
+          <span class="blog-card-meta mb-3 inline-block"
+            >3D & Shading</span
+          >
+          <h3 class="heading-md mb-3">5. Real-world Texture Harvesting</h3>
+          <p class="body-md mb-4">
+            Extract individual frames from 4K/8K nature footage or street
+            videos to isolate organic textures like water reflections, smoke
+            patterns, and weathered surfaces.
+          </p>
+          <div class="space-y-2">
+            <p class="body-sm font-semibold">How to use:</p>
+            <ul
+              class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]"
+            >
+              <li>Harvest seamless organic textures</li>
+              <li>Sample realistic lens flares and light leaks</li>
+              <li>Create roughness and displacement maps</li>
+              <li>Build reference libraries for 3D shaders</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Best Practices for Designers -->
+    <section class="mb-12 bg-[var(--color-canvas-elevated)] p-6 rounded-lg">
+      <h2 class="heading-lg mb-4">Best Practices for Designers</h2>
+      <div class="prose mx-auto">
+        <ul class="list-disc space-y-4 pl-6">
+          <li>
+            <h3 class="heading-md mb-2">Always Export in PNG for Design Work</h3>
+            <p>
+              When frames will undergo further editing in Photoshop, Figma, or
+              Affinity Designer, lossless PNG is critical to prevent
+              compression artifacts.
+            </p>
+          </li>
+          <li>
+            <h3 class="heading-md mb-2">Utilize Smart Scene Detection for Batch Work</h3>
+            <p>
+              When dealing with long video files, use our AI-powered scene
+              detection to avoid sorting through thousands of redundant frames.
+            </p>
+          </li>
+          <li>
+            <h3 class="heading-md mb-2">Check Source Resolution First</h3>
+            <p>
+              For print or high-res projects, source your video from 4K or 1080p
+              footage to ensure the extracted frame has sufficient pixel
+              density.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="mb-12">
+      <h2 class="heading-lg mb-4">Conclusion</h2>
+      <div class="prose mx-auto">
+        <p>
+          Video frames are more than just stopped footage—they are versatile,
+          spontaneous design assets that can give your creative work a unique
+          competitive edge.
+        </p>
+        <p>
+          With our 100% private, client-side converter, you can harvest
+          high-quality frames freely without worrying about cloud upload
+          delays or subscription paywalls.
+        </p>
+      </div>
+    </section>
+
+    <!-- Back to Blogs -->
+    <div class="text-center mb-16">
+      <a href={translatePath('/blogs')} class="btn-ghost inline-flex items-center">
+        <svg
+          class="ml-2 w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M19 12H5M12 5l-7 7 7 7"></path>
+        </svg>
+        Back to Blogs
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,7 @@
-export default function VideoInfoPanel({ videoInfo = {}, 'data-testid': testId = 'video-info-panel' }) {
+import { getConverterStrings } from '../../../i18n/converterStrings';
+
+export default function VideoInfoPanel({ videoInfo = {}, lang, 'data-testid': testId = 'video-info-panel' }) {
+  const t = getConverterStrings(lang);
   const {
     duration = 0,
     width = 0,
@@ -33,9 +36,9 @@ export default function VideoInfoPanel({ videoInfo = {}, 'data-testid': testId =
             <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
             <circle cx="12" cy="13" r="4" />
           </svg>
-          Video Information
+          {t.videoInfoHeading}
         </h3>
-        <p class="body-md text-[var(--color-mute)]">Upload a video to see information</p>
+        <p class="body-md text-[var(--color-mute)]">{t.noVideoUploaded}</p>
       </div>
     );
   }
@@ -47,40 +50,40 @@ export default function VideoInfoPanel({ videoInfo = {}, 'data-testid': testId =
           <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
           <circle cx="12" cy="13" r="4" />
         </svg>
-        Video Information
+        {t.videoInfoHeading}
       </h3>
 
       <dl class="grid grid-cols-2 gap-3 md:gap-4 text-sm">
         <div>
-          <dt class="body-sm text-[var(--color-mute)]">File Name</dt>
+          <dt class="body-sm text-[var(--color-mute)]">{t.fileName}</dt>
           <dd class="body-md font-mono truncate" title={name}>{name}</dd>
         </div>
         <div>
-          <dt class="body-sm text-[var(--color-mute)]">File Type</dt>
+          <dt class="body-sm text-[var(--color-mute)]">{t.fileType}</dt>
           <dd class="body-md">{type}</dd>
         </div>
         <div>
-          <dt class="body-sm text-[var(--color-mute)]">File Size</dt>
+          <dt class="body-sm text-[var(--color-mute)]">{t.fileSize}</dt>
           <dd class="body-md">{formatSize(size)}</dd>
         </div>
         <div>
-          <dt class="body-sm text-[var(--color-mute)]">Duration</dt>
+          <dt class="body-sm text-[var(--color-mute)]">{t.duration}</dt>
           <dd class="body-md">{formatDuration(duration)} ({duration.toFixed(2)}s)</dd>
         </div>
         <div>
-          <dt class="body-sm text-[var(--color-mute)]">Resolution</dt>
+          <dt class="body-sm text-[var(--color-mute)]">{t.resolution}</dt>
           <dd class="body-md">{width} × {height}</dd>
         </div>
         <div>
-          <dt class="body-sm text-[var(--color-mute)]">Frame Rate</dt>
+          <dt class="body-sm text-[var(--color-mute)]">{t.frameRate}</dt>
           <dd class="body-md">{frameRate.toFixed(2)} fps</dd>
         </div>
         <div>
-          <dt class="body-sm text-[var(--color-mute)]">Codec</dt>
+          <dt class="body-sm text-[var(--color-mute)]">{t.codec}</dt>
           <dd class="body-md font-mono text-xs">{codec}</dd>
         </div>
         <div>
-          <dt class="body-sm text-[var(--color-mute)]">Total Frames</dt>
+          <dt class="body-sm text-[var(--color-mute)]">{t.totalFrames}</dt>
           <dd class="body-md">{Math.round(duration * frameRate).toLocaleString()}</dd>
         </div>
       </dl>
@@ -93,7 +96,7 @@ export default function VideoInfoPanel({ videoInfo = {}, 'data-testid': testId =
               <line x1="12" y1="9" x2="12" y2="13" />
               <line x1="12" y1="17" x2="12.01" y2="17" />
             </svg>
-            Large file detected ({formatSize(size)}). Processing may take longer and use significant memory.
+            {t.largeFileWarning(formatSize(size))}
           </p>
         </div>
       )}
