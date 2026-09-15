@@ -1,0 +1,112 @@
+---
+import { languages, type SupportedLanguage } from '../../i18n/ui';
+import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(currentLang);
+const currentPathname = Astro.url.pathname;
+
+interface Props {
+  className?: string;
+  isMobile?: boolean;
+}
+
+const { className = '', isMobile = false } = Astro.props;
+---
+
+<div class={`relative inline-block text-left language-picker-container ${className}`}>
+  <button
+    type="button"
+    class="btn-ghost-sm flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-lg border border-[var(--color-hairline)] bg-[var(--color-canvas)] hover:bg-[var(--color-canvas-elevated)] transition-colors"
+    id={`lang-menu-btn-${isMobile ? 'mobile' : 'desktop'}`}
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Select Language"
+  >
+    <!-- Globe Icon -->
+    <svg class="h-4 w-4 text-[var(--color-mute)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="2" y1="12" x2="22" y2="12"></line>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+    </svg>
+    <span>{languages[currentLang]}</span>
+    <svg class="h-3.5 w-3.5 text-[var(--color-mute)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+  <div
+    class="lang-dropdown-menu hidden absolute right-0 mt-2 w-44 rounded-xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] shadow-xl z-50 py-1.5 backdrop-blur-md"
+    role="menu"
+    aria-orientation="vertical"
+  >
+    {
+      Object.entries(languages).map(([langKey, label]) => {
+        const isActive = langKey === currentLang;
+        const targetHref = translatePath(currentPathname, langKey as SupportedLanguage);
+        return (
+          <a
+            href={targetHref}
+            class={`flex items-center justify-between px-3.5 py-2 text-xs transition-colors ${
+              isActive
+                ? 'font-semibold text-[var(--color-brand)] bg-[var(--color-hairline)]/30'
+                : 'text-[var(--color-ink)] hover:bg-[var(--color-hairline)]/20'
+            }`}
+            role="menuitem"
+            lang={langKey}
+            hreflang={langKey}
+          >
+            <span>{label}</span>
+            {isActive && (
+              <svg class="h-3.5 w-3.5 text-[var(--color-brand)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            )}
+          </a>
+        );
+      })
+    }
+  </div>
+</div>
+
+<script>
+  function setupLanguagePickers() {
+    const containers = document.querySelectorAll('.language-picker-container');
+    containers.forEach((container) => {
+      const button = container.querySelector('button');
+      const menu = container.querySelector('.lang-dropdown-menu');
+      if (!button || !menu) return;
+
+      const toggleMenu = (open?: boolean) => {
+        const isHidden = menu.classList.contains('hidden');
+        const shouldOpen = open !== undefined ? open : isHidden;
+        if (shouldOpen) {
+          menu.classList.remove('hidden');
+          button.setAttribute('aria-expanded', 'true');
+        } else {
+          menu.classList.add('hidden');
+          button.setAttribute('aria-expanded', 'false');
+        }
+      };
+
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!container.contains(e.target as Node)) {
+          toggleMenu(false);
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          toggleMenu(false);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupLanguagePickers);
+</script>

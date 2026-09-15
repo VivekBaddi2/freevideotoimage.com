@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
+import type { SupportedLanguage } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'ja' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'ko' } },
+    { params: { lang: 'it' } },
+    { params: { lang: 'hi' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+const currentUrl = `https://freevideotoimage.com/${lang}/terms-conditions`;
+---
+
+<Layout lang={lang}>
+  <slot name="head">
+    <title>{t('footer.terms')} - Free Video to Image Converter</title>
+    <meta name="description" content="Terms & Conditions for using Free Video to Image Converter." />
+    <meta property="og:title" content={`${t('footer.terms')} - Free Video to Image Converter`} />
+    <meta property="og:url" content={currentUrl} />
+  </slot>
+
+  <Header currentPath="/terms-conditions" lang={lang} />
+  
+  <main class="flex-1">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <div class="container">
+          <div class="text-center">
+            <p class="eyebrow mb-4">{t('footer.legal')}</p>
+            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">{t('footer.terms')}</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container max-w-4xl mx-auto">
+        <div class="card p-8 md:p-12 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] space-y-6 text-[var(--color-mute)] leading-relaxed">
+          <h2 class="heading-md text-[var(--color-ink)] font-semibold">Terms of Service</h2>
+          <p>
+            By accessing and using Free Video to Image Converter, you agree to comply with these terms. The service is provided "as is" for lawful video frame extraction purposes.
+          </p>
+          <h2 class="heading-md text-[var(--color-ink)] font-semibold">Intellectual Property & Content Ownership</h2>
+          <p>
+            You retain all intellectual property rights and ownership over any videos you process with our tool. We do not claim any rights over the images generated.
+          </p>
+          <h2 class="heading-md text-[var(--color-ink)] font-semibold">Limitation of Liability</h2>
+          <p>
+            The service is provided free of charge without warranties of any kind. Users are responsible for ensuring they have necessary rights to process the video content they choose to convert.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

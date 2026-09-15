@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { getLocaleData } from '../../i18n/locales';
+import { useTranslations, useTranslatedPath } from '../../i18n/utils';
+import type { SupportedLanguage } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'ja' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'ko' } },
+    { params: { lang: 'it' } },
+    { params: { lang: 'hi' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const locale = getLocaleData(lang);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const currentUrl = `https://freevideotoimage.com/${lang}/tools`;
+
+const toolsList = [
+  {
+    ...locale.tools.videoToImageConverter,
+    href: translatePath('/video-to-image-converter'),
+  },
+  {
+    ...locale.tools.videoToPng,
+    href: translatePath('/video-to-png'),
+  },
+  {
+    ...locale.tools.videoToJpg,
+    href: translatePath('/video-to-jpg'),
+  },
+  {
+    ...locale.tools.videoFrameExtractor,
+    href: translatePath('/video-frame-extractor'),
+  },
+  {
+    ...locale.tools.videoScreenshotTool,
+    href: translatePath('/video-screenshot-tool'),
+  },
+];
+---
+
+<Layout lang={lang}>
+  <slot name="head">
+    <title>{t('nav.tools')} - Free Video to Image Converter</title>
+    <meta name="description" content="Access all our free online video to image conversion tools. Convert video to PNG, JPG, WebP, AVIF with zero uploads." />
+    <meta property="og:title" content={`${t('nav.tools')} - Free Video to Image Converter`} />
+    <meta property="og:description" content="Access all our free online video to image conversion tools. Convert video to PNG, JPG, WebP, AVIF with zero uploads." />
+    <meta property="og:image" content="/logo.svg" />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </slot>
+
+  <Header currentPath="/tools" lang={lang} />
+  
+  <main class="flex-1">
+    <section class="py-12 md:py-16 lg:py-20">
+      <div class="container">
+        <div class="mx-auto max-w-6xl">
+          <p class="eyebrow mb-3 text-center">{t('nav.tools')}</p>
+          <div class="mx-auto mb-16 text-center">
+            <h1 class="heading-lg mb-4">{locale.features.title}</h1>
+            <p class="body-md max-w-[600px] mx-auto text-[var(--color-mute)]">
+              {locale.features.subtitle}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+              toolsList.map((tool) => (
+                <article class="card p-8 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                  <div>
+                    <span class="eyebrow text-xs mb-2 inline-block text-[var(--color-brand)]">{tool.eyebrow}</span>
+                    <h2 class="heading-md mb-3">{tool.title}</h2>
+                    <p class="body-md text-[var(--color-mute)] mb-6">{tool.description}</p>
+                  </div>
+                  <a href={tool.href} class="btn-primary w-full text-center justify-center">
+                    {t('nav.convert')}
+                  </a>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

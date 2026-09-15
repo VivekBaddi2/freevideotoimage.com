@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { getLocaleData } from '../../i18n/locales';
+import { useTranslations, useTranslatedPath } from '../../i18n/utils';
+import type { SupportedLanguage } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'ja' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'ko' } },
+    { params: { lang: 'it' } },
+    { params: { lang: 'hi' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const locale = getLocaleData(lang);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const currentUrl = `https://freevideotoimage.com/${lang}/how-it-works`;
+---
+
+<Layout lang={lang}>
+  <slot name="head">
+    <title>{locale.howItWorks.title} - Free Video to Image Converter</title>
+    <meta name="description" content={locale.howItWorks.subtitle} />
+    <meta property="og:title" content={locale.howItWorks.title} />
+    <meta property="og:description" content={locale.howItWorks.subtitle} />
+    <meta property="og:image" content="/logo.svg" />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={locale.howItWorks.title} />
+    <meta name="twitter:description" content={locale.howItWorks.subtitle} />
+  </slot>
+
+  <Header currentPath="/how-it-works" lang={lang} />
+  
+  <main class="flex-1">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <div class="container">
+          <div class="text-center">
+            <p class="eyebrow mb-4">{locale.howItWorks.eyebrow}</p>
+            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">{locale.howItWorks.title}</h1>
+            <p class="body-lg max-w-[600px] mx-auto text-center mt-4">
+              {locale.howItWorks.subtitle}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {
+            locale.howItWorks.steps.map((step) => (
+              <li class="card relative p-8 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] shadow-sm">
+                <span class="absolute -top-4 left-6 bg-[var(--color-ink)] text-[var(--color-on-primary)] text-2xl font-bold w-10 h-10 rounded-full flex items-center justify-center">
+                  {step.step}
+                </span>
+                <div class="pt-4">
+                  <h3 class="heading-md mb-3">{step.title}</h3>
+                  <p class="body-md text-[var(--color-mute)]">{step.description}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
+      <div class="container text-center">
+        <h2 class="heading-lg mb-4">{t('cta.title')}</h2>
+        <p class="body-lg mb-8 max-w-[600px] mx-auto">{t('cta.subtitle')}</p>
+        <a href={translatePath('/video-to-image-converter')} class="btn-primary inline-flex">
+          {t('cta.button')}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>
