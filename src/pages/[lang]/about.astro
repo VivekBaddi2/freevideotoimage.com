@@ -1,21 +1,21 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import { getLocaleData } from '../../i18n/locales';
-import { useTranslations, useTranslatedPath } from '../../i18n/utils';
-import type { SupportedLanguage } from '../../i18n/ui';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import { getLocaleData } from "../../i18n/locales";
+import { useTranslations, useTranslatedPath } from "../../i18n/utils";
+import type { SupportedLanguage } from "../../i18n/ui";
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'ja' } },
-    { params: { lang: 'fr' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'pt' } },
-    { params: { lang: 'ko' } },
-    { params: { lang: 'it' } },
-    { params: { lang: 'hi' } },
+    { params: { lang: "es" } },
+    { params: { lang: "ja" } },
+    { params: { lang: "fr" } },
+    { params: { lang: "de" } },
+    { params: { lang: "pt" } },
+    { params: { lang: "ko" } },
+    { params: { lang: "it" } },
+    { params: { lang: "hi" } },
   ];
 }
 
@@ -28,51 +28,174 @@ const currentUrl = `https://freevideotoimage.com/${lang}/about`;
 
 <Layout lang={lang}>
   <slot name="head">
-    <title>{t('nav.about')} - Free Video to Image Converter</title>
-    <meta name="description" content={`Learn about FreeVideoToImage.com, a privacy-focused client-side video to image converter.`} />
-    <meta property="og:title" content={`${t('nav.about')} - Free Video to Image Converter`} />
-    <meta property="og:description" content={`Learn about FreeVideoToImage.com, a privacy-focused client-side video to image converter.`} />
+    <title>{locale.about.meta.title}</title>
+    <meta name="description" content={locale.about.meta.description} />
+    <meta property="og:title" content={locale.about.meta.ogTitle} />
+    <meta property="og:description" content={locale.about.meta.ogDescription} />
     <meta property="og:image" content="/logo.svg" />
     <meta property="og:url" content={currentUrl} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={locale.about.meta.twitterTitle} />
+    <meta
+      name="twitter:description"
+      content={locale.about.meta.twitterDescription}
+    />
   </slot>
 
   <Header currentPath="/about" lang={lang} />
-  
+
   <main class="flex-1">
+    <!-- Hero Section -->
     <section class="page-hero">
       <div class="page-hero-content">
         <div class="container">
           <div class="text-center">
-            <p class="eyebrow mb-4">{t('pill.private')}</p>
-            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">{t('nav.about')} FreeVideoToImage.com</h1>
-            <p class="body-lg max-w-[600px] mx-auto text-center mt-4 text-[var(--color-mute)]">
-              {locale.seoContent.subtitle}
+            <p class="eyebrow mb-4">{locale.about.hero.eyebrow}</p>
+            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">
+              {locale.about.hero.title}
+            </h1>
+            <p class="body-lg max-w-[600px] mx-auto text-center">
+              {locale.about.hero.subtitle}
             </p>
           </div>
         </div>
       </div>
+      <!-- Mesh Gradient Background -->
+      <div class="absolute inset-0 -z-0 pointer-events-none">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="{colors.cyan}"></stop>
+              <stop offset="25%" stop-color="{colors.violet}"></stop>
+              <stop offset="50%" stop-color="{colors.pink}"></stop>
+              <stop offset="75%" stop-color="{colors.magenta}"></stop>
+              <stop offset="100%" stop-color="{colors.cyan}"></stop>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" fill="url(#gradient)" opacity="0.08"
+          ></rect>
+        </svg>
+      </div>
     </section>
 
+    <!-- Our Mission -->
     <section class="page-section">
-      <div class="container max-w-4xl mx-auto space-y-8">
-        <div class="card p-8 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)]">
-          <h2 class="heading-md mb-4 text-[var(--color-brand)]">{t('pill.clientSide')}</h2>
-          <div class="space-y-4 body-md text-[var(--color-mute)] leading-relaxed">
+      <div class="container">
+        <div class="section-heading">
+          <span class="mono-eyebrow mb-3">{locale.about.mission.eyebrow}</span>
+          <h2 class="heading-lg mb-4 text-center">
+            {locale.about.mission.title}
+          </h2>
+        </div>
+        <div class="editorial-copy">
+          {
+            locale.about.mission.paragraphs.map((paragraph: string) => (
+              <p>{paragraph}</p>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Approach -->
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="section-heading">
+          <span class="mono-eyebrow mb-3">{locale.about.technical.eyebrow}</span
+          >
+          <h2 class="heading-lg mb-4 text-center">
+            {locale.about.technical.title}
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          {
+            Object.values(locale.about.technical.features).map(
+              (feature: any) => (
+                <div class="feature-card">
+                  <h3 class="heading-md mb-3">{feature.title}</h3>
+                  <p class="body-md">{feature.description}</p>
+                </div>
+              ),
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Philosophy -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="mono-eyebrow mb-3">{locale.about.design.eyebrow}</span>
+          <h2 class="heading-lg mb-4 text-center">
+            {locale.about.design.title}
+          </h2>
+        </div>
+        <div class="editorial-copy">
+          <p>{locale.about.design.intro}</p>
+          <ul class="list-disc list-inside space-y-4">
             {
-              locale.seoContent.paragraphs.map((p) => (
-                <p>{p}</p>
+              Object.values(locale.about.design.points).map((point: any) => (
+                <li>{point}</li>
               ))
             }
-          </div>
+          </ul>
+          <p>{locale.about.design.outro}</p>
         </div>
+      </div>
+    </section>
 
-        <div class="text-center pt-8">
-          <a href={translatePath('/video-to-image-converter')} class="btn-primary inline-flex">
-            {t('hero.cta')}
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7" />
+    <!-- Use Cases -->
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="section-heading">
+          <span class="mono-eyebrow mb-3">{locale.about.useCases.eyebrow}</span>
+          <h2 class="heading-lg mb-4 text-center">
+            {locale.about.useCases.title}
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {
+            Object.values(locale.about.useCases.cases).map((item: any) => (
+              <div class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+                <div class="space-y-4">
+                  <h3 class="heading-md mb-2">{item.title}</h3>
+                  <p class="body-md">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="heading-lg mb-4">{locale.about.cta.title}</h2>
+          <p class="body-md max-w-[500px] mx-auto mb-6">
+            {locale.about.cta.subtitle}
+          </p>
+          <a
+            href={translatePath("/video-to-image-converter")}
+            class="btn-primary inline-flex items-center"
+          >
+            {locale.about.cta.button}
+            <svg
+              class="ml-2 w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
           </a>
         </div>
