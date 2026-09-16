@@ -43,28 +43,74 @@ const currentUrl = `https://freevideotoimage.com/${lang}/features`;
   <Header currentPath="/features" lang={lang} />
   
   <main class="flex-1">
+    <!-- Hero Section -->
     <section class="page-hero">
       <div class="page-hero-content">
         <div class="container">
           <div class="text-center">
             <p class="eyebrow mb-4">{locale.features.eyebrow}</p>
             <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">{locale.features.title}</h1>
-            <p class="body-lg max-w-[600px] mx-auto text-center mt-4">
+            <p class="body-lg max-w-[600px] mx-auto text-center">
               {locale.features.subtitle}
             </p>
           </div>
         </div>
       </div>
+      <!-- Mesh Gradient Background -->
+      <div class="absolute inset-0 -z-0 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="{colors.cyan}" />
+              <stop offset="25%" stop-color="{colors.violet}" />
+              <stop offset="50%" stop-color="{colors.pink}" />
+              <stop offset="75%" stop-color="{colors.magenta}" />
+              <stop offset="100%" stop-color="{colors.cyan}" />
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" fill="url(#gradient)" opacity="0.08" />
+        </svg>
+      </div>
     </section>
 
+    <!-- SEO Content Section -->
+    <section class="page-section bg-[var(--color-canvas-elevated)]">
+      <div class="container">
+        <div class="section-heading">
+          <span class="mono-eyebrow mb-3">{locale.features.seo.eyebrow}</span>
+          <h2 class="heading-lg mb-4 text-center">{locale.features.seo.title}</h2>
+          <p class="body-md max-w-[600px] mx-auto text-center">
+            {locale.features.seo.subtitle}
+          </p>
+        </div>
+        <div class="editorial-copy">
+          <p>{locale.features.seo.paragraph1}</p>
+          <p>{locale.features.seo.paragraph2}</p>
+          <p>{locale.features.seo.paragraph3}</p>
+          <p>{locale.features.seo.paragraph4}</p>
+          <p>{locale.features.seo.paragraph5}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
     <section class="page-section">
       <div class="container">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="section-heading">
+          <span class="mono-eyebrow mb-3">{locale.features.gridEyebrow}</span>
+          <h2 class="heading-lg mb-4 text-center">{locale.features.gridTitle}</h2>
+          <p class="body-md max-w-[500px] mx-auto text-center">
+            {locale.features.gridSubtitle}
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {
             locale.features.items.map((feature) => (
-              <article class="card p-6 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] shadow-sm">
-                <h3 class="heading-md mb-3">{feature.title}</h3>
-                <p class="body-md text-[var(--color-mute)]">{feature.description}</p>
+              <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow">
+                <div class="space-y-4">
+                  <h3 class="heading-md mb-2">{feature.title}</h3>
+                  <p class="body-md">{feature.description}</p>
+                </div>
               </article>
             ))
           }
@@ -72,16 +118,31 @@ const currentUrl = `https://freevideotoimage.com/${lang}/features`;
       </div>
     </section>
 
+    <!-- Technical Details -->
     <section class="page-section bg-[var(--color-canvas-elevated)]">
-      <div class="container text-center">
-        <h2 class="heading-lg mb-4">{t('cta.title')}</h2>
-        <p class="body-lg mb-8 max-w-[600px] mx-auto">{t('cta.subtitle')}</p>
-        <a href={translatePath('/video-to-image-converter')} class="btn-primary inline-flex">
-          {t('cta.button')}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
+      <div class="container">
+        <div class="section-heading">
+          <span class="mono-eyebrow mb-3">{locale.features.tech.eyebrow}</span>
+          <h2 class="heading-lg mb-4 text-center">{locale.features.tech.title}</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2">
+          <div class="space-y-6">
+            <h3 class="heading-md mb-3">{locale.features.tech.highPerformance.title}</h3>
+            <p class="body-md">{locale.features.tech.highPerformance.desc}</p>
+          </div>
+          <div class="space-y-6">
+            <h3 class="heading-md mb-3">{locale.features.tech.formatSupport.title}</h3>
+            <p class="body-md">{locale.features.tech.formatSupport.desc}</p>
+          </div>
+          <div class="space-y-6">
+            <h3 class="heading-md mb-3">{locale.features.tech.privacyFirst.title}</h3>
+            <p class="body-md">{locale.features.tech.privacyFirst.desc}</p>
+          </div>
+          <div class="space-y-6">
+            <h3 class="heading-md mb-3">{locale.features.tech.noLimits.title}</h3>
+            <p class="body-md">{locale.features.tech.noLimits.desc}</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>

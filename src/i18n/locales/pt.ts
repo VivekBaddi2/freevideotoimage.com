@@ -12,61 +12,169 @@ export const pt = {
     howItWorks: 'Como Funciona',
   },
   features: {
-    eyebrow: 'Recursos',
-    title: 'Tudo o que você precisa para extrair imagens de vídeos',
-    subtitle: 'Modos avançados de captura, vários formatos de imagem e detecção inteligente de cenas no seu navegador.',
+    eyebrow: 'O conjunto completo de ferramentas',
+    title: 'Recursos',
+    subtitle: 'Modos poderosos de extração, múltiplos formatos de saída e detecção inteligente de cenas — tudo rodando no seu navegador.',
+
+    // SEO Section
+    seo: {
+      eyebrow: 'Sobre o Nosso Conversor de Vídeo para Imagem',
+      title: 'Ferramentas Profissionais de Extração de Frames para Todas as Necessidades',
+      subtitle: 'Nossa suíte completa de ferramentas de conversão de vídeo para imagem permite que criadores, designers e profissionais extraiam frames de qualquer vídeo com precisão e facilidade. Todo o processamento ocorre no lado do cliente para máxima privacidade.',
+      paragraph1: 'Procurando por um conversor confiável de vídeo para JPG ou vídeo para PNG? Nossa plataforma combina múltiplos métodos de extração em uma interface intuitiva, tornando-a a solução definitiva de conversão de vídeo para imagem online. Se você precisa converter vídeo em imagem para redes sociais, criar uma coleção de capturas de tela ou gerar uma sequência de imagens para edição, temos as ferramentas de que você precisa.',
+      paragraph2: 'Ao contrário de outros serviços que exigem o envio dos seus vídeos para servidores externos, nosso conversor online gratuito funciona inteiramente dentro do seu navegador. Isso significa que seus arquivos nunca saem do seu dispositivo, garantindo total privacidade e segurança. Você pode usar nosso extrator de frames livremente sem se preocupar com exposição de dados ou limites de tamanho de arquivo (até 2GB).',
+      paragraph3: 'Nossa detecção de cena avançada alimentada por IA identifica de forma inteligente momentos-chave nos seus vídeos, reduzindo a redundância enquanto preserva conteúdos visuais importantes. Para um controle preciso, nossa captura manual quadro a quadro permite extrair exatamente o frame de que você precisa, perfeito para criar miniaturas ou memes.',
+      paragraph4: 'Quando se trata de opções de saída, oferecemos suporte a todos os principais formatos: PNG para qualidade sem perdas, JPG com compressão ajustável (70-95%), WebP para otimização web moderna e AVIF para compressão superior. Baixe seus frames extraídos individualmente ou em um arquivo ZIP conveniente usando nosso sistema de download eficiente.',
+      paragraph5: 'Experimente por que os profissionais escolhem nossa ferramenta como o conversor de vídeo para foto ideal para extrair imagens estáticas de vídeos. Esteja você criando conteúdo, analisando filmagens ou preservando memórias, nossa abordagem no lado do cliente garante que seu fluxo de trabalho criativo permaneça privado, eficiente e sem restrições.',
+    },
+
+    // Features Grid Header
+    gridEyebrow: 'O Que Você Pode Fazer',
+    gridTitle: 'Tudo o que você precisa para extrair frames',
+    gridSubtitle: 'Nosso extrator de frames de vídeo oferece ferramentas de nível profissional para todos os casos de uso.',
+
+    // Feature Cards Items
     items: [
       {
-        title: 'Captura Manual Quadro a Quadro',
-        description: 'Navegue pelo vídeo com precisão e capture o momento exato em alta resolução.',
+        title: 'Captura Manual de Frames',
+        description: 'Navegue pelo vídeo quadro a quadro e capture momentos exatos com precisão milimétrica. Perfeito para pegar aquela ação de fração de segundo ou uma expressão sutil.',
       },
       {
         title: 'Extração por Intervalo',
-        description: 'Extraia imagens automaticamente a cada segundo, 5 segundos ou intervalo personalizado.',
+        description: 'Extraia frames automaticamente em intervalos definidos — a cada segundo, a cada 5 segundos ou com tempo personalizado. Ideal para criar timelapses ou documentar processos ao longo do tempo.',
       },
       {
         title: 'Detecção Inteligente de Cenas',
-        description: 'Identifica transições e mudanças visuais no vídeo para salvar apenas os quadros principais.',
+        description: 'A detecção de limites de cena baseada em IA extrai apenas os frames principais quando o conteúdo muda. Reduz a redundância focando em transições visuais significativas.',
       },
       {
-        title: 'Formatos de Saída Variados',
-        description: 'Exporte para PNG sem perdas, JPG com compressão ajustável, WebP ou formato AVIF.',
+        title: 'Múltiplos Formatos de Saída',
+        description: 'Exporte para PNG (sem perdas), JPG (qualidade de 70-95%), WebP (qualidade de 70-95%) ou AVIF (qualidade de 50-80%). Escolha o equilíbrio certo entre qualidade e tamanho de arquivo para suas necessidades.',
       },
       {
-        title: 'Download em Arquivo ZIP',
-        description: 'Baixe todos os frames extraídos de uma só vez em um arquivo ZIP compacto e organizado.',
+        title: 'Download em ZIP',
+        description: 'Baixe todos os frames em um arquivo ZIP conveniente com suporte a streaming para grandes extrações. Chega de clicar em centenas de downloads individuais.',
       },
       {
-        title: '100% no Navegador',
-        description: 'Seus vídeos nunca saem do seu dispositivo. Máxima privacidade e segurança garantidas.',
+        title: '100% No Lado do Cliente',
+        description: 'Seus vídeos nunca saem do seu dispositivo. Todo o processamento acontece localmente no seu navegador. Privacidade e segurança completas — sem uploads, sem servidores e sem coleta de dados.',
       },
     ],
+
+    // Technical Details Section
+    tech: {
+      eyebrow: 'Excelência Técnica',
+      title: 'Construído para Alto Desempenho',
+      highPerformance: {
+        title: 'Alto Desempenho',
+        desc: 'JavaScript e WebAssembly otimizados garantem um desempenho fluido mesmo com arquivos de vídeo grandes. A extração de frames acontece em tempo real com latência mínima.',
+      },
+      formatSupport: {
+        title: 'Suporte a Formatos',
+        desc: 'Suporta todos os principais formatos de vídeo: MP4, WebM, MOV, AVI, MKV e mais. Qualquer vídeo reproduzível no seu navegador pode ser processado.',
+      },
+      privacyFirst: {
+        title: 'Privacidade em Primeiro Lugar',
+        desc: 'Nenhum dado sai do seu navegador. Não usamos ferramentas de análise, rastreamento ou cookies. Seu trabalho criativo permanece totalmente privado e sob seu controle.',
+      },
+      noLimits: {
+        title: 'Sem Limites',
+        desc: 'Processe vídeos de até 2GB. Extraia centenas de frames sem restrições. Sem marcas d\'água, sem necessidade de registro e sem limitações ocultas.',
+      },
+    },
   },
   howItWorks: {
-    eyebrow: 'Como Funciona',
-    title: 'Três passos simples para suas fotos',
-    subtitle: 'Processo ágil e resultados com qualidade profissional.',
+    eyebrow: 'Um fluxo de trabalho simples',
+    title: 'Como extrair quadros de um vídeo',
+    subtitle: 'Extraia quadros de qualquer vídeo em apenas três passos simples.',
+    stepsHeading: 'Guia Passo a Passo',
     steps: [
       {
         step: '1',
-        title: 'Envie seu Vídeo',
-        description: 'Arraste ou selecione seu arquivo de vídeo (até 2GB). Suporta MP4, WebM, MOV e outros.',
+        title: 'Envie o seu vídeo',
+        description: 'Clique na área de envio ou arraste e solte o seu ficheiro de vídeo. Os formatos suportados incluem MP4, WebM, MOV, AVI e mais (tamanho máximo de 2GB).',
       },
       {
         step: '2',
-        title: 'Escolha o Modo de Extração',
-        description: 'Defina entre captura manual, intervalo ou detecção de cena e ajuste o formato desejado.',
+        title: 'Selecione o método de extração',
+        description: 'Escolha entre três modos: Captura Manual (quadro a quadro), Extração por Intervalo (automática em intervalos fixos) ou Deteção Inteligente de Cenas (apenas momentos-chave).',
       },
       {
         step: '3',
-        title: 'Baixe as Imagens',
-        description: 'Visualize as fotos extraídas e baixe individualmente ou em um arquivo ZIP.',
+        title: 'Configure as definições',
+        description: 'Ajuste parâmetros como o tempo de intervalo, sensibilidade da cena, formato de saída (PNG/JPG/WebP/AVIF) e nível de qualidade.',
+      },
+      {
+        step: '4',
+        title: 'Extraia os quadros',
+        description: 'Clique no botão de extrair para iniciar o processamento. A ferramenta funciona totalmente no seu navegador - nenhum dado sai do seu computador.',
+      },
+      {
+        step: '5',
+        title: 'Pré-visualize e selecione',
+        description: 'Reveja os quadros extraídos na galeria. Use as caixas de seleção para escolher quadros específicos para descarregar ou selecione todos.',
+      },
+      {
+        step: '6',
+        title: 'Descarregue as suas imagens',
+        description: 'Descarregue os quadros selecionados individualmente ou num arquivo ZIP. Todo o processamento é feito do lado do cliente garantindo privacidade total.',
       },
     ],
+    tutorialEyebrow: 'Tutorial Detalhado',
+    tutorialTitle: 'Instruções Passo a Passo',
+    instructions: {
+      gettingStartedTitle: 'Primeiros Passos',
+      gettingStartedText: 'Comece navegando até à ferramenta Conversor de Vídeo para Imagem. A interface está dividida em três secções principais: Envio, Controlos de Extração e Galeria de Resultados.',
+      step1Title: 'Passo 1: Envie o seu vídeo',
+      step1Text: 'Clique na área de envio ou arraste e solte o seu ficheiro de vídeo. A ferramenta suporta todos os principais formatos de vídeo, incluindo MP4, WebM, MOV, AVI, MKV e mais. O tamanho máximo do ficheiro é de 2GB. Após o envio, verá informações do vídeo como duração, resolução e tamanho do ficheiro.',
+      step2Title: 'Passo 2: Escolha o seu método de extração',
+      step2Intro: 'Selecione um dos três modos de extração com base nas suas necessidades:',
+      step2Options: [
+        { label: 'Captura Manual', desc: 'Ideal quando precisa de controlo exato sobre quais quadros extrair. Use o navegador de precisão para ir a momentos específicos e clique em "Capturar Quadro" para guardar cada um.' },
+        { label: 'Extração por Intervalo', desc: 'Perfeito para criar timelapses ou extrair quadros em intervalos regulares. Defina o tempo de intervalo (ex.: a cada 5 segundos) e defina o início/fim se pretender processar apenas parte do vídeo.' },
+        { label: 'Deteção Inteligente de Cenas', desc: 'Ideal para extrair apenas momentos-chave quando a cena muda significativamente. Ajuste o limite de sensibilidade para controlar o que conta como mudança de cena.' }
+      ],
+      step3Title: 'Passo 3: Configure as definições de saída',
+      step3Intro: 'Antes de extrair, escolha o seu formato de saída e qualidade preferidos:',
+      step3Formats: [
+        { label: 'PNG', desc: 'Formato sem perdas, ideal para edição, trabalho de design e fins de arquivo.' },
+        { label: 'JPG', desc: 'Qualidade ajustável de 70 a 95% - perfeito para a web e partilha onde o tamanho do ficheiro importa.' },
+        { label: 'WebP', desc: 'Formato moderno que oferece compressão superior com boa qualidade - ótimo para aplicações web.' },
+        { label: 'AVIF', desc: 'Formato de nova geração com as melhores taxas de compressão (disponível no Safari 16.4+ e Chrome).' }
+      ],
+      step3Footer: 'Para os formatos JPG, WebP e AVIF, pode ajustar a barra de qualidade para equilibrar o tamanho do ficheiro e a qualidade da imagem.',
+      step4Title: 'Passo 4: Extraia os seus quadros',
+      step4Text: 'Clique no botão "Extrair Quadros" para iniciar o processamento. Dependendo da duração do vídeo e do método selecionado, a extração pode demorar alguns momentos. O indicador de progresso mostrará o estado do processo. É importante destacar que todo o processamento ocorre no seu navegador - o seu vídeo nunca sai do seu computador.',
+      step5Title: 'Passo 5: Reveja e selecione os quadros',
+      step5Intro: 'Assim que a extração estiver concluída, verá todos os quadros extraídos na galeria abaixo. Cada quadro exibe:',
+      step5Features: [
+        'O carimbo de data/hora indicando em que ponto do vídeo o quadro foi capturado',
+        'Uma caixa de seleção para marcar/desmarcar o quadro para transferência',
+        'Um ícone de transferência para guardar esse quadro individual imediatamente'
+      ],
+      step5Footer: 'Use os botões "Selecionar Tudo" ou "Desmarcar Tudo" para escolher rapidamente os quadros a descarregar. Os quadros selecionados são destacados com um anel azul.',
+      step6Title: 'Passo 6: Descarregue os seus resultados',
+      step6Intro: 'Quando tiver selecionado os quadros que pretende guardar, tem duas opções de transferência:',
+      step6Options: [
+        { label: 'Descarregar Selecionados', desc: 'Guarda apenas os quadros marcados num arquivo ZIP.' },
+        { label: 'Descarregar Todos como ZIP', desc: 'Guarda todos os quadros extraídos num único ficheiro ZIP.' }
+      ],
+      step6Footer: 'Para extrações grandes, a ferramenta usa transferência por streaming para gerir a transferência de forma eficiente sem consumir memória excessiva. Todas as transferências ocorrem imediatamente para a sua pasta de transferências padrão.',
+      tipsTitle: 'Dicas para obter os melhores resultados',
+      tips: [
+        { label: 'Para seleção precisa de quadros', desc: 'Use o modo Captura Manual e as teclas de seta para navegação quadro a quadro.' },
+        { label: 'Para criação de timelapse', desc: 'Use a Extração por Intervalo com intervalos correspondentes à velocidade de reprodução desejada.' },
+        { label: 'Para destacar momentos-chave', desc: 'Use a Deteção Inteligente de Cenas e ajuste a sensibilidade até obter o número desejado de quadros.' },
+        { label: 'Para fluxos de trabalho de edição', desc: 'Escolha o formato PNG para qualidade sem perdas que não se degrada com edições múltiplas.' },
+        { label: 'Para partilha na web', desc: 'Escolha JPG a 85% de qualidade ou WebP para excelente compressão com boa qualidade visual.' }
+      ]
+    }
   },
   faq: {
-    eyebrow: 'Perguntas Frequentes',
-    title: 'Dúvidas Comuns',
+    title: 'Perguntas Frequentes',
+    subtitle: 'Encontre respostas para as dúvidas mais comuns sobre o nosso extrator de quadros de vídeo.',
+    eyebrow: 'Obter Ajuda',
+    heading: 'Perguntas e Respostas',
     items: [
       {
         q: 'Como funciona um conversor de vídeo para imagem com IA?',
@@ -265,40 +373,43 @@ export const pt = {
     ],
   },
   tools: {
-    videoToPng: {
-      eyebrow: 'Qualidade Sem Perdas',
-      title: 'Conversor de Vídeo para PNG',
-      description: 'Extraia imagens em PNG com fidelidade total de detalhes e cores para trabalhos de design.',
-      metaTitle: 'Conversor de Vídeo para PNG - Extrair PNG de Vídeo Grátis',
-      metaDescription: 'Converta vídeos em imagens PNG de alta qualidade online e de graça. 100% no navegador.',
+    eyebrow: "Todas as Ferramentas de Vídeo",
+    title: "Pacote Completo de Ferramentas de Conversão de Vídeo para Imagem",
+    subtitle: "Seja você procurando um conversor de vídeo para JPG, conversor de vídeo para PNG ou um extrator profissional de quadros de vídeo, nosso kit de ferramentas completo atende a todas as suas necessidades. Todas as ferramentas funcionam 100% no lado do cliente, garantindo que seus vídeos nunca saiam do navegador para máxima privacidade e segurança.",
+    videoToImageConverter: {
+      eyebrow: 'Nossa principal ferramenta de extração de quadros',
+      title: 'Conversor de Vídeo para Imagem',
+      description: 'Extraia quadros usando captura manual, extração por intervalo ou detecção inteligente de cenas. Suporta os formatos PNG, JPG, WebP e AVIF.',
+      metaTitle: 'Conversor de Vídeo para Imagem - Extraia Quadros Online',
+      metaDescription: 'Ferramenta online gratuita para converter vídeo em imagem. Extraia quadros em JPG, PNG, WebP e AVIF sem enviar arquivos.',
     },
     videoToJpg: {
-      eyebrow: 'Compacto e Prático',
-      title: 'Conversor de Vídeo para JPG',
-      description: 'Extraia fotos em JPG com qualidade ajustável (70-95%) para fácil compartilhamento na web.',
-      metaTitle: 'Conversor de Vídeo para JPG - Extrair JPG de Vídeo Online',
-      metaDescription: 'Converta vídeos em fotos JPG online grátis. Escolha o nível de qualidade e baixe em ZIP.',
+      eyebrow: 'Otimizado para saída JPEG',
+      title: 'Vídeo para JPG',
+      description: 'Extraia quadros e salve-os como imagens JPG de alta qualidade com compressão ajustável (70-95% de qualidade). Perfeito para uso na web e compartilhamento.',
+      metaTitle: 'Conversor de Vídeo para JPG - Converter Vídeo para JPG Online Grátis',
+      metaDescription: 'Converta vídeo para JPG online grátis. Extraia fotos JPG de qualquer vídeo com compressão personalizável. Rápido e sem necessidade de registro.',
     },
-    videoToImageConverter: {
-      eyebrow: 'Conversor Completo',
-      title: 'Conversor de Vídeo para Imagem',
-      description: 'Converta qualquer vídeo para JPG, PNG, WebP ou AVIF de forma rápida e ilimitada.',
-      metaTitle: 'Conversor de Vídeo para Imagem - Extrair Frames Online',
-      metaDescription: 'Ferramenta online gratuita para transformar vídeos em imagens sem necessidade de upload.',
-    },
-    videoFrameExtractor: {
-      eyebrow: 'Extração Precisa',
-      title: 'Extrator de Frames de Vídeo',
-      description: 'Capture sequências exatas de quadros com controle de intervalos e detecção de cenas.',
-      metaTitle: 'Extrator de Frames de Vídeo - Capturar Quadros Online',
-      metaDescription: 'Extraia sequências de quadros de vídeo com máxima precisão e baixe tudo em ZIP.',
+    videoToPng: {
+      eyebrow: 'Extração de quadros sem perdas',
+      title: 'Vídeo para PNG',
+      description: 'Extraia quadros como imagens PNG sem perdas, preservando todos os detalhes e cores. Ideal para edição, trabalhos de design e fins de arquivamento.',
+      metaTitle: 'Conversor de Vídeo para PNG - Converter Vídeo para PNG Grátis',
+      metaDescription: 'Conversor online gratuito de vídeo para PNG. Obtenha fotos PNG de alta qualidade sem perda de dados. 100% no navegador e seguro.',
     },
     videoScreenshotTool: {
-      eyebrow: 'Capturas em Alta Resolução',
-      title: 'Captura de Tela de Vídeo',
-      description: 'Tire prints e screenshots de vídeos em alta resolução sem perda de nitidez.',
-      metaTitle: 'Captura de Tela de Vídeo - Tirar Print de Vídeos Online',
-      metaDescription: 'Faça capturas de tela em alta qualidade de qualquer vídeo online gratuitamente.',
+      eyebrow: 'Capture capturas de tela perfeitas',
+      title: 'Ferramenta de Captura de Tela de Vídeo',
+      description: 'Tire capturas de tela precisas de qualquer quadro de vídeo. Possui navegação manual quadro a quadro para capturar o momento exato.',
+      metaTitle: 'Ferramenta de Captura de Tela de Vídeo - Tirar Fotos de Vídeos Online',
+      metaDescription: 'Tire capturas de tela em alta resolução de qualquer vídeo online grátis. Rápido, privado e em múltiplos formatos.',
+    },
+    videoFrameExtractor: {
+      eyebrow: 'Extração profissional de quadros',
+      title: 'Extrator de Quadros de Vídeo',
+      description: 'Extração de quadros de nível profissional com configurações avançadas de tempo de intervalo, detecção de cena e processamento em lote.',
+      metaTitle: 'Extrator de Quadros de Vídeo - Extrair Quadros Online',
+      metaDescription: 'Extraia quadros específicos ou sequências completas de vídeo. Precisão quadro a quadro, intervalos e download em ZIP.',
     },
   },
 };

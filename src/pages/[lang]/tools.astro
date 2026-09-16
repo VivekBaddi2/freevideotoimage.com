@@ -1,21 +1,21 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import { getLocaleData } from '../../i18n/locales';
-import { useTranslations, useTranslatedPath } from '../../i18n/utils';
-import type { SupportedLanguage } from '../../i18n/ui';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import { getLocaleData } from "../../i18n/locales";
+import { useTranslations, useTranslatedPath } from "../../i18n/utils";
+import type { SupportedLanguage } from "../../i18n/ui";
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'ja' } },
-    { params: { lang: 'fr' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'pt' } },
-    { params: { lang: 'ko' } },
-    { params: { lang: 'it' } },
-    { params: { lang: 'hi' } },
+    { params: { lang: "es" } },
+    { params: { lang: "ja" } },
+    { params: { lang: "fr" } },
+    { params: { lang: "de" } },
+    { params: { lang: "pt" } },
+    { params: { lang: "ko" } },
+    { params: { lang: "it" } },
+    { params: { lang: "hi" } },
   ];
 }
 
@@ -28,65 +28,120 @@ const currentUrl = `https://freevideotoimage.com/${lang}/tools`;
 const toolsList = [
   {
     ...locale.tools.videoToImageConverter,
-    href: translatePath('/video-to-image-converter'),
-  },
-  {
-    ...locale.tools.videoToPng,
-    href: translatePath('/video-to-png'),
+    href: translatePath("/video-to-image-converter"),
   },
   {
     ...locale.tools.videoToJpg,
-    href: translatePath('/video-to-jpg'),
+    href: translatePath("/video-to-jpg"),
   },
   {
-    ...locale.tools.videoFrameExtractor,
-    href: translatePath('/video-frame-extractor'),
+    ...locale.tools.videoToPng,
+    href: translatePath("/video-to-png"),
   },
   {
     ...locale.tools.videoScreenshotTool,
-    href: translatePath('/video-screenshot-tool'),
+    href: translatePath("/video-screenshot-tool"),
+  },
+  {
+    ...locale.tools.videoFrameExtractor,
+    href: translatePath("/video-frame-extractor"),
   },
 ];
 ---
 
 <Layout lang={lang}>
   <slot name="head">
-    <title>{t('nav.tools')} - Free Video to Image Converter</title>
-    <meta name="description" content="Access all our free online video to image conversion tools. Convert video to PNG, JPG, WebP, AVIF with zero uploads." />
-    <meta property="og:title" content={`${t('nav.tools')} - Free Video to Image Converter`} />
-    <meta property="og:description" content="Access all our free online video to image conversion tools. Convert video to PNG, JPG, WebP, AVIF with zero uploads." />
+    <title>{locale.tools.title} - Free Video to Image Converter</title>
+    <meta
+      name="description"
+      content="Access all our free online video to image conversion tools. Convert video to PNG, JPG, WebP, AVIF with zero uploads."
+    />
+    <meta
+      property="og:title"
+      content={`${locale.tools.title} - Free Video to Image Converter`}
+    />
+    <meta
+      property="og:description"
+      content="Access all our free online video to image conversion tools. Convert video to PNG, JPG, WebP, AVIF with zero uploads."
+    />
     <meta property="og:image" content="/logo.svg" />
     <meta property="og:url" content={currentUrl} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content={`${locale.tools.title} - Free Video to Image Converter`}
+    />
+    <meta
+      name="twitter:description"
+      content="Access all our free online video to image conversion tools. Convert video to PNG, JPG, WebP, AVIF with zero uploads."
+    />
   </slot>
 
   <Header currentPath="/tools" lang={lang} />
-  
+
   <main class="flex-1">
     <section class="py-12 md:py-16 lg:py-20">
       <div class="container">
         <div class="mx-auto max-w-6xl">
-          <p class="eyebrow mb-3 text-center">{t('nav.tools')}</p>
+          <p class="eyebrow mb-3 text-center">{locale.tools.title}</p>
+
+          <!-- SEO Content Section -->
           <div class="mx-auto mb-16 text-center">
-            <h1 class="heading-lg mb-4">{locale.features.title}</h1>
-            <p class="body-md max-w-[600px] mx-auto text-[var(--color-mute)]">
-              {locale.features.subtitle}
+            <h2 class="heading-lg mb-4">{locale.tools.title}</h2>
+            <p class="body-md max-w-[600px] mx-auto">
+              {locale.tools.subtitle}
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {
               toolsList.map((tool) => (
-                <article class="card p-8 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                <article class="card hover:shadow-[0px_4px_12px_rgba(0,0,0,0.08)] transition-shadow">
                   <div>
-                    <span class="eyebrow text-xs mb-2 inline-block text-[var(--color-brand)]">{tool.eyebrow}</span>
-                    <h2 class="heading-md mb-3">{tool.title}</h2>
-                    <p class="body-md text-[var(--color-mute)] mb-6">{tool.description}</p>
+                    <div class="flex items-center mb-4">
+                      <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex-shrink-0">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          aria-hidden="true"
+                        >
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                          <polyline points="17 8 12 3 7 8" />
+                          <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                      </div>
+                      <div class="ml-3">
+                        <h3 title={tool.title} class="heading-md mb-1 line-clamp-1">{tool.title}</h3>
+                        <p title={tool.eyebrow} class="text-sm text-muted-foreground line-clamp-1">
+                          {tool.eyebrow}
+                        </p>
+                      </div>
+                    </div>
+                    <p title={tool.description} class="body-sm mb-4 line-clamp-3">{tool.description}</p>
+                    <a
+                      href={tool.href}
+                      class="flex items-center btn btn-outline btn-sm"
+                    >
+                      {t("nav.convert")}
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        aria-hidden="true"
+                        class="ml-2 h-4 w-4"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </a>
                   </div>
-                  <a href={tool.href} class="btn-primary w-full text-center justify-center">
-                    {t('nav.convert')}
-                  </a>
                 </article>
               ))
             }

@@ -24,60 +24,152 @@ const locale = getLocaleData(lang);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 const currentUrl = `https://freevideotoimage.com/${lang}/how-it-works`;
+const { howItWorks } = locale;
+const { instructions } = howItWorks;
 ---
 
 <Layout lang={lang}>
   <slot name="head">
-    <title>{locale.howItWorks.title} - Free Video to Image Converter</title>
-    <meta name="description" content={locale.howItWorks.subtitle} />
-    <meta property="og:title" content={locale.howItWorks.title} />
-    <meta property="og:description" content={locale.howItWorks.subtitle} />
+    <title>{howItWorks.title} - Step-by-Step Guide</title>
+    <meta name="description" content={howItWorks.subtitle} />
+    <meta property="og:title" content={`${howItWorks.title} - Step-by-Step Guide`} />
+    <meta property="og:description" content={howItWorks.subtitle} />
     <meta property="og:image" content="/logo.svg" />
     <meta property="og:url" content={currentUrl} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={locale.howItWorks.title} />
-    <meta name="twitter:description" content={locale.howItWorks.subtitle} />
+    <meta name="twitter:title" content={`${howItWorks.title} - Step-by-Step Guide`} />
+    <meta name="twitter:description" content={howItWorks.subtitle} />
   </slot>
 
   <Header currentPath="/how-it-works" lang={lang} />
   
   <main class="flex-1">
+    <!-- Hero Section -->
     <section class="page-hero">
       <div class="page-hero-content">
         <div class="container">
           <div class="text-center">
-            <p class="eyebrow mb-4">{locale.howItWorks.eyebrow}</p>
-            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">{locale.howItWorks.title}</h1>
+            <p class="eyebrow mb-4">{howItWorks.eyebrow}</p>
+            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">{howItWorks.title}</h1>
             <p class="body-lg max-w-[600px] mx-auto text-center mt-4">
-              {locale.howItWorks.subtitle}
+              {howItWorks.subtitle}
             </p>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="page-section">
-      <div class="container">
-        <ol class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {
-            locale.howItWorks.steps.map((step) => (
-              <li class="card relative p-8 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] shadow-sm">
-                <span class="absolute -top-4 left-6 bg-[var(--color-ink)] text-[var(--color-on-primary)] text-2xl font-bold w-10 h-10 rounded-full flex items-center justify-center">
-                  {step.step}
-                </span>
-                <div class="pt-4">
-                  <h3 class="heading-md mb-3">{step.title}</h3>
-                  <p class="body-md text-[var(--color-mute)]">{step.description}</p>
-                </div>
-              </li>
-            ))
-          }
-        </ol>
+      <!-- Mesh Gradient Background -->
+      <div class="absolute inset-0 -z-0 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="{colors.cyan}" />
+              <stop offset="25%" stop-color="{colors.violet}" />
+              <stop offset="50%" stop-color="{colors.pink}" />
+              <stop offset="75%" stop-color="{colors.magenta}" />
+              <stop offset="100%" stop-color="{colors.cyan}" />
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" fill="url(#gradient)" opacity="0.08" />
+        </svg>
       </div>
     </section>
 
-    <section class="page-section bg-[var(--color-canvas-elevated)]">
+    <!-- How It Works Section -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="mono-eyebrow mb-3">{howItWorks.stepsHeading || 'Step-by-Step Guide'}</span>
+          <h2 class="heading-lg mb-4 text-center">{howItWorks.title}</h2>
+          <p class="body-md max-w-[500px] mx-auto text-center">
+            {howItWorks.subtitle}
+          </p>
+        </div>
+        
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2">
+          {
+            howItWorks.steps.map((step) => (
+              <article class="feature-card step-card">
+                <div>
+                  <div class="step-number">{step.step}</div>
+                  <div>
+                    <h3 class="heading-md mb-3">{step.title}</h3>
+                    <p class="body-md">{step.description}</p>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Tutorial -->
+    {instructions && (
+      <section class="page-section bg-[var(--color-canvas-elevated)]">
+        <div class="container">
+          <div class="section-heading">
+            <span class="mono-eyebrow mb-3">{howItWorks.tutorialEyebrow || 'Detailed Tutorial'}</span>
+            <h2 class="heading-lg mb-4 text-center">{howItWorks.tutorialTitle || 'Step-by-Step Instructions'}</h2>
+          </div>
+          <div class="prose lg:prose-lg mx-auto">
+            <h3 class="heading-md mb-4">{instructions.gettingStartedTitle}</h3>
+            <p>
+              {instructions.gettingStartedText}
+            </p>
+
+            <h3 class="heading-md mb-4">{instructions.step1Title}</h3>
+            <p>{instructions.step1Text}</p>
+
+            <h3 class="heading-md mb-4">{instructions.step2Title}</h3>
+            <p>{instructions.step2Intro}</p>
+            <ol class="list-decimal list-inside space-y-2">
+              {instructions.step2Options.map((opt) => (
+                <li><strong>{opt.label}:</strong> {opt.desc}</li>
+              ))}
+            </ol>
+
+            <h3 class="heading-md mb-4">{instructions.step3Title}</h3>
+            <p>{instructions.step3Intro}</p>
+            <ul class="list-disc list-inside space-y-2">
+              {instructions.step3Formats.map((fmt) => (
+                <li><strong>{fmt.label}:</strong> {fmt.desc}</li>
+              ))}
+            </ul>
+            <p>{instructions.step3Footer}</p>
+
+            <h3 class="heading-md mb-4">{instructions.step4Title}</h3>
+            <p>{instructions.step4Text}</p>
+
+            <h3 class="heading-md mb-4">{instructions.step5Title}</h3>
+            <p>{instructions.step5Intro}</p>
+            <ul class="list-disc list-inside space-y-2">
+              {instructions.step5Features.map((feat) => (
+                <li>{feat}</li>
+              ))}
+            </ul>
+            <p>{instructions.step5Footer}</p>
+
+            <h3 class="heading-md mb-4">{instructions.step6Title}</h3>
+            <p>{instructions.step6Intro}</p>
+            <ol class="list-decimal list-inside space-y-2">
+              {instructions.step6Options.map((opt) => (
+                <li><strong>{opt.label}:</strong> {opt.desc}</li>
+              ))}
+            </ol>
+            <p>{instructions.step6Footer}</p>
+
+            <h3 class="heading-md mb-4">{instructions.tipsTitle}</h3>
+            {instructions.tips.map((tip) => (
+              <p><strong>{tip.label}:</strong> {tip.desc}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Call to Action Section -->
+    <section class="page-section bg-[var(--color-canvas-elevated)] border-t border-[var(--color-hairline)]">
       <div class="container text-center">
         <h2 class="heading-lg mb-4">{t('cta.title')}</h2>
         <p class="body-lg mb-8 max-w-[600px] mx-auto">{t('cta.subtitle')}</p>

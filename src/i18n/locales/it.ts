@@ -12,61 +12,169 @@ export const it = {
     howItWorks: 'Come Funziona',
   },
   features: {
-    eyebrow: 'Funzionalità',
-    title: 'Tutto ciò che serve per estrarre immagini dai video',
-    subtitle: 'Cattura precisa fotogramma per fotogramma, estrazione a intervalli e rilevamento intelligente delle scene direttamente nel tuo browser.',
+    eyebrow: 'Il toolkit completo',
+    title: 'Caratteristiche',
+    subtitle: 'Potenti modalità di estrazione, molteplici formati di output e rilevamento intelligente delle scene — tutto nel tuo browser.',
+
+    // SEO Section
+    seo: {
+      eyebrow: 'Informazioni sul nostro convertitore da video a immagini',
+      title: 'Strumenti professionali di estrazione frame per ogni esigenza',
+      subtitle: 'La nostra suite completa di strumenti per la conversione da video a immagini consente a creatori, designer e professionisti di estrarre frame da qualsiasi video con precisione e facilità. L\'intera elaborazione avviene lato client per la massima privacy.',
+      paragraph1: 'Cerchi un convertitore da video a JPG o un convertitore da video a PNG affidabile? La nostra piattaforma combina molteplici metodi di estrazione in un\'unica interfaccia intuitiva, rendendola la soluzione definitiva per la conversione da video a immagini online. Che tu debba convertire video in immagini per i social media, creare una raccolta di screenshot video o generare una sequenza di immagini da video per il montaggio, abbiamo gli strumenti di cui hai bisogno.',
+      paragraph2: 'A differenza di altri servizi che richiedono il caricamento dei tuoi video su server esterni, il nostro convertitore gratuito da video a immagini online funziona interamente all\'interno del tuo browser. Ciò significa che i tuoi file non lasciano mai il tuo dispositivo, garantendo la completa privacy e sicurezza. Puoi utilizzare liberamente il nostro estrattore di frame video senza preoccuparti dell\'esposizione dei dati o di limiti sulla dimensione dei file (fino a 2 GB).',
+      paragraph3: 'Il nostro avanzato rilevamento delle scene basato sull\'IA identifica intelligentemente i momenti chiave nei tuoi video, riducendo le ridondanze e preservando i contenuti visivi importanti. Per un controllo di precisione, la nostra cattura manuale fotogramma per fotogramma ti consente di estrarre esattamente il frame di cui hai bisogno, perfetto per creare miniature o meme.',
+      paragraph4: 'Per quanto riguarda le opzioni di output, supportiamo tutti i formati principali: PNG per una qualità senza perdite, JPG con compressione regolabile (70-95%), WebP per l\'ottimizzazione web moderna e AVIF per una compressione superiore. Scarica i tuoi frame estratti singolarmente o come un comodo archivio ZIP utilizzando il nostro efficiente sistema di download.',
+      paragraph5: 'Scopri perché i professionisti scelgono il nostro strumento come convertitore da video a foto di riferimento per estrarre immagini fisse dai video. Che tu stia creando contenuti, analizzando riprese o conservando ricordi, il nostro approccio lato client garantisce che il tuo flusso di lavoro creativo rimanga privato, efficiente e senza restrizioni.',
+    },
+
+    // Features Grid Header
+    gridEyebrow: 'Cosa puoi fare',
+    gridTitle: 'Tutto ciò di cui hai bisogno per estrarre i frame',
+    gridSubtitle: 'Il nostro estrattore di frame video offre strumenti di livello professionale per ogni caso d\'uso.',
+
+    // Feature Cards Items
     items: [
       {
-        title: 'Cattura Manuale dei Fotogrammi',
-        description: 'Scorri il video fotogramma per fotogramma e cattura il momento esatto con massima risoluzione.',
+        title: 'Cattura manuale del frame',
+        description: 'Scorri il tuo video fotogramma per fotogramma e cattura momenti esatti con una precisione al pixel. Perfetto per cogliere un\'azione istantanea o un\'espressione sottile.',
       },
       {
-        title: 'Estrazione a Intervalli',
-        description: 'Estrai automaticamente immagini a intervalli regolari: ogni secondo, ogni 5 secondi o a scelta.',
+        title: 'Estrazione a intervalli',
+        description: 'Estrai automaticamente i frame a intervalli impostati — ogni secondo, ogni 5 secondi o con un intervallo personalizzato. Ideale per creare time-lapse o documentare processi nel tempo.',
       },
       {
-        title: 'Rilevamento Intelligente delle Scene',
-        description: 'Riconosce i cambi di scena ed estrae automaticamente solo i fotogrammi chiave.',
+        title: 'Rilevamento intelligente delle scene',
+        description: 'Il rilevamento dei confini della scena basato sull\'IA estrae solo i frame chiave quando il contenuto cambia. Riduce la ridondanza concentrandosi sulle transizioni visive significative.',
       },
       {
-        title: 'Formati di Output Multipli',
-        description: 'Esporta in PNG senza perdita, JPG compresso, WebP moderno o formato AVIF.',
+        title: 'Formati di output multipli',
+        description: 'Esporta in PNG (senza perdita di qualità), JPG (qualità 70-95%), WebP (qualità 70-95%) o AVIF (qualità 50-80%). Scegli il giusto equilibrio tra qualità e dimensione del file per le tue esigenze.',
       },
       {
-        title: 'Download in Archivio ZIP',
-        description: 'Scarica tutti i fotogrammi estratti in un unico pratico archivio ZIP numerato.',
+        title: 'Download in formato ZIP',
+        description: 'Scarica tutti i frame come un comodo archivio ZIP con supporto allo streaming per estrazioni di grandi dimensioni. Mai più clic ripetuti su centinaia di download singoli.',
       },
       {
-        title: '100% Nel Browser',
-        description: 'I tuoi file video non lasciano mai il dispositivo. Elaborazione locale e privata.',
+        title: '100% Lato Client',
+        description: 'I tuoi video non lasciano mai il tuo dispositivo. Tutto l\'elaborazione avviene localmente nel tuo browser. Privacy e sicurezza totali — nessun caricamento, nessun server, nessuna raccolta dati.',
       },
     ],
+
+    // Technical Details Section
+    tech: {
+      eyebrow: 'Eccellenza Tecnica',
+      title: 'Progettato per le Prestazioni',
+      highPerformance: {
+        title: 'Alte Prestazioni',
+        desc: 'JavaScript e WebAssembly ottimizzati garantiscono prestazioni fluide anche con file video di grandi dimensioni. L\'estrazione dei frame avviene in tempo reale con una latenza minima.',
+      },
+      formatSupport: {
+        title: 'Supporto Formati',
+        desc: 'Supporta tutti i principali formati video: MP4, WebM, MOV, AVI, MKV e altri ancora. Qualsiasi video riproducibile nel tuo browser può essere elaborato.',
+      },
+      privacyFirst: {
+        title: 'La Privacy al Primo Posto',
+        desc: 'Zero dati lasciano il tuo browser. Non utilizziamo strumenti di analisi, tracciamento o cookie. Il tuo lavoro creativo rimane completamente privato e sotto il tuo controllo.',
+      },
+      noLimits: {
+        title: 'Nessun Limite',
+        desc: 'Elabora video fino a 2 GB di dimensione. Estrai centinaia di frame senza restrizioni. Nessuna filigrana, nessuna registrazione, nessuna limitazione nascosta.',
+      },
+    },
   },
   howItWorks: {
-    eyebrow: 'Come Funziona',
-    title: 'Tre semplici passaggi per ottenere le tue immagini',
-    subtitle: 'Procedura veloce, risultati ad altissima definizione.',
+    eyebrow: 'Un semplice flusso di lavoro',
+    title: 'Come estrarre fotogrammi da un video',
+    subtitle: 'Estrai fotogrammi da qualsiasi video in pochi semplici passaggi.',
+    stepsHeading: 'Guida Passo dopo Passo',
     steps: [
       {
         step: '1',
-        title: 'Carica il tuo Video',
-        description: 'Trascina o seleziona un file video (fino a 2GB). Supporta MP4, WebM, MOV e altri.',
+        title: 'Carica il tuo video',
+        description: 'Fai clic sull\'area di caricamento o trascina e rilascia il tuo file video. I formati supportati includono MP4, WebM, MOV, AVI e altri (dimensione massima 2GB).',
       },
       {
         step: '2',
-        title: 'Scegli la Modalità',
-        description: 'Imposta la cattura manuale, a intervalli o per scene e seleziona formato e qualità.',
+        title: 'Seleziona il metodo di estrazione',
+        description: 'Scegli tra tre modalità: Cattura Manuale (fotogramma per fotogramma), Estrazione a Intervalli (automatica a intervalli regolari) o Rilevamento Intelligente Scene (solo momenti chiave).',
       },
       {
         step: '3',
-        title: 'Scarica i Fotogrammi',
-        description: 'Visualizza l\'anteprima delle immagini e scaricale singolarmente o in archivio ZIP.',
+        title: 'Configura le impostazioni',
+        description: 'Regola i parametri di estrazione come il tempo d\'intervallo, la sensibilità della scena, il formato di output (PNG/JPG/WebP/AVIF) e il livello di qualità.',
+      },
+      {
+        step: '4',
+        title: 'Estrai i fotogrammi',
+        description: 'Fai clic sul pulsante di estrazione per iniziare l\'elaborazione. Lo strumento funziona interamente nel tuo browser - nessun dato lascia il tuo computer.',
+      },
+      {
+        step: '5',
+        title: 'Anteprima e selezione',
+        description: 'Esamina i fotogrammi estratti nella galleria. Utilizza le caselle di controllo per selezionare fotogrammi specifici da scaricare oppure sceglili tutti.',
+      },
+      {
+        step: '6',
+        title: 'Scarica le tue immagini',
+        description: 'Scarica i fotogrammi selezionati singolarmente o come archivio ZIP. Tutta l\'elaborazione avviene lato client garantendo la massima privacy.',
       },
     ],
+    tutorialEyebrow: 'Tutorial Dettagliato',
+    tutorialTitle: 'Istruzioni Passo dopo Passo',
+    instructions: {
+      gettingStartedTitle: 'Per Iniziare',
+      gettingStartedText: 'Inizia navigando nello strumento Convertitore da Video a Immagini. L\'interfaccia è divisa in tre sezioni principali: Caricamento, Controlli di Estrazione e Galleria Risultati.',
+      step1Title: 'Passo 1: Carica il tuo video',
+      step1Text: 'Fai clic sull\'ampia area di caricamento o trascina e rilascia il tuo file video su di essa. Lo strumento supporta tutti i principali formati video, tra cui MP4, WebM, MOV, AVI, MKV e altri. La dimensione massima del file è 2GB. Una volta caricato, visualizzerai le informazioni del video tra cui durata, risoluzione e dimensione del file.',
+      step2Title: 'Passo 2: Scegli il metodo di estrazione',
+      step2Intro: 'Seleziona una delle tre modalità di estrazione in base alle tue esigenze:',
+      step2Options: [
+        { label: 'Cattura Manuale', desc: 'Ideale quando si necessita di un controllo preciso su quali fotogrammi estrarre. Utilizza il cursore di precisione per navigare in momenti specifici e fai clic su "Cattura Fotogramma" per salvare ciascun fotogramma.' },
+        { label: 'Estrazione a Intervalli', desc: 'Perfetta per creare timelapse o estrarre fotogrammi a intervalli regolari. Imposta il tempo di intervallo (ad es. ogni 5 secondi) e definisci l\'ora di inizio e fine se desideri elaborare solo una parte del video.' },
+        { label: 'Rilevamento Intelligente Scene', desc: 'L\'ideale per estrarre solo i momenti chiave quando la scena cambia in modo significativo. Regola la soglia di sensibilità per controllare ciò che viene considerato un cambio di scena.' }
+      ],
+      step3Title: 'Passo 3: Configura le impostazioni di output',
+      step3Intro: 'Prima di estrarre, scegli il formato di output e la qualità preferiti:',
+      step3Formats: [
+        { label: 'PNG', desc: 'Formato senza perdita di qualità, ideale per editing, lavori di grafica e archiviazione.' },
+        { label: 'JPG', desc: 'Qualità regolabile dal 70 al 95% - perfetto per l\'uso sul web e la condivisione dove la dimensione del file è importante.' },
+        { label: 'WebP', desc: 'Formato moderno che offre una compressione superiore con una buona qualità - ottimo per applicazioni web.' },
+        { label: 'AVIF', desc: 'Formato di nuova generazione con i migliori rapporti di compressione (disponibile in Safari 16.4+ e Chrome).' }
+      ],
+      step3Footer: 'Per i formati JPG, WebP e AVIF, è possibile regolare il cursore della qualità per bilanciare la dimensione del file e la qualità dell\'immagine.',
+      step4Title: 'Passo 4: Estrai i tuoi fotogrammi',
+      step4Text: 'Fai clic sul pulsante "Estrai Fotogrammi" per iniziare l\'elaborazione. A seconda della durata del video e del metodo selezionato, l\'estrazione potrebbe richiedere alcuni momenti. L\'indicatore di avanzamento mostrerà lo stato dell\'operazione. È importante sottolineare che tutta l\'elaborazione avviene nel tuo browser - il tuo video non lascia mai il tuo computer.',
+      step5Title: 'Passo 5: Esamina e seleziona i fotogrammi',
+      step5Intro: 'Una volta completata l\'estrazione, vedrai tutti i fotogrammi estratti nella galleria sottostante. Ogni fotogramma mostra:',
+      step5Features: [
+        'Il timestamp che mostra in quale punto del video è stato catturato il fotogramma',
+        'Una casella di controllo per selezionare o deselezionare il fotogramma per il download',
+        'Un\'icona di download per salvare immediatamente quel singolo fotogramma'
+      ],
+      step5Footer: 'Utilizza i pulsanti "Seleziona Tutto" o "Deseleziona Tutto" per scegliere rapidamente quali fotogrammi scaricare. I fotogrammi selezionati sono evidenziati con un anello blu.',
+      step6Title: 'Passo 6: Scarica i tuoi risultati',
+      step6Intro: 'Dopo aver selezionato i fotogrammi da salvare, hai due opzioni di download:',
+      step6Options: [
+        { label: 'Scarica Selezionati', desc: 'Salva solo i fotogrammi selezionati sotto forma di archivio ZIP.' },
+        { label: 'Scarica Tutti come ZIP', desc: 'Salva ogni fotogramma estratto in un unico file ZIP.' }
+      ],
+      step6Footer: 'Per le estrazioni di grandi dimensioni, lo strumento utilizza il download in streaming per gestire il trasferimento in modo efficiente senza consumare memoria eccessiva. Tutti i download avvengono immediatamente e vengono salvati nella cartella di download predefinita.',
+      tipsTitle: 'Consigli per ottenere i migliori risultati',
+      tips: [
+        { label: 'Per una selezione precisa dei fotogrammi', desc: 'Utilizza la modalità Cattura Manuale e i tasti freccia per la navigazione fotogramma per fotogramma.' },
+        { label: 'Per la creazione di timelapse', desc: 'Utilizza l\'Estrazione a Intervalli con frequenze corrispondenti alla velocità di riproduzione desiderata.' },
+        { label: 'Per evidenziare i momenti chiave', desc: 'Utilizza il Rilevamento Intelligente Scene e regola la sensibilità fino a ottenere il numero desiderato di fotogrammi.' },
+        { label: 'Per i flussi di lavoro di modifica', desc: 'Scegli il formato PNG per una qualità senza perdita che non si deteriora attraverso modifiche multiple.' },
+        { label: 'Per la condivisione sul web', desc: 'Scegli JPG all\'85% di qualità o WebP per un\'eccellente compressione unita a una buona qualità visiva.' }
+      ]
+    }
   },
   faq: {
-    eyebrow: 'FAQ',
     title: 'Domande Frequenti',
+    subtitle: 'Trova le risposte alle domande più comuni sul nostro estrattore di fotogrammi video.',
+    eyebrow: 'Ricevi Assistenza',
+    heading: 'Domande e Risposte',
     items: [
       {
         q: 'Come funziona un convertitore da video a immagini AI?',
@@ -265,40 +373,43 @@ export const it = {
     ],
   },
   tools: {
-    videoToPng: {
-      eyebrow: 'Massima Qualità',
-      title: 'Convertitore Video in PNG',
-      description: 'Estrai fotogrammi in formato PNG lossless senza alcuna perdita di dettaglio o colore.',
-      metaTitle: 'Convertitore Video in PNG - Convertire Video in PNG Online Gratis',
-      metaDescription: 'Converti video in immagini PNG lossless online gratis. 100% nel browser e privato.',
+    eyebrow: "Tutti gli Strumenti Video",
+    title: "Suite Completa di Strumenti di Conversione da Video a Immagine",
+    subtitle: "Che tu stia cercando un convertitore da video a JPG, un convertitore da video a PNG o un estrattore professionale di fotogrammi video, il nostro toolkit completo ha tutto ciò di cui hai bisogno. Tutti gli strumenti funzionano al 100% lato client, garantendo che i tuoi video non lascino mai il tuo browser per la massima privacy e sicurezza.",
+    videoToImageConverter: {
+      eyebrow: 'Il nostro strumento principale di estrazione fotogrammi',
+      title: 'Convertitore da Video a Immagine',
+      description: 'Estrai fotogrammi utilizzando la cattura manuale, l\'estrazione a intervalli o il rilevamento intelligente delle scene. Supporta i formati PNG, JPG, WebP e AVIF.',
+      metaTitle: 'Convertitore da Video a Immagine - Estrai Fotogrammi Online',
+      metaDescription: 'Strumento online gratuito per convertire video in immagini. Estrai fotogrammi in JPG, PNG, WebP e AVIF senza caricare file.',
     },
     videoToJpg: {
-      eyebrow: 'Leggero e Veloce',
-      title: 'Convertitore Video in JPG',
-      description: 'Estrai immagini in formato JPG con qualità regolabile (70-95%) per una facile condivisione.',
-      metaTitle: 'Convertitore Video in JPG - Estrai Foto JPG da Video',
-      metaDescription: 'Converti video in foto JPG online gratis. Regola la compressione e scarica in ZIP.',
+      eyebrow: 'Ottimizzato per l\'output JPEG',
+      title: 'Da Video a JPG',
+      description: 'Estrai fotogrammi e salvali come immagini JPG ad alta qualità con compressione regolabile (70-95% di qualità). Perfetto per l\'uso web e la condivisione.',
+      metaTitle: 'Convertitore da Video a JPG - Converti Video in JPG Online Gratis',
+      metaDescription: 'Converti video in JPG online gratis. Estrai foto JPG da qualsiasi video con compressione personalizzabile. Veloce e senza registrazione.',
     },
-    videoToImageConverter: {
-      eyebrow: 'Convertitore Universale',
-      title: 'Convertitore Video in Immagini',
-      description: 'Converti qualsiasi video in immagini JPG, PNG, WebP o AVIF direttamente nel browser.',
-      metaTitle: 'Convertitore Video in Immagini - Estrai Foto da Video Online',
-      metaDescription: 'Strumento online gratuito per convertire video in immagini senza caricamento su server.',
-    },
-    videoFrameExtractor: {
-      eyebrow: 'Estrazione di Precisione',
-      title: 'Estrattore di Fotogrammi Video',
-      description: 'Cattura sequenze esatte di fotogrammi con intervalli personalizzati e rilevamento scene.',
-      metaTitle: 'Estrattore di Fotogrammi Video - Estrai Scene Online',
-      metaDescription: 'Estrai fotogrammi o sequenze complete da qualsiasi video con precisione al singolo frame.',
+    videoToPng: {
+      eyebrow: 'Estrazione fotogrammi senza perdita di qualità',
+      title: 'Da Video a PNG',
+      description: 'Estrai fotogrammi come immagini PNG senza perdita di qualità, preservando ogni dettaglio e colore. Ideale per l\'editing, i lavori di grafica e l\'archiviazione.',
+      metaTitle: 'Convertitore da Video a PNG - Converti Video in PNG Gratis',
+      metaDescription: 'Convertitore online gratuito da video a PNG. Ottieni foto PNG ad alta qualità senza perdita di dati. 100% nel browser e sicuro.',
     },
     videoScreenshotTool: {
-      eyebrow: 'Screenshot ad Alta Risoluzione',
+      eyebrow: 'Cattura screenshot perfetti',
       title: 'Strumento Screenshot Video',
-      description: 'Cattura schermate ad alta risoluzione dai tuoi video senza watermark o perdita di nitidezza.',
-      metaTitle: 'Screenshot Video - Cattura Immagini da Video Online',
-      metaDescription: 'Cattura screenshot ad alta risoluzione da qualsiasi video online gratis e in privato.',
+      description: 'Scatta screenshot precisi da qualsiasi fotogramma del video. Include la navigazione manuale fotogramma per fotogramma per catturare il momento esatto.',
+      metaTitle: 'Strumento Screenshot Video - Scatta Foto da Video Online',
+      metaDescription: 'Scatta screenshot ad alta risoluzione da qualsiasi video online gratis. Veloce, privato e in formati multipli.',
+    },
+    videoFrameExtractor: {
+      eyebrow: 'Estrazione professionale di fotogrammi',
+      title: 'Estrattore di Fotogrammi Video',
+      description: 'Estrazione di fotogrammi di livello professionale con impostazioni avanzate per tempistica degli intervalli, rilevamento scene e elaborazione in batch.',
+      metaTitle: 'Estrattore di Fotogrammi Video - Estrai Fotogrammi Online',
+      metaDescription: 'Estrai fotogrammi specifici o sequenze video complete. Precisione fotogramma per fotogramma, intervalli e download in ZIP.',
     },
   },
 };
