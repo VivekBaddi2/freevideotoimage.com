@@ -1,4 +1,5 @@
 ---
+import { getLocaleData } from '../../i18n/locales';
 import { useTranslatedPath } from '../../i18n/utils';
 import type { SupportedLanguage } from '../../i18n/ui';
 
@@ -8,155 +9,98 @@ interface Props {
 
 const { lang = 'en' } = Astro.props;
 const translatePath = useTranslatedPath(lang);
+const locale = getLocaleData(lang);
+
+// Extract blog content from locale data (assuming stored under locale.blogPost or similar key)
+const post = locale.FromVideoToArtContent;
 ---
 
 <!-- Blog Post Content -->
 <section class="pt-16 md:pt-20 pb-12">
   <div class="container blog-article">
-    <div class="">
-      <span class="mono-eyebrow mb-3">Creative Transformation</span>
-      <h1 class="mb-6 text-xl md:text-2xl lg:text-4xl">From Video to Art: Turning Frames into Digital Masterpieces</h1>
+    <div>
+      <span class="mono-eyebrow mb-3">{post.eyebrow}</span>
+      <h1 class="mb-6 text-xl md:text-2xl lg:text-4xl">{post.title}</h1>
       <p class="body-md max-w-[600px] mb-4">
-        Learn how to transform ordinary video frames into stunning digital artwork using simple editing
-        techniques and free online tools.
+        {post.subtitle}
       </p>
     </div>
 
     <!-- Introduction -->
     <div class="prose mx-auto mb-12">
-      <p>Every video contains thousands of potential works of art waiting to be discovered. A single frame can capture a perfect expression, a breathtaking landscape, or an intriguing abstract composition. By extracting frames from videos and applying creative editing techniques, you can transform ordinary footage into extraordinary digital artwork.</p>
-      <p>Our client-side video to image converter makes it easy to harvest these visual starting points, giving you raw material that you can transform into unique artistic creations.</p>
+      {post.introduction.map((paragraph: string) => (
+        <p>{paragraph}</p>
+      ))}
     </div>
 
     <!-- Getting Started -->
     <section class="mb-12">
-      <h2 class="heading-lg mb-4">Getting Started: Extracting Your Source Material</h2>
+      <h2 class="heading-lg mb-4">{post.gettingStarted.title}</h2>
       <div class="prose mx-auto">
         <ol class="list-decimal space-y-4 pl-6">
-          <li>
-            <h3 class="heading-md mb-2">Choose Inspiring Source Videos</h3>
-            <p>Look for videos with strong visual elements: interesting lighting, compelling compositions, expressive subjects, or unique textures and patterns. Nature documentaries, films with distinctive cinematography, and even everyday footage can yield amazing artistic material.</p>
-          </li>
-          <li>
-            <h3 class="heading-md mb-2">Extract Frames with Intention</h3>
-            <p>Use our video to image converter to extract frames that catch your eye. Don't just extract randomly—look for frames with strong compositions, interesting color palettes, or emotional resonance. Consider using different extraction methods:</p>
-            <ul class="list-disc space-y-2 pl-6 mt-2">
-              <li><strong>Manual capture:</strong> For precise control over which moments you extract</li>
-              <li><strong>Interval extraction:</strong> To sample throughout a video and discover unexpected gems</li>
-              <li><strong>Smart scene detection:</strong> To find key moments of visual change</li>
-            </ul>
-          </li>
-          <li>
-            <h3 class="heading-md mb-2">Organize Your Extracted Frames</h3>
-            <p>Create a folder system for your extracted frames. Consider organizing by source video, color scheme, subject matter, or potential artistic direction. Clear naming conventions (e.g., "nature-texture-001.png", "portrait-expression-005.jpg") will save you time later.</p>
-          </li>
+          {post.gettingStarted.steps.map((step: any) => (
+            <li>
+              <h3 class="heading-md mb-2">{step.heading}</h3>
+              <p>{step.content}</p>
+              {step.extractionMethods && (
+                <ul class="list-disc space-y-2 pl-6 mt-2">
+                  {step.extractionMethods.map((method: string) => {
+                    const [label, ...desc] = method.split(':');
+                    return (
+                      <li>
+                        <strong>{label}:</strong>{desc.join(':')}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </li>
+          ))}
         </ol>
       </div>
     </section>
 
     <!-- Artistic Techniques -->
     <section class="mb-12">
-      <h2 class="heading-lg mb-4">Artistic Techniques for Frame Transformation</h2>
+      <h2 class="heading-lg mb-4">{post.artisticTechniques.title}</h2>
       <div class="grid gap-6 md:grid-cols-2">
-        <!-- Digital Painting -->
-        <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6">
-          <h3 class="heading-md mb-3">1. Digital Painting Reference & Overlays</h3>
-          <p class="body-md">
-            Use extracted frames as reference images for digital painting, or paint directly over frames in software like Photoshop, Procreate, or Krita. Video frames capture natural, candid poses and dynamic lighting that models rarely achieve in still photo sessions.
-          </p>
-          <div class="mt-4 space-y-2">
-            <p class="body-sm font-semibold">Techniques to try:</p>
-            <ul class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]">
-              <li>Trace major forms and paint custom lighting</li>
-              <li>Apply painterly brush strokes over extracted textures</li>
-              <li>Use frames for color palette sampling</li>
-              <li>Combine multiple frames into a composite painting</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Mixed Media Collages -->
-        <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6">
-          <h3 class="heading-md mb-3">2. Surreal Mixed-Media Collages</h3>
-          <p class="body-md">
-            Combine frames from different videos with typography, geometric shapes, and textures to create surreal digital collages. The natural dynamism of video frames adds movement and energy to static collage compositions.
-          </p>
-          <div class="mt-4 space-y-2">
-            <p class="body-sm font-semibold">Techniques to try:</p>
-            <ul class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]">
-              <li>Cut out subjects and place them in alien landscapes</li>
-              <li>Layer sequential frames with decreasing opacity for motion trails</li>
-              <li>Blend organic video textures with hard graphic elements</li>
-              <li>Create glitch-art distortions using frame differences</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Color Grading -->
-        <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6">
-          <h3 class="heading-md mb-3">3. Stylized Color Grading & Duotones</h3>
-          <p class="body-md">
-            Transform ordinary frames into moody, atmospheric art prints through extreme color grading, duotone effects, gradient maps, and high-contrast black-and-white conversions.
-          </p>
-          <div class="mt-4 space-y-2">
-            <p class="body-sm font-semibold">Techniques to try:</p>
-            <ul class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]">
-              <li>Apply vintage film emulation LUTs</li>
-              <li>Create bold cyber-punk or vaporwave duotones</li>
-              <li>Crush shadows and boost highlights for dramatic noir</li>
-              <li>Split-tone highlights and shadows with complementary hues</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Vector Art -->
-        <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6">
-          <h3 class="heading-md mb-3">4. Vector Illustration & Posterization</h3>
-          <p class="body-md">
-            Convert extracted frames into clean vector illustrations, pop-art posters, or screen-print designs using vector tracing tools or threshold/posterization filters.
-          </p>
-          <div class="mt-4 space-y-2">
-            <p class="body-sm font-semibold">Techniques to try:</p>
-            <ul class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]">
-              <li>Auto-trace high-contrast frames in Illustrator</li>
-              <li>Apply halftone dot patterns for retro comic aesthetic</li>
-              <li>Simplify complex scenes into flat color silhouettes</li>
-              <li>Design minimalist film posters using key scene frames</li>
-            </ul>
-          </div>
-        </article>
+        {post.artisticTechniques.techniques.map((tech: any) => (
+          <article class="feature-card hover:shadow-[0px_2px_8px_rgba(0,0,0,0.04)] transition-shadow p-6">
+            <h3 class="heading-md mb-3">{tech.heading}</h3>
+            <p class="body-md">{tech.description}</p>
+            <div class="mt-4 space-y-2">
+              <p class="body-sm font-semibold">{tech.techniquesToTryHeading}</p>
+              <ul class="list-disc list-inside pl-4 space-y-1 text-[var(--color-mute)]">
+                {tech.techniquesToTry.map((item: string) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 
     <!-- Best Free Tools for Editing -->
     <section class="mb-12 bg-[var(--color-canvas-elevated)] p-6 rounded-lg">
-      <h2 class="heading-lg mb-4">Recommended Free Tools to Pair with Extracted Frames</h2>
+      <h2 class="heading-lg mb-4">{post.recommendedTools.title}</h2>
       <div class="grid gap-4 md:grid-cols-2">
-        <div class="p-4 bg-[var(--color-canvas)] rounded border border-[var(--color-hairline)]">
-          <h3 class="heading-md mb-1">Photopea (Browser-based)</h3>
-          <p class="body-sm text-[var(--color-mute)]">Full-featured Photoshop alternative running right in your browser. Perfect for layers, masking, blending modes, and color adjustments.</p>
-        </div>
-        <div class="p-4 bg-[var(--color-canvas)] rounded border border-[var(--color-hairline)]">
-          <h3 class="heading-md mb-1">GIMP (Desktop)</h3>
-          <p class="body-sm text-[var(--color-mute)]">Powerful open-source image manipulation program with robust filter support and advanced selection tools.</p>
-        </div>
-        <div class="p-4 bg-[var(--color-canvas)] rounded border border-[var(--color-hairline)]">
-          <h3 class="heading-md mb-1">Krita (Desktop)</h3>
-          <p class="body-sm text-[var(--color-mute)]">Dedicated digital painting application designed for artists, featuring outstanding brush engines and color management.</p>
-        </div>
-        <div class="p-4 bg-[var(--color-canvas)] rounded border border-[var(--color-hairline)]">
-          <h3 class="heading-md mb-1">Inkscape (Desktop)</h3>
-          <p class="body-sm text-[var(--color-mute)]">Free vector graphics editor with powerful bitmap tracing capabilities to turn raster frames into clean scalable vector paths.</p>
-        </div>
+        {post.recommendedTools.tools.map((tool: any) => (
+          <div class="p-4 bg-[var(--color-canvas)] rounded border border-[var(--color-hairline)]">
+            <h3 class="heading-md mb-1">{tool.name}</h3>
+            <p class="body-sm text-[var(--color-mute)]">{tool.description}</p>
+          </div>
+        ))}
       </div>
     </section>
 
     <!-- Conclusion -->
     <section class="mb-12">
-      <h2 class="heading-lg mb-4">Conclusion</h2>
+      <h2 class="heading-lg mb-4">{post.conclusion.title}</h2>
       <div class="prose mx-auto">
-        <p>Every video you watch or shoot is a goldmine of raw creative material. By combining our free, private client-side video to image converter with creative editing techniques, you can continuously discover new artistic possibilities from the world of video.</p>
-        <p>Start exploring your video library today and turn fleeting moments into enduring works of digital art!</p>
+        {post.conclusion.paragraphs.map((paragraph: string) => (
+          <p>{paragraph}</p>
+        ))}
       </div>
     </section>
 
@@ -166,7 +110,7 @@ const translatePath = useTranslatedPath(lang);
         <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M19 12H5M12 5l-7 7 7 7"/>
         </svg>
-        Back to Blogs
+        {post.navigation.backLinkText}
       </a>
     </div>
   </div>
