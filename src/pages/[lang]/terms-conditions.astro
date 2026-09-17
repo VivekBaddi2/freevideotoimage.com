@@ -1,65 +1,97 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import { useTranslations } from '../../i18n/utils';
-import type { SupportedLanguage } from '../../i18n/ui';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import { getLocaleData } from "../../i18n/locales";
+import type { SupportedLanguage } from "../../i18n/ui";
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'ja' } },
-    { params: { lang: 'fr' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'pt' } },
-    { params: { lang: 'ko' } },
-    { params: { lang: 'it' } },
-    { params: { lang: 'hi' } },
+    { params: { lang: "es" } },
+    { params: { lang: "ja" } },
+    { params: { lang: "fr" } },
+    { params: { lang: "de" } },
+    { params: { lang: "pt" } },
+    { params: { lang: "ko" } },
+    { params: { lang: "it" } },
+    { params: { lang: "hi" } },
   ];
 }
 
 const { lang } = Astro.params as { lang: SupportedLanguage };
-const t = useTranslations(lang);
+const locale = getLocaleData(lang);
 const currentUrl = `https://freevideotoimage.com/${lang}/terms-conditions`;
+
+const termsData = locale.termsPage;
 ---
 
 <Layout lang={lang}>
   <slot name="head">
-    <title>{t('footer.terms')} - Free Video to Image Converter</title>
-    <meta name="description" content="Terms & Conditions for using Free Video to Image Converter." />
-    <meta property="og:title" content={`${t('footer.terms')} - Free Video to Image Converter`} />
+    <title>{termsData?.meta?.title || `${termsData?.title} - FreeVideoToImage.com`}</title>
+    <meta
+      name="description"
+      content={termsData?.meta?.description || "Terms and Conditions for FreeVideoToImage.com. Please read these terms carefully before using our video to image converter service."}
+    />
+    <meta
+      property="og:title"
+      content={termsData?.meta?.openGraph?.title || `${termsData?.title} - FreeVideoToImage.com`}
+    />
+    <meta
+      property="og:description"
+      content={termsData?.meta?.openGraph?.description || "Terms and Conditions for FreeVideoToImage.com. Please read these terms carefully before using our video to image converter service."}
+    />
+    <meta property="og:image" content={termsData?.meta?.openGraph?.image || "/logo.svg"} />
     <meta property="og:url" content={currentUrl} />
+    <meta property="og:type" content={termsData?.meta?.openGraph?.type || "website"} />
+    <meta name="twitter:card" content={termsData?.meta?.twitter?.card || "summary_large_image"} />
+    <meta
+      name="twitter:title"
+      content={termsData?.meta?.twitter?.title || `${termsData?.title} - FreeVideoToImage.com`}
+    />
+    <meta
+      name="twitter:description"
+      content={termsData?.meta?.twitter?.description || "Terms and Conditions for FreeVideoToImage.com. Please read these terms carefully before using our video to image converter service."}
+    />
   </slot>
 
   <Header currentPath="/terms-conditions" lang={lang} />
-  
-  <main class="flex-1">
-    <section class="page-hero">
-      <div class="page-hero-content">
-        <div class="container">
-          <div class="text-center">
-            <p class="eyebrow mb-4">{t('footer.legal')}</p>
-            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">{t('footer.terms')}</h1>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="page-section">
-      <div class="container max-w-4xl mx-auto">
-        <div class="card p-8 md:p-12 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] space-y-6 text-[var(--color-mute)] leading-relaxed">
-          <h2 class="heading-md text-[var(--color-ink)] font-semibold">Terms of Service</h2>
-          <p>
-            By accessing and using Free Video to Image Converter, you agree to comply with these terms. The service is provided "as is" for lawful video frame extraction purposes.
-          </p>
-          <h2 class="heading-md text-[var(--color-ink)] font-semibold">Intellectual Property & Content Ownership</h2>
-          <p>
-            You retain all intellectual property rights and ownership over any videos you process with our tool. We do not claim any rights over the images generated.
-          </p>
-          <h2 class="heading-md text-[var(--color-ink)] font-semibold">Limitation of Liability</h2>
-          <p>
-            The service is provided free of charge without warranties of any kind. Users are responsible for ensuring they have necessary rights to process the video content they choose to convert.
-          </p>
+  <main class="flex-1">
+    <section class="pt-16 md:pt-20 pb-12">
+      <div class="container">
+        <!-- Header / Hero Section -->
+        <div class="text-center mb-12">
+          <h1 class="text-xl font-semibold mb-4 text-center">
+            {termsData?.title}
+          </h1>
+          {termsData?.effectiveDate && (
+            <p class="body-lg max-w-[600px] mx-auto text-center">
+              Effective date: {termsData.effectiveDate}
+            </p>
+          )}
+        </div>
+
+        <!-- Terms Sections -->
+        <div class="prose lg:prose-xl mx-auto max-w-none">
+          {termsData?.sections?.map((section) => (
+            <div class="mb-8">
+              {section.heading && (
+                <h2 class="heading-lg mb-4">{section.heading}</h2>
+              )}
+              
+              {section.content?.map((paragraph) => (
+                <p set:html={paragraph} />
+              ))}
+
+              {section.listItems && section.listItems.length > 0 && (
+                <ul class="list-disc list-inside space-y-2">
+                  {section.listItems.map((item) => (
+                    <li set:html={item} />
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

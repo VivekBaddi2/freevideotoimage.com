@@ -1,67 +1,184 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/layout/Header.astro';
-import Footer from '../../components/layout/Footer.astro';
-import { useTranslations } from '../../i18n/utils';
-import type { SupportedLanguage } from '../../i18n/ui';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import { getLocaleData } from "../../i18n/locales";
+import type { SupportedLanguage } from "../../i18n/ui";
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'ja' } },
-    { params: { lang: 'fr' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'pt' } },
-    { params: { lang: 'ko' } },
-    { params: { lang: 'it' } },
-    { params: { lang: 'hi' } },
+    { params: { lang: "es" } },
+    { params: { lang: "ja" } },
+    { params: { lang: "fr" } },
+    { params: { lang: "de" } },
+    { params: { lang: "pt" } },
+    { params: { lang: "ko" } },
+    { params: { lang: "it" } },
+    { params: { lang: "hi" } },
   ];
 }
 
 const { lang } = Astro.params as { lang: SupportedLanguage };
-const t = useTranslations(lang);
+const locale = getLocaleData(lang);
 const currentUrl = `https://freevideotoimage.com/${lang}/privacy-policy`;
+
+const privacyData = locale.privacyPage;
 ---
 
 <Layout lang={lang}>
   <slot name="head">
-    <title>{t('footer.privacy')} - Free Video to Image Converter</title>
-    <meta name="description" content="Privacy Policy for Free Video to Image Converter. 100% client-side tool with zero server uploads." />
-    <meta property="og:title" content={`${t('footer.privacy')} - Free Video to Image Converter`} />
+    <title>
+      {privacyData.meta?.title || `${privacyData.title} - FreeVideoToImage.com`}
+    </title>
+    <meta
+      name="description"
+      content={privacyData.meta?.description ||
+        "Privacy Policy for FreeVideoToImage.com. Learn how we handle your data and protect your privacy when using our video to image converter."}
+    />
+    <meta
+      property="og:title"
+      content={privacyData.meta?.openGraph?.title ||
+        privacyData.meta?.title ||
+        `${privacyData.title} - FreeVideoToImage.com`}
+    />
+    <meta
+      property="og:description"
+      content={privacyData.meta?.openGraph?.description ||
+        privacyData.meta?.description}
+    />
+    <meta
+      property="og:image"
+      content={privacyData.meta?.openGraph?.image || "/logo.svg"}
+    />
     <meta property="og:url" content={currentUrl} />
+    <meta
+      property="og:type"
+      content={privacyData.meta?.openGraph?.type || "website"}
+    />
+    <meta
+      name="twitter:card"
+      content={privacyData.meta?.twitter?.card || "summary_large_image"}
+    />
+    <meta
+      name="twitter:title"
+      content={privacyData.meta?.twitter?.title ||
+        privacyData.meta?.title ||
+        `${privacyData.title} - FreeVideoToImage.com`}
+    />
+    <meta
+      name="twitter:description"
+      content={privacyData.meta?.twitter?.description ||
+        privacyData.meta?.description}
+    />
   </slot>
 
   <Header currentPath="/privacy-policy" lang={lang} />
-  
-  <main class="flex-1">
-    <section class="page-hero">
-      <div class="page-hero-content">
-        <div class="container">
-          <div class="text-center">
-            <p class="eyebrow mb-4">{t('footer.legal')}</p>
-            <h1 class="text-2xl md:text-3xl lg:text-5xl tracking-normal">{t('footer.privacy')}</h1>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="page-section">
-      <div class="container max-w-4xl mx-auto">
-        <div class="card p-8 md:p-12 rounded-2xl border border-[var(--color-hairline)] bg-[var(--color-canvas-elevated)] space-y-6 text-[var(--color-mute)] leading-relaxed">
-          <h2 class="heading-md text-[var(--color-ink)] font-semibold">100% Client-Side Privacy</h2>
-          <p>
-            Free Video to Image Converter operates entirely within your browser using client-side JavaScript and HTML5 Canvas APIs. 
-            Your video files are processed locally on your device and are never uploaded, transmitted, or stored on our servers.
+  <main class="flex-1">
+    <section class="pt-16 md:pt-20 pb-12">
+      <div class="container">
+        <!-- Hero Header -->
+        <div class="text-center mb-12">
+          <h1 class="text-xl font-semibold mb-4 text-center">
+            {privacyData.title}
+          </h1>
+          <p class="body-lg max-w-[600px] mx-auto text-center">
+            Effective date: {privacyData.effectiveDate}
           </p>
-          <h2 class="heading-md text-[var(--color-ink)] font-semibold">No Data Collection on Videos</h2>
-          <p>
-            Because video processing is strictly client-side, we have no access to your video files, image frames, or extracted metadata. 
-            Your content remains strictly confidential.
-          </p>
-          <h2 class="heading-md text-[var(--color-ink)] font-semibold">Cookies & Analytics</h2>
-          <p>
-            We use standard, anonymized analytics (such as Google Analytics) solely to understand overall website traffic and improve user experience. No personal video data is ever tied to analytics.
-          </p>
+        </div>
+
+        <!-- Dynamic Sections Content -->
+        <div class="prose lg:prose-xl mx-auto max-w-none">
+          {
+            privacyData.sections?.map((section) => (
+              <div>
+                <h2 class="heading-lg mb-4">{section.heading}</h2>
+
+                {/* Render Section Content Array */}
+                {section.content?.map((item) => {
+                  if (typeof item === "string") {
+                    return <p set:html={item} />;
+                  }
+                  if (Array.isArray(item)) {
+                    return (
+                      <ul class="list-disc list-inside space-y-2">
+                        {item.map((listItem) => {
+                          if (typeof listItem === "string") {
+                            return <li set:html={listItem} />;
+                          }
+                          if (typeof listItem === "object" && listItem.label) {
+                            return (
+                              <li>
+                                <strong set:html={listItem.label} />
+                                {listItem.items && (
+                                  <ul class="list-disc pl-5 space-y-1">
+                                    {listItem.items.map((subItem) => (
+                                      <li set:html={subItem} />
+                                    ))}
+                                  </ul>
+                                )}
+                              </li>
+                            );
+                          }
+                          return null;
+                        })}
+                      </ul>
+                    );
+                  }
+                  return null;
+                })}
+
+                {/* Render Nested Subsections */}
+                {section.subsections?.map((sub) => (
+                  <div>
+                    {sub.heading && (
+                      <h3 class="heading-md mb-3">{sub.heading}</h3>
+                    )}
+
+                    {sub.content?.map((subItem) => {
+                      if (typeof subItem === "string") {
+                        return <p set:html={subItem} />;
+                      }
+                      if (Array.isArray(subItem)) {
+                        return (
+                          <ul class="list-disc list-inside space-y-2">
+                            {subItem.map((listItem) => (
+                              <li set:html={listItem} />
+                            ))}
+                          </ul>
+                        );
+                      }
+                      return null;
+                    })}
+
+                    {/* Render Nested Sub-subsections */}
+                    {sub.subsections?.map((deepSub) => (
+                      <div>
+                        {deepSub.heading && (
+                          <h4 class="heading-sm mb-2">{deepSub.heading}</h4>
+                        )}
+                        {deepSub.content?.map((deepItem) => {
+                          if (typeof deepItem === "string") {
+                            return <p set:html={deepItem} />;
+                          }
+                          if (Array.isArray(deepItem)) {
+                            return (
+                              <ul class="list-disc list-inside space-y-2">
+                                {deepItem.map((listItem) => (
+                                  <li set:html={listItem} />
+                                ))}
+                              </ul>
+                            );
+                          }
+                          return null;
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>

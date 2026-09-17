@@ -1132,4 +1132,340 @@ export const fr = {
       backToBlogs: "Retour aux articles du blog"
     }
   },
+
+  contactPage: {
+    meta: {
+      title: "Contactez-nous - FreeVideoToImage.com",
+      description: "Prenez contact avec FreeVideoToImage.com. Nous serions ravis de recevoir vos commentaires, questions ou suggestions concernant notre convertisseur de vidéo en images.",
+      openGraph: {
+        title: "Contactez-nous - FreeVideoToImage.com",
+        description: "Prenez contact avec FreeVideoToImage.com. Nous serions ravis de recevoir vos commentaires, questions ou suggestions concernant notre convertisseur de vidéo en images.",
+        image: "/logo.svg",
+        url: "https://freevideotoimage.com/fr/contact-us",
+        type: "website"
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Contactez-nous - FreeVideoToImage.com",
+        description: "Prenez contact avec FreeVideoToImage.com. Nous serions ravis de recevoir vos commentaires, questions ou suggestions concernant notre convertisseur de vidéo en images."
+      }
+    },
+    header: {
+      currentPath: "/contact-us"
+    },
+    heroSection: {
+      badge: "Contact",
+      heading: "Discutons ensemble",
+      subheading: "Que vous ayez une question, une remarque ou simplement envie de dire bonjour, nous serions ravis de vous lire."
+    },
+    cards: [
+      {
+        heading: "Entrer en contact",
+        type: "contact",
+        details: [
+          {
+            label: "E-mail",
+            value: "contact@freevideotoimage.com",
+            link: "mailto:contact@freevideotoimage.com"
+          }
+        ]
+      },
+      {
+        heading: "Notre engagement envers la confidentialité",
+        type: "statement",
+        description: "Nous accordons une grande importance à votre vie privée. Notre service principal fonctionne entièrement côté client — <span class=\"text-[var(--color-ink)] font-medium\">aucune donnée vidéo n'est jamais transférée sur nos serveurs.</span>"
+      }
+    ]
+  },
+
+  privacyPage: {
+    "title": "Politique de confidentialité (Privacy Policy)",
+    "effectiveDate": "7 septembre 2026",
+    "sections": [
+      {
+        "heading": "Introduction",
+        "content": [
+          "FreeVideoToImage.com (« nous », « notre » ou « nos ») exploite le site web FreeVideoToImage.com (le « Service »). Cette page vous informe de nos politiques concernant la collecte, l'utilisation et la divulgation de données personnelles lorsque vous utilisez notre Service ainsi que des choix dont vous disposez concernant ces données.",
+          "Nous utilisons vos données pour fournir et améliorer le Service. En utilisant le Service, vous acceptez la collecte et l'utilisation d'informations conformément à la présente politique. Sauf définition contraire dans la présente politique de confidentialité, les termes utilisés ici ont la même signification que dans nos Conditions générales, accessibles depuis FreeVideoToImage.com."
+        ]
+      },
+      {
+        "heading": "Collecte et utilisation des données",
+        "content": [
+          "Nous collectons plusieurs types d'informations à différentes fins afin de vous fournir notre Service et de l'améliorer."
+        ],
+        "subsections": [
+          {
+            "heading": "Types de données collectées",
+            "subsections": [
+              {
+                "heading": "Données personnelles",
+                "content": [
+                  "Lors de l'utilisation de notre Service, nous pouvons vous demander de nous fournir certaines informations d'identification personnelle pouvant être utilisées pour vous contacter ou vous identifier (« Données personnelles »). Les informations d'identification personnelle peuvent inclure, sans s'y limiter :",
+                  [
+                    "Adresse e-mail",
+                    "Prénom et nom",
+                    "Numéro de téléphone",
+                    "Adresse, État, Province, Code postal, Ville",
+                    "Cookies et données d'utilisation"
+                  ],
+                  "Important : Notre Service est conçu pour respecter votre vie privée. Tout le traitement vidéo s'effectue entièrement dans votre navigateur. Nous ne collectons, ne stockons ni ne transmettons vos fichiers vidéo ou toute image extraite sur nos serveurs. Les seules données que nous sommes susceptibles de collecter sont fournies volontairement via des formulaires de contact ou des interactions similaires, et même dans ce cas, nous ne conservons que ce qui est nécessaire pour répondre à votre demande."
+                ]
+              },
+              {
+                "heading": "Données d'utilisation",
+                "content": [
+                  "Nous pouvons également collecter des informations que votre navigateur envoie chaque fois que vous visitez notre Service (« Données d'utilisation »). Ces données d'utilisation peuvent inclure des informations telles que l'adresse de protocole Internet de votre ordinateur (ex. adresse IP), le type de navigateur, la version du navigateur, les pages de notre Service que vous consultez, l'heure et la date de votre visite, le temps passé sur ces pages, les identifiants uniques d'appareils et d'autres données de diagnostic."
+                ]
+              },
+              {
+                "heading": "Données de suivi et cookies",
+                "content": [
+                  "Nous utilisons des cookies et des technologies de suivi similaires pour suivre l'activité sur notre Service et conserver certaines informations.",
+                  "Les cookies sont des fichiers contenant une faible quantité de données pouvant inclure un identifiant unique anonyme. Les cookies sont envoyés à votre navigateur depuis un site web et stockés sur votre appareil. D'autres technologies de suivi sont également utilisées, telles que les balises, les tags et les scripts, pour collecter et suivre des informations ainsi que pour améliorer et analyser notre Service.",
+                  "Vous pouvez configurer votre navigateur pour qu'il me refuse tous les cookies ou qu'il vous indique lorsqu'un cookie est envoyé. Cependant, si vous n'acceptez pas les cookies, vous ne pourrez peut-être pas utiliser certaines parties de notre Service.",
+                  "Exemples de cookies que nous utilisons :",
+                  [
+                    "Cookies de session : Nous utilisons des cookies de session pour faire fonctionner notre Service.",
+                    "Cookies de préférence : Nous utilisons des cookies de préférence pour mémoriser vos préférences et différents paramètres.",
+                    "Cookies de sécurité : Nous utilisons des cookies de sécurité à des fins de sécurité."
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Utilisation des données",
+        "content": [
+          "FreeVideoToImage.com utilise les données collectées à différentes fins :",
+          [
+            "Pour fournir et maintenir notre Service",
+            "Pour vous informer des modifications apportées à notre Service",
+            "Pour vous permettre de participer aux fonctionnalités interactives de notre Service lorsque vous le souhaitez",
+            "Pour fournir un service client et une assistance",
+            "Pour fournir des analyses ou des informations précieuses afin d'améliorer le Service",
+            "Pour surveiller l'utilisation de notre Service",
+            "Pour détecter, prévenir et résoudre les problèmes techniques",
+            "Pour remplir toute autre obligation pour laquelle vous nous les fournissez",
+            "Pour exécuter nos obligations et faire valoir nos droits découlant de tout contrat conclu entre vous et nous, y compris la facturation et le recouvrement",
+            "Pour vous fournir des avis sur votre compte et/ou votre abonnement, y compris les instructions d'expiration et de renouvellement, les invitations par e-mail, etc.",
+            "Pour vous fournir des actualités, des offres spéciales et des informations générales sur d'autres biens, services et événements que nous proposons et qui sont similaires à ceux que vous avez déjà achetés ou demandés, sauf si vous avez choisi de ne pas recevoir ces informations"
+          ]
+        ]
+      },
+      {
+        "heading": "Conservation des données",
+        "content": [
+          "FreeVideoToImage.com ne conservera vos Données personnelles que le temps nécessaire aux fins énoncées dans la présente Politique de confidentialité. Nous conserverons et utiliserons vos Données personnelles dans la mesure nécessaire pour nous conformer à nos obligations légales (par exemple, si nous sommes tenus de conserver vos données pour nous conformer aux lois applicables), résoudre les litiges et faire appliquer nos accords et politiques juridiques.",
+          "FreeVideoToImage.com conservera également les Données d'utilisation à des fins d'analyse interne. Les Données d'utilisation sont généralement conservées pendant une durée plus courte, sauf lorsque ces données sont utilisées pour renforcer la sécurité ou améliorer la fonctionnalité de notre Service, ou lorsque nous sommes légalement tenus de les conserver pendant des périodes plus longues."
+        ]
+      },
+      {
+        "heading": "Transfert des données",
+        "content": [
+          "Vos informations, y compris les Données personnelles, peuvent être transférées vers — et conservées sur — des ordinateurs situés en dehors de votre État, province, pays ou autre juridiction gouvernementale où les lois sur la protection des données peuvent différer de celles de votre juridiction.",
+          "Si vous êtes situé en dehors des États-Unis et choisissez de nous fournir des informations, veuillez noter que nous transférons les données, y compris les Données personnelles, vers les États-Unis et les y traitons.",
+          "Votre consentement à cette Politique de confidentialité suivi de la soumission de ces informations représente votre accord à ce transfert.",
+          "FreeVideoToImage.com prendra toutes les mesures raisonnablement nécessaires pour s'assurer que vos données sont traitées en toute sécurité et conformément à la présente Politique de confidentialité. Aucun transfert de vos Données personnelles ne sera effectué vers une organisation ou un pays sans que des contrôles adéquats ne soient en place, notamment en matière de sécurité de vos données."
+        ]
+      },
+      {
+        "heading": "Divulgation des données",
+        "content": [
+          "Nous pouvons divulguer les informations personnelles que nous collectons ou que vous fournissez :",
+          [
+            "Pour des transactions commerciales : Si nous sommes impliqués dans une fusion, une acquisition ou une vente d'actifs, vos Données personnelles peuvent être transférées.",
+            {
+              "label": "Pour des motifs légaux : FreeVideoToImage.com peut divulguer vos Données personnelles en croyant de bonne foi qu'une telle action est nécessaire pour :",
+              "items": [
+                "Se conformer à une obligation légale",
+                "Protéger et défendre les droits ou la propriété de FreeVideoToImage.com",
+                "Prévenir ou enquêter sur d'éventuels actes illicites en lien avec le Service",
+                "Protéger la sécurité personnelle des utilisateurs du Service ou du public",
+                "Se protéger contre une responsabilité juridique"
+              ]
+            },
+            "Avec des prestataires de services : Nous pouvons partager vos Données personnelles avec des prestataires de services pour surveiller et analyser l'utilisation de notre Service, ou pour vous contacter."
+          ]
+        ]
+      },
+      {
+        "heading": "Sécurité des données",
+        "content": [
+          "La sécurité de vos données est importante pour nous, mais n'oubliez pas qu'aucune méthode de transmission sur Internet ni aucune méthode de stockage électronique n'est sécurisée à 100 %. Bien que nous nous efforcions d'utiliser des moyens commercialement acceptables pour protéger vos Données personnelles, nous ne pouvons pas garantir leur sécurité absolue."
+        ]
+      },
+      {
+        "heading": "Vos droits concernant la protection des données (RGPD)",
+        "content": [
+          "Si vous êtes résident de l'Espace économique européen (EEE), vous disposez de certains droits en matière de protection des données. FreeVideoToImage.com vise à prendre des mesures raisonnables pour vous permettre de corriger, modifier, supprimer ou limiter l'utilisation de vos Données personnelles.",
+          "Si vous souhaitez être informé des Données personnelles que nous détenons à votre sujet et si vous souhaitez qu'elles soient retirées de nos systèmes, veuillez nous contacter.",
+          "Dans certaines circonstances, vous disposez du droit de :",
+          [
+            "Accéder à vos Données personnelles et en obtenir une copie",
+            "Faire rectifier vos Données personnelles si elles sont inexactes",
+            "Demander la suppression de vos Données personnelles",
+            "Droit à la portabilité des données pour les informations que vous fournissez à FreeVideoToImage.com",
+            "Droit de vous opposer au traitement de vos Données personnelles",
+            "Droit à la limitation du traitement de vos Données personnelles"
+          ]
+        ]
+      },
+      {
+        "heading": "Prestataires de services",
+        "content": [
+          "Nous pouvons employer des sociétés et des personnes tierces pour faciliter notre Service (« Prestataires de services »), fournir le Service en notre nom, exécuter des services liés au Service ou nous aider à analyser la façon dont notre Service est utilisé.",
+          "Ces tiers n'ont accès à vos Données personnelles que pour effectuer ces tâches en notre nom et sont tenus de ne pas les divulguer ni les utiliser à d'autres fins."
+        ]
+      },
+      {
+        "heading": "Liens vers d'autres sites",
+        "content": [
+          "Notre Service peut contenir des liens vers d'autres sites qui ne sont pas exploités par nous. Si vous cliquez sur un lien tiers, vous serez dirigé vers le site de ce tiers. Nous vous conseillons vivement de consulter la politique de confidentialité de chaque site que vous visitez.",
+          "Nous n'avons aucun contrôle et n'assumons aucune responsabilité quant au contenu, aux politiques de confidentialité ou aux pratiques des sites ou services tiers."
+        ]
+      },
+      {
+        "heading": "Confidentialité des enfants",
+        "content": [
+          "Notre Service ne s'adresse pas aux personnes de moins de 13 ans (« Enfants »).",
+          "Nous ne collectons pas sciemment d'informations d'identification personnelle auprès de personnes de moins de 13 ans. Si vous êtes un parent ou un tuteur et que vous savez que votre enfant nous a fourni des Données personnelles, veuillez nous contacter. Si nous apprenons que nous avons collecté des Données personnelles auprès d'enfants de moins de 13 ans sans vérification du consentement parental, nous supprimons ces informations de nos serveurs."
+        ]
+      },
+      {
+        "heading": "Modifications de la présente Politique de confidentialité",
+        "content": [
+          "Nous pouvons mettre à jour notre Politique de confidentialité de temps à autre. Nous vous informerons de toute modification en publiant la nouvelle Politique de confidentialité sur cette page.",
+          "Il vous est conseillé de consulter régulièrement cette Politique de confidentialité pour prendre connaissance de tout changement. Les modifications apportées à cette Politique de confidentialité prennent effet lorsqu'elles sont publiées sur cette page."
+        ]
+      },
+      {
+        "heading": "Nous contacter",
+        "content": [
+          "Si vous avez des questions concernant cette Politique de confidentialité, veuillez nous contacter :",
+          [
+            "Par e-mail : contact@freevideotoimage.com"
+          ]
+        ]
+      }
+    ]
+  },
+
+  termsPage: {
+    title: "Conditions Générales d'Utilisation",
+    effectiveDate: "7 septembre 2026",
+    sections: [
+      {
+        heading: "Introduction",
+        content: [
+          "Bienvenue sur FreeVideoToImage.com !",
+          "Les présentes conditions générales définissent les règles et réglementations relatives à l'utilisation du site web de FreeVideoToImage.com, situé à l'adresse https://freevideotoimage.com.",
+          "En accédant à ce site web, nous supposons que vous acceptez ces conditions générales dans leur intégralité. Ne continuez pas à utiliser FreeVideoToImage.com si vous n'acceptez pas l'ensemble des termes et conditions énoncés sur cette page.",
+          "La terminologie suivante s'applique aux présentes conditions générales, à la déclaration de confidentialité, à l'avis de non-responsabilité et à l'ensemble des contrats : « Client », « Vous » et « Votre » font référence à vous, la personne qui accède à ce site web et accepte les conditions générales de l'Entreprise. « L'Entreprise », « Nous-mêmes », « Nous », « Notre » et « Nos » font référence à notre Société. « Partie », « Parties » ou « Nous » désigne à la fois le Client et nous-mêmes. Tous les termes se rapportent à l'offre, à l'acceptation et à la contrepartie du paiement nécessaire pour entreprendre le processus de nos services."
+        ]
+      },
+      {
+        heading: "Licence",
+        content: [
+          "Sauf indication contraire, FreeVideoToImage.com et/ou ses concédants de licence détiennent les droits de propriété intellectuelle pour l'ensemble du matériel présent sur FreeVideoToImage.com. Tous les droits de propriété intellectuelle sont réservés. Vous pouvez consulter et/ou imprimer des pages à partir de https://freevideotoimage.com pour votre usage personnel, sous réserve des restrictions définies dans les présentes conditions générales."
+        ]
+      },
+      {
+        heading: "Utilisation Acceptable",
+        content: [
+          "Vous ne devez pas utiliser ce site web de manière à causer, ou pouvoir causer, des dommages au site web ou une altération de la disponibilité ou de l'accessibilité de FreeVideoToImage.com ; ni de toute manière illégale, illicite, frauduleuse ou préjudiciable, ou en relation avec un but ou une activité illégale, illicite, frauduleuse ou préjudiciable.",
+          "Vous ne devez pas utiliser ce site web pour transmettre des communications commerciales non sollicitées, ni pour vous engager dans une activité illégale, illicite, frauduleuse ou préjudiciable."
+        ]
+      },
+      {
+        heading: "Droits de Propriété Intellectuelle",
+        content: [
+          "À l'exception du matériel dont vous êtes propriétaire ou pour lequel vous disposez d'une licence ou d'une autorisation de publication sur ce site web, vous ne devez placer aucun matériel sur le site web qui soit ou puisse être soumis à des droits d'auteur ou à d'autres droits de propriété sans obtenir la licence ou l'autorisation nécessaire de la part de FreeVideoToImage.com. FreeVideoToImage.com prend toutes les mesures raisonnables pour s'assurer qu'aucun matériel sur le site web ne viole les droits de propriété intellectuelle existants ou en instance de tiers. Toutefois, si vous découvrez sur le site du matériel dont vous pensez qu'il est ou peut être soumis à des droits d'auteur ou autres droits de propriété d'un tiers sans avoir obtenu la licence ou l'autorisation nécessaire auprès de FreeVideoToImage.com, vous êtes prié de nous contacter immédiatement par écrit via les coordonnées fournies sur ce site afin que nous puissions remédier sans délai à la situation.",
+          "Vous ne devez pas :"
+        ],
+        listItems: [
+          "Retransmettre du matériel de FreeVideoToImage.com sur un autre site web sans l'autorisation écrite expresse de FreeVideoToImage.com.",
+          "Publier du matériel soumis à FreeVideoToImage.com sur un autre site web sans l'autorisation écrite expresse de FreeVideoToImage.com.",
+          "Utiliser du matériel de FreeVideoToImage.com à des fins commerciales sans l'autorisation écrite expresse de FreeVideoToImage.com.",
+          "Utiliser du matériel de FreeVideoToImage.com à des fins ou activités illégales, illicites, frauduleuses ou préjudiciables."
+        ]
+      },
+      {
+        heading: "Votre Confidentialité",
+        content: [
+          "Veuillez lire notre Politique de Confidentialité."
+        ]
+      },
+      {
+        heading: "Clause de Non-Responsabilité",
+        content: [
+          "Dans la mesure maximale permise par la loi applicable, nous excluons toutes les déclarations, garanties et conditions relatives à notre service et à l'utilisation de ce site web. Rien dans cette clause de non-responsabilité ne saurait :"
+        ],
+        listItems: [
+          "Limiter ou exclure notre ou votre responsabilité en cas de décès ou de blessures corporelles résultant d'une négligence ;",
+          "Limiter ou exclure notre ou votre responsabilité en cas de fraude ou de fausse déclaration frauduleuse ;",
+          "Limiter ou exclure l'une quelconque de nos ou de vos responsabilités en cas de décès ou de blessures corporelles découlant d'une négligence ou de tout acte ou omission négligent de notre part ou de celle du développeur du produit, quelle qu'en soit la cause ;",
+          "Limiter ou exclure l'une quelconque de nos ou de vos responsabilités pour des pertes indirectes ou consécutives ;",
+          "Limiter ou exclure notre ou votre responsabilité pour les pertes subies par un utilisateur à la suite de l'utilisation de tout logiciel par un utilisateur."
+        ]
+      },
+      {
+        heading: "Limitation de Responsabilité",
+        content: [
+          "En aucun cas FreeVideoToImage.com, ni aucun de ses dirigeants, directeurs et employés, ne pourront être tenus responsables de quoi que ce soit découlant de ou lié de quelque manière que ce soit à votre utilisation de ce site web, que cette responsabilité soit contractuelle, délictuelle ou autre, y compris, sans s'y limiter, la responsabilité pour tout dommage indirect, fortuit, spécial ou consécutif ; y compris, sans s'y limiter, les pertes économiques, les pertes de profits, les pertes de revenus, la perte d'usage de biens, la perte de clientèle ou de valeur marchande, ou les dommages découlant de ou liés à l'interruption des activités.",
+          "Cette section sur la limitation de responsabilité s'applique, que la responsabilité découle d'une rupture de contrat, d'un comportement délictuel ou autre, y compris, sans s'y limiter, de la négligence de tiers.",
+          "Les limitations ci-dessus sont considérées comme raisonnables dans le contexte susmentionné.",
+          "Si vous n'êtes pas satisfait d'une partie de notre site web, ou de l'un de nos produits ou services, votre seul et unique recours est de cesser l'utilisation de ce site web."
+        ]
+      },
+      {
+        heading: "Indemnisation",
+        content: [
+          "Vous indemnisez par la présente dans toute la mesure du possible FreeVideoToImage.com contre l'ensemble des responsabilités, coûts, demandes, causes d'action, dommages et dépenses découlant de ou liés de quelque manière que ce soit à votre violation de l'une quelconque des dispositions des présentes conditions."
+        ]
+      },
+      {
+        heading: "Divisibilité",
+        content: [
+          "Si une disposition des présentes conditions est jugée invalide en vertu d'une loi applicable, cette disposition sera supprimée sans affecter les dispositions restantes du présent document."
+        ]
+      },
+      {
+        heading: "Modification des Conditions",
+        content: [
+          "FreeVideoToImage.com est autorisé à réviser ces conditions à tout moment comme bon lui semble, et en utilisant ce site web, vous êtes tenu de consulter ces conditions régulièrement pour vous assurer de prendre connaissance de toutes ces modifications."
+        ]
+      },
+      {
+        heading: "Cession",
+        content: [
+          "FreeVideoToImage.com est autorisé à céder, transférer et sous-traiter ses droits et obligations en vertu des présentes conditions sans aucune notification ni consentement préalable."
+        ]
+      },
+      {
+        heading: "Intégralité de l'Accord",
+        content: [
+          "Ces conditions générales, accompagnées de notre politique de confidentialité, constituent l'intégralité de l'accord entre vous et FreeVideoToImage.com concernant votre utilisation de ce site web et remplacent tous les accords, ententes, négociations et discussions antérieurs, qu'ils soient oraux ou écrits."
+        ]
+      },
+      {
+        heading: "Loi Applicable et Juridiction",
+        content: [
+          "Ces conditions générales seront régies et interprétées conformément aux lois de l'État des États-Unis et vous vous soumettez à la compétence non exclusive des tribunaux d'État et fédéraux situés aux États-Unis pour la résolution de tout litige."
+        ]
+      },
+      {
+        heading: "Nous Contacter",
+        content: [
+          "Si vous avez des questions concernant ces conditions générales, veuillez nous contacter :"
+        ],
+        listItems: [
+          "Par e-mail : contact@freevideotoimage.com"
+        ]
+      }
+    ]
+  },
+
 };
