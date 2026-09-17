@@ -1,7 +1,11 @@
 ---
-import LanguagePicker from './LanguagePicker.astro';
-import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../i18n/utils';
-import type { SupportedLanguage } from '../../i18n/ui';
+import LanguagePicker from "./LanguagePicker.astro";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "../../i18n/utils";
+import type { SupportedLanguage } from "../../i18n/ui";
 
 interface Props {
   currentPath?: string;
@@ -17,22 +21,22 @@ const translatePath = useTranslatedPath(lang);
 <header
   class="border-b border-[var(--color-hairline)] bg-[var(--color-canvas)] sticky top-0 z-50"
 >
-  <div class="container lg:min-w-7xl lg:max-w-fit">
+  <div class="container px-2 lg:min-w-full lg:max-w-fit">
     <nav
       class="flex items-center justify-between h-16"
       aria-label="Main navigation"
     >
       <a
-        href={translatePath('/')}
+        href={translatePath("/")}
         aria-label="Video to Image Converter - Home"
-        class="flex gap-2 items-center"
+        class="flex gap-1 md:gap-2 items-center"
       >
         <img
           src="/logo.svg"
           alt="Free Video to Image Converter Logo"
-          class="h-[36px] rounded-lg w-auto"
+          class="h-[32px] md:h-[36px] rounded-lg w-auto"
         />
-        <span class="text-md md:text-lg text-[var(--color-ink)] font-semibold"
+        <span class="text-sm md:text-lg text-[var(--color-ink)] font-semibold"
           >Free Video to Image</span
         >
       </a>
@@ -41,53 +45,53 @@ const translatePath = useTranslatedPath(lang);
         {/* Desktop nav links: hidden on mobile */}
         <div class="hidden lg:flex items-center gap-2">
           <a
-            href={translatePath('/')}
+            href={translatePath("/")}
             class="btn-ghost"
             aria-current={currentPath === "/" ? "page" : undefined}
           >
-            {t('nav.home')}
+            {t("nav.home")}
           </a>
           <a
-            href={translatePath('/about')}
+            href={translatePath("/about")}
             class="btn-ghost"
             aria-current={currentPath === "/about" ? "page" : undefined}
           >
-            {t('nav.about')}
+            {t("nav.about")}
           </a>
           <a
-            href={translatePath('/features')}
+            href={translatePath("/features")}
             class="btn-ghost"
             aria-current={currentPath === "/features" ? "page" : undefined}
           >
-            {t('nav.features')}
+            {t("nav.features")}
           </a>
           <a
-            href={translatePath('/how-it-works')}
+            href={translatePath("/how-it-works")}
             class="btn-ghost"
             aria-current={currentPath === "/how-it-works" ? "page" : undefined}
           >
-            {t('nav.howItWorks')}
+            {t("nav.howItWorks")}
           </a>
           <a
-            href={translatePath('/faq')}
+            href={translatePath("/faq")}
             class="btn-ghost"
             aria-current={currentPath === "/faq" ? "page" : undefined}
           >
-            {t('nav.faq')}
+            {t("nav.faq")}
           </a>
           <a
-            href={translatePath('/tools')}
+            href={translatePath("/tools")}
             class="btn-ghost"
             aria-current={currentPath === "/tools" ? "page" : undefined}
           >
-            {t('nav.tools')}
+            {t("nav.tools")}
           </a>
           <a
-            href={translatePath('/blogs')}
+            href={translatePath("/blogs")}
             class="btn-ghost"
             aria-current={currentPath === "/blogs" ? "page" : undefined}
           >
-            {t('nav.blogs')}
+            {t("nav.blogs")}
           </a>
 
           {/* Language Switcher */}
@@ -134,78 +138,80 @@ const translatePath = useTranslatedPath(lang);
           </button>
         </div>
 
-        {/* Language picker for mobile */}
-        <div class="lg:hidden">
-          <LanguagePicker isMobile={true} />
+        <div class="flex items-center gap-2">
+          {/* Language picker for mobile */}
+          <div class="lg:hidden">
+            <LanguagePicker isMobile={true} />
+          </div>
+
+          {/* Dark mode toggle for mobile */}
+          <button
+            id="dark-mode-toggle-mobile"
+            class="lg:hidden btn-ghost-sm"
+            aria-label="Toggle dark mode"
+          >
+            <!-- Moon icon (show by default) -->
+            <svg
+              class="moon-icon h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun icon (hidden by default) -->
+            <svg
+              class="sun-icon hidden h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="5.64" y1="18.36" x2="4.22" y2="19.78"></line>
+              <line x1="19.78" y1="5.64" x2="18.36" y2="4.22"></line>
+            </svg>
+          </button>
+
+          {/* Mobile hamburger button: hidden on desktop */}
+          <button
+            id="mobile-menu-button"
+            class="lg:hidden p-2"
+            aria-label="Open main menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 6h18"></path>
+              <path d="M3 12h18"></path>
+              <path d="M3 18h18"></path>
+            </svg>
+          </button>
         </div>
-
-        {/* Dark mode toggle for mobile */}
-        <button
-          id="dark-mode-toggle-mobile"
-          class="lg:hidden btn-ghost-sm"
-          aria-label="Toggle dark mode"
-        >
-          <!-- Moon icon (show by default) -->
-          <svg
-            class="moon-icon h-4 w-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-          <!-- Sun icon (hidden by default) -->
-          <svg
-            class="sun-icon hidden h-4 w-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="5.64" y1="18.36" x2="4.22" y2="19.78"></line>
-            <line x1="19.78" y1="5.64" x2="18.36" y2="4.22"></line>
-          </svg>
-        </button>
-
-        {/* Mobile hamburger button: hidden on desktop */}
-        <button
-          id="mobile-menu-button"
-          class="lg:hidden p-2"
-          aria-label="Open main menu"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <svg
-            class="h-5 w-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M3 6h18"></path>
-            <path d="M3 12h18"></path>
-            <path d="M3 18h18"></path>
-          </svg>
-        </button>
       </div>
 
       <div class="hidden lg:flex items-center gap-3">
         <a
-          href={translatePath('/video-to-image-converter')}
+          href={translatePath("/video-to-image-converter")}
           class="btn-primary hidden sm:inline-flex"
         >
           <svg
@@ -221,7 +227,7 @@ const translatePath = useTranslatedPath(lang);
             <polyline points="17 8 12 3 7 8"></polyline>
             <line x1="12" y1="3" x2="12" y2="15"></line>
           </svg>
-          {t('nav.convert')}
+          {t("nav.convert")}
         </a>
       </div>
     </nav>
@@ -234,14 +240,32 @@ const translatePath = useTranslatedPath(lang);
       <div class="container py-4">
         {/* Menu links */}
         <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
-          <a href={translatePath('/')} class="btn-ghost justify-start">{t('nav.home')}</a>
-          <a href={translatePath('/about')} class="btn-ghost justify-start">{t('nav.about')}</a>
-          <a href={translatePath('/features')} class="btn-ghost justify-start">{t('nav.features')}</a>
-          <a href={translatePath('/how-it-works')} class="btn-ghost justify-start">{t('nav.howItWorks')}</a>
-          <a href={translatePath('/faq')} class="btn-ghost justify-start">{t('nav.faq')}</a>
-          <a href={translatePath('/tools')} class="btn-ghost justify-start">{t('nav.tools')}</a>
-          <a href={translatePath('/blogs')} class="btn-ghost justify-start">{t('nav.blogs')}</a>
-          <a href={translatePath('/video-to-image-converter')} class="btn-primary mt-2 w-full justify-center">{t('nav.convert')}</a>
+          <a href={translatePath("/")} class="btn-ghost justify-start"
+            >{t("nav.home")}</a
+          >
+          <a href={translatePath("/about")} class="btn-ghost justify-start"
+            >{t("nav.about")}</a
+          >
+          <a href={translatePath("/features")} class="btn-ghost justify-start"
+            >{t("nav.features")}</a
+          >
+          <a
+            href={translatePath("/how-it-works")}
+            class="btn-ghost justify-start">{t("nav.howItWorks")}</a
+          >
+          <a href={translatePath("/faq")} class="btn-ghost justify-start"
+            >{t("nav.faq")}</a
+          >
+          <a href={translatePath("/tools")} class="btn-ghost justify-start"
+            >{t("nav.tools")}</a
+          >
+          <a href={translatePath("/blogs")} class="btn-ghost justify-start"
+            >{t("nav.blogs")}</a
+          >
+          <a
+            href={translatePath("/video-to-image-converter")}
+            class="btn-primary mt-2 w-full justify-center">{t("nav.convert")}</a
+          >
         </nav>
       </div>
     </div>
