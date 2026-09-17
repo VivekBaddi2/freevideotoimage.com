@@ -412,4 +412,86 @@ export const fr = {
       metaDescription: 'Extrayez des images spécifiques ou des séquences vidéo complètes. Précision image par image, intervalles et téléchargement en fichier ZIP.',
     },
   },
+
+  blogsPage: {
+    seo: {
+      title: "Blog - Free Video to Image",
+      description: "Explorez notre blog pour des guides sur l'extraction d'images de vidéo, la confidentialité, les applications créatives et des tutoriels techniques.",
+      ogTitle: "Blog - Free Video to Image",
+      ogDescription: "Explorez notre blog pour des guides sur l'extraction d'images de vidéo, la confidentialité, les applications créatives et des tutoriels techniques.",
+      ogImage: "/logo.svg",
+      ogUrl: "https://freevideotoimage.com/fr/blogs",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      twitterTitle: "Blog - Free Video to Image",
+      twitterDescription: "Explorez notre blog pour des guides sur l'extraction d'images de vidéo, la confidentialité, les applications créatives et des tutoriels techniques."
+    },
+    hero: {
+      eyebrow: "Le journal des images",
+      title: "De meilleures images commencent par un meilleur contexte.",
+      description: "Des guides pratiques pour extraire, protéger et transformer les moments cachés dans vos vidéos."
+    },
+    sectionHeader: {
+      eyebrow: "Derniers articles",
+      title: "Lisez, puis créez.",
+      subtitle: "De courtes notes utiles pour transformer la vidéo en un matériau créatif plus flexible."
+    },
+    cards: {
+      featuredActionText: "Lire le guide",
+      regularActionText: "Lire l'article",
+      posts: [
+        {
+          slug: "how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide",
+          title: "Comment extraire l'image parfaite de vos vidéos : Guide étape par étape - Video to Image Converter",
+          description: "Apprenez à extraire des images de vidéos grâce à notre convertisseur gratuit de vidéo en image. Guide étape par étape couvrant la capture manuelle, l'extraction par intervalle et la détection intelligente de scènes. Convertissez vos vidéos en JPG et PNG gratuitement en ligne.",
+          category: "Guide en vedette",
+          readTime: "8 min de lecture",
+          cardTitle: "Comment extraire l'image parfaite de vos vidéos",
+          cardExcerpt: "Découvrez les étapes exactes pour capturer des images de haute qualité à partir de n'importe quelle vidéo à l'aide de notre outil côté client. De la capture manuelle à la détection intelligente de scènes, nous couvrons toutes les méthodes d'extraction.",
+          featured: true
+        },
+        {
+          slug: "why-client-side-video-processing-matters-for-your-privacy",
+          title: "Pourquoi le traitement vidéo côté client est essentiel pour votre confidentialité - Video to Image Converter Blog",
+          description: "Découvrez pourquoi le traitement vidéo côté client est essentiel pour la confidentialité lors de l'utilisation d'un convertisseur de vidéo en image. Découvrez comment notre outil garantit que vos vidéos ne quittent jamais votre navigateur pendant la conversion.",
+          category: "Confidentialité & sécurité",
+          readTime: "6 min de lecture",
+          cardTitle: "Pourquoi le traitement vidéo côté client est essentiel pour votre confidentialité",
+          cardExcerpt: "Découvrez pourquoi le traitement intégral des vidéos dans votre navigateur est crucial pour protéger le contenu sensible et conserver un contrôle total sur vos fichiers multimédias."
+        },
+        {
+          slug: "top-5-creative-uses-for-extracted-video-frames-in-design-projects",
+          title: "Top 5 des utilisations créatives des images vidéo extraites dans les projets de design - Video to Image Converter Blog",
+          description: "Découvrez le top 5 des façons créatives d'utiliser les images vidéo extraites dans vos projets de design. Apprenez comment notre convertisseur aide les designers à créer des moodboards, de l'art numérique et bien plus encore.",
+          category: "Applications créatives",
+          readTime: "5 min de lecture",
+          cardTitle: "Top 5 des utilisations créatives des images vidéo extraites",
+          cardExcerpt: "Des moodboards à l'art numérique, explorez des moyens innovants d'intégrer des images vidéo dans votre flux de travail créatif et vos projets de design."
+        },
+        {
+          slug: "understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif",
+          title: "Comprendre les formats d'image : Quand utiliser PNG vs JPG vs WebP vs AVIF - Video to Image Converter Blog",
+          description: "Apprenez à choisir le bon format de sortie pour vos images extraites. Comparez PNG, JPG, WebP et AVIF en termes de qualité, taille de fichier et cas d'utilisation lors de l'utilisation de notre convertisseur de vidéo en image.",
+          category: "Guide technique",
+          readTime: "7 min de lecture",
+          cardTitle: "Quand utiliser PNG vs JPG vs WebP vs AVIF",
+          cardExcerpt: "Un guide complet pour choisir le bon format de sortie pour vos images extraites en fonction des exigences de qualité, de taille de fichier et de cas d'utilisation."
+        },
+        {
+          slug: "from-video-to-art-turning-frames-into-digital-masterpieces",
+          title: "De la vidéo à l'art : Transformer des images en chefs-d'œuvre numériques - Video to Image Converter Blog",
+          description: "Apprenez à transformer des images vidéo ordinaires en magnifiques œuvres d'art numérique. Découvrez des techniques créatives pour créer des chefs-d'œuvre numériques à partir d'images extraites, parfait pour les artistes et les designers.",
+          category: "Transformation créative",
+          readTime: "6 min de lecture",
+          cardTitle: "De la vidéo à l'art : Transformer des images en chefs-d'œuvre numériques",
+          cardExcerpt: "Apprenez à transformer des images vidéo ordinaires en magnifiques œuvres d'art numérique à l'aide de techniques d'édition simples et d'outils en ligne gratuits."
+        }
+      ]
+    },
+    cta: {
+      title: "Commencez à explorer",
+      description: "Plongez dans notre blog pour en savoir plus sur l'extraction d'images vidéo, les meilleures pratiques de confidentialité et les applications créatives.",
+      buttonText: "Lire le premier article"
+    }
+  }
 };

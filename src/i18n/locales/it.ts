@@ -412,4 +412,86 @@ export const it = {
       metaDescription: 'Estrai fotogrammi specifici o sequenze video complete. Precisione fotogramma per fotogramma, intervalli e download in ZIP.',
     },
   },
+
+  blogsPage: {
+    seo: {
+      title: "Blog - Free Video to Image",
+      description: "Esplora il nostro blog per guide sull'estrazione di fotogrammi video, privacy, applicazioni creative e tutorial tecnici.",
+      ogTitle: "Blog - Free Video to Image",
+      ogDescription: "Esplora il nostro blog per guide sull'estrazione di fotogrammi video, privacy, applicazioni creative e tutorial tecnici.",
+      ogImage: "/logo.svg",
+      ogUrl: "https://freevideotoimage.com/it/blogs",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      twitterTitle: "Blog - Free Video to Image",
+      twitterDescription: "Esplora il nostro blog per guide sull'estrazione di fotogrammi video, privacy, applicazioni creative e tutorial tecnici."
+    },
+    hero: {
+      eyebrow: "Il diario dei fotogrammi",
+      title: "Fotogrammi migliori nascono da un contesto migliore.",
+      description: "Guide pratiche per estrarre, proteggere e trasformare i momenti nascosti nei tuoi video."
+    },
+    sectionHeader: {
+      eyebrow: "Ultimi articoli",
+      title: "Leggi, poi crea qualcosa.",
+      subtitle: "Note brevi e utili per trasformare i video in un materiale creativo più flessibile."
+    },
+    cards: {
+      featuredActionText: "Leggi la guida",
+      regularActionText: "Leggi l'articolo",
+      posts: [
+        {
+          slug: "how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide",
+          title: "Come estrarre il fotogramma perfetto dai tuoi video: Guida passo passo - Video to Image Converter",
+          description: "Scopri come estrarre fotogrammi dai video utilizzando il nostro convertitore gratuito da video a immagini. Guida passo passo su cattura manuale, estrazione a intervalli e rilevamento intelligente delle scene. Converti video in JPG e PNG gratis online.",
+          category: "Guida in evidenza",
+          readTime: "8 min di lettura",
+          cardTitle: "Come estrarre il fotogramma perfetto dai tuoi video",
+          cardExcerpt: "Scopri i passaggi esatti per catturare fotogrammi di alta qualità da qualsiasi video utilizzando il nostro strumento lato client. Dalla cattura manuale al rilevamento intelligente delle scene, copriamo tutti i metodi di estrazione.",
+          featured: true
+        },
+        {
+          slug: "why-client-side-video-processing-matters-for-your-privacy",
+          title: "Perché l'elaborazione video lato client è importante per la tua privacy - Video to Image Converter Blog",
+          description: "Scopri perché l'elaborazione video lato client è essenziale per la privacy quando utilizzi un convertitore da video a immagini. Scopri come il nostro strumento garantisce che i tuoi video non lascino mai il browser durante la conversione in JPG, PNG e altri formati.",
+          category: "Privacy e sicurezza",
+          readTime: "6 min di lettura",
+          cardTitle: "Perché l'elaborazione video lato client è importante per la tua privacy",
+          cardExcerpt: "Scopri perché elaborare i video interamente nel tuo browser è fondamentale per proteggere i contenuti sensibili e mantenere il controllo completo sui tuoi file multimediali."
+        },
+        {
+          slug: "top-5-creative-uses-for-extracted-video-frames-in-design-projects",
+          title: "I 5 migliori usi creativi per i fotogrammi video estratti nei progetti di design - Video to Image Converter Blog",
+          description: "Scopri i 5 modi più creativi per utilizzare i fotogrammi video estratti nei tuoi progetti di design. Scopri come il nostro convertitore da video a immagini aiuta i designer a creare moodboard, arte digitale e altro ancora utilizzando i fotogrammi di qualsiasi video.",
+          category: "Applicazioni creative",
+          readTime: "5 min di lettura",
+          cardTitle: "I 5 migliori usi creativi per i fotogrammi video estratti",
+          cardExcerpt: "Dai moodboard all'arte digitale, esplora modi innovativi per integrare i fotogrammi video nel tuo flusso di lavoro creativo e nei tuoi progetti di design."
+        },
+        {
+          slug: "understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif",
+          title: "Comprendere i formati immagine: Quando usare PNG vs JPG vs WebP vs AVIF - Video to Image Converter Blog",
+          description: "Impara a scegliere il formato di output corretto per i fotogrammi estratti. Confronta PNG, JPG, WebP e AVIF per qualità, dimensioni del file e casi d'uso quando utilizzi il nostro convertitore da video a immagini.",
+          category: "Guida tecnica",
+          readTime: "7 min di lettura",
+          cardTitle: "Quando usare PNG vs JPG vs WebP vs AVIF",
+          cardExcerpt: "Una guida completa alla scelta del formato di output ideale per i fotogrammi estratti in base ai requisiti di qualità, dimensioni del file e casi d'uso."
+        },
+        {
+          slug: "from-video-to-art-turning-frames-into-digital-masterpieces",
+          title: "Dal video all'arte: Trasformare i fotogrammi in capolavori digitali - Video to Image Converter Blog",
+          description: "Impara a trasformare semplici fotogrammi video in straordinarie opere d'arte digitale. Scopri tecniche creative per utilizzare il nostro convertitore da video a immagini e creare capolavori digitali dai fotogrammi estratti, ideali per artisti e designer.",
+          category: "Trasformazione creativa",
+          readTime: "6 min di lettura",
+          cardTitle: "Dal video all'arte: Trasformare i fotogrammi in capolavori digitali",
+          cardExcerpt: "Impara a trasformare semplici fotogrammi video in straordinarie opere d'arte digitale utilizzando semplici tecniche di modifica e strumenti online gratuiti."
+        }
+      ]
+    },
+    cta: {
+      title: "Inizia ad esplorare",
+      description: "Immergiti nel nostro blog per saperne di più sull'estrazione di fotogrammi video, le migliori pratiche per la privacy e le applicazioni creative.",
+      buttonText: "Leggi il primo articolo"
+    }
+  }
 };

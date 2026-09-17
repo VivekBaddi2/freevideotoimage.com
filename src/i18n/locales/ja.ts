@@ -412,4 +412,86 @@ export const ja = {
       metaDescription: '特定フレームや動画全体のシーケンスを抽出します。フレーム単位の精度、インターバル抽出、ZIP一括ダウンロードに対応。',
     },
   },
+
+  blogsPage: {
+    seo: {
+      title: "ブログ - Free Video to Image",
+      description: "動画のフレーム抽出、プライバシー保護、クリエイティブな活用法、テクニカルチュートリアルに関するガイドをブログで紹介しています。",
+      ogTitle: "ブログ - Free Video to Image",
+      ogDescription: "動画のフレーム抽出、プライバシー保護、クリエイティブな活用法、テクニカルチュートリアルに関するガイドをブログで紹介しています。",
+      ogImage: "/logo.svg",
+      ogUrl: "https://freevideotoimage.com/ja/blogs",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      twitterTitle: "ブログ - Free Video to Image",
+      twitterDescription: "動画のフレーム抽出、プライバシー保護、クリエイティブな活用法、テクニカルチュートリアルに関するガイドをブログで紹介しています。"
+    },
+    hero: {
+      eyebrow: "フレームジャーナル",
+      title: "優れたフレームは、より良い文脈から生まれる。",
+      description: "動画の中に隠れた瞬間を抽出・保護・変換するための実践的なガイドです。"
+    },
+    sectionHeader: {
+      eyebrow: "最新の記事",
+      title: "読んで、作ってみる。",
+      subtitle: "動画をより柔軟なクリエイティブ素材に変えるための、短く役立つメモ。"
+    },
+    cards: {
+      featuredActionText: "ガイドを読む",
+      regularActionText: "記事を読む",
+      posts: [
+        {
+          slug: "how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide",
+          title: "動画から理想のフレームを抽出する方法：ステップバイステップガイド - Video to Image Converter",
+          description: "無料の動画画像変換ツールを使用して動画からフレームを抽出する方法を学びます。手動キャプチャ、間隔抽出、スマートシーン検出を網羅したステップバイステップのガイド。オンラインで動画を無料でJPGやPNGに変換できます。",
+          category: "注目ガイド",
+          readTime: "読了時間 8分",
+          cardTitle: "動画から理想のフレームを抽出する方法",
+          cardExcerpt: "クライアントサイドツールを使用して、あらゆる動画から高品質なフレームをキャプチャする正確な手順を学びます。手動キャプチャからスマートシーン検出まで、すべての抽出方法を解説します。",
+          featured: true
+        },
+        {
+          slug: "why-client-side-video-processing-matters-for-your-privacy",
+          title: "プライバシーのためにクライアントサイド動画処理が重要である理由 - Video to Image Converter Blog",
+          description: "動画画像変換ツールを使用する際、なぜクライアントサイドでの動画処理がプライバシー保護に不可欠なのかを解説します。動画をJPGやPNGなどに変換する際、ファイルがブラウザの外に出ない仕組みを紹介します。",
+          category: "プライバシー＆セキュリティ",
+          readTime: "読了時間 6分",
+          cardTitle: "プライバシーのためにクライアントサイド動画処理が重要である理由",
+          cardExcerpt: "機密コンテンツを保護し、メディアファイルを完全にお手元で管理するために、動画処理をすべてブラウザ内完結で行うことがなぜ重要なのかをご紹介します。"
+        },
+        {
+          slug: "top-5-creative-uses-for-extracted-video-frames-in-design-projects",
+          title: "デザインプロジェクトで抽出した動画フレームを活用する5つのクリエイティブなアイデア - Video to Image Converter Blog",
+          description: "抽出した動画フレームをデザインプロジェクトで活用するアイデアTOP5をご紹介。ムードボードやデジタルアートの作成など、デザイナー向けの実用例を解説します。",
+          category: "クリエイティブ活用法",
+          readTime: "読了時間 5分",
+          cardTitle: "抽出した動画フレームを活用する5つのクリエイティブなアイデア",
+          cardExcerpt: "ムードボードからデジタルアートまで、クリエイティブなワークフローやデザインプロジェクトに動画フレームを取り入れる革新的な方法を探ります。"
+        },
+        {
+          slug: "understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif",
+          title: "画像フォーマットの理解：PNG vs JPG vs WebP vs AVIFの使い分け - Video to Image Converter Blog",
+          description: "抽出したフレームに最適な出力フォーマットの選び方を解説。画質、ファイルサイズ、用途に応じたPNG、JPG、WebP、AVIFの比較ガイドです。",
+          category: "テクニカルガイド",
+          readTime: "読了時間 7分",
+          cardTitle: "PNG vs JPG vs WebP vs AVIFの使い分け",
+          cardExcerpt: "画質、ファイルサイズ、用途の要件に基づいて、抽出したフレームに最適な出力フォーマットを選択するための包括的なガイドです。"
+        },
+        {
+          slug: "from-video-to-art-turning-frames-into-digital-masterpieces",
+          title: "動画からアートへ：フレームをデジタル傑作に変える方法 - Video to Image Converter Blog",
+          description: "通常の動画フレームを美しいデジタルアートワークに変身させる方法を紹介します。抽出したフレームからアート作品を生み出すクリエイティブなテクニックを解説。",
+          category: "クリエイティブ変換",
+          readTime: "読了時間 6分",
+          cardTitle: "動画からアートへ：フレームをデジタル傑作に変える方法",
+          cardExcerpt: "簡単な編集テクニックと無料のオンラインツールを使って、普通の動画フレームを素晴らしいデジタルアート作品に変える方法を学びます。"
+        }
+      ]
+    },
+    cta: {
+      title: "探索を始める",
+      description: "ブログをチェックして、動画フレームの抽出手順、プライバシーに関するベストプラクティス、クリエイティブな応用例について詳しく学びましょう。",
+      buttonText: "最初の記事を読む"
+    }
+  }
 };

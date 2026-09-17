@@ -412,4 +412,86 @@ export const de = {
       metaDescription: 'Extrahieren Sie bestimmte Frames oder komplette Videosequenzen. Frame-genaue Präzision, Intervalle und ZIP-Download.',
     },
   },
+
+  blogsPage: {
+    seo: {
+      title: "Blog - Free Video to Image",
+      description: "Entdecken Sie unseren Blog für Anleitungen zur Extraktion von Videobildern, Datenschutz, kreativen Anwendungen und technischen Tutorials.",
+      ogTitle: "Blog - Free Video to Image",
+      ogDescription: "Entdecken Sie unseren Blog für Anleitungen zur Extraktion von Videobildern, Datenschutz, kreativen Anwendungen und technischen Tutorials.",
+      ogImage: "/logo.svg",
+      ogUrl: "https://freevideotoimage.com/de/blogs",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      twitterTitle: "Blog - Free Video to Image",
+      twitterDescription: "Entdecken Sie unseren Blog für Anleitungen zur Extraktion von Videobildern, Datenschutz, kreativen Anwendungen und technischen Tutorials."
+    },
+    hero: {
+      eyebrow: "Das Frame-Journal",
+      title: "Bessere Frames beginnen mit besserem Kontext.",
+      description: "Praktische Anleitungen zum Extrahieren, Schützen und Transformieren der in Ihren Videos verborgenen Momente."
+    },
+    sectionHeader: {
+      eyebrow: "Neueste Artikel",
+      title: "Lesen, dann etwas Erschaffen.",
+      subtitle: "Kurze, nützliche Notizen, um Video in ein flexibleres kreatives Material zu verwandeln."
+    },
+    cards: {
+      featuredActionText: "Anleitung lesen",
+      regularActionText: "Artikel lesen",
+      posts: [
+        {
+          slug: "how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide",
+          title: "So extrahieren Sie das perfekte Bild aus Ihren Videos: Schritt-für-Schritt-Anleitung - Video to Image Converter",
+          description: "Lernen Sie, wie Sie mit unserem kostenlosen Video-zu-Bild-Konverter Einzelbilder aus Videos extrahieren. Schritt-für-Schritt-Anleitung für manuelle Erfassung, Intervall-Extraktion und intelligente Szenenerkennung. Konvertieren Sie Videos kostenlos online in JPG und PNG.",
+          category: "Empfohlener Leitfaden",
+          readTime: "8 Min. Lesezeit",
+          cardTitle: "So extrahieren Sie das perfekte Bild aus Ihren Videos",
+          cardExcerpt: "Erfahren Sie die genauen Schritte, um mit unserem clientseitigen Tool hochwertige Einzelbilder aus jedem Video zu erfassen. Von der manuellen Erfassung bis zur intelligenten Szenenerkennung decken wir alle Extraktionsmethoden ab.",
+          featured: true
+        },
+        {
+          slug: "why-client-side-video-processing-matters-for-your-privacy",
+          title: "Warum clientseitige Videoverarbeitung für Ihre Privatsphäre wichtig ist - Video to Image Converter Blog",
+          description: "Erfahren Sie, warum die clientseitige Videoverarbeitung bei der Verwendung eines Video-zu-Bild-Konverters für den Datenschutz unerlässlich ist. Entdecken Sie, wie unser Tool sicherstellt, dass Ihre Videos Ihren Browser niemals verlassen.",
+          category: "Datenschutz & Sicherheit",
+          readTime: "6 Min. Lesezeit",
+          cardTitle: "Warum clientseitige Videoverarbeitung für Ihre Privatsphäre wichtig ist",
+          cardExcerpt: "Entdecken Sie, warum die vollständige Verarbeitung von Videos in Ihrem Browser entscheidend ist, um sensible Inhalte zu schützen und die vollständige Kontrolle über Ihre Mediendateien zu behalten."
+        },
+        {
+          slug: "top-5-creative-uses-for-extracted-video-frames-in-design-projects",
+          title: "Die 5 besten kreativen Nutzungsmöglichkeiten für extrahierte Videobilder in Designprojekten - Video to Image Converter Blog",
+          description: "Entdecken Sie die 5 besten kreativen Möglichkeiten, extrahierte Videobilder in Ihren Designprojekten zu verwenden. Erfahren Sie, wie unser Video-zu-Bild-Konverter Designer bei der Erstellung von Moodboards, digitaler Kunst und mehr unterstützt.",
+          category: "Kreative Anwendungen",
+          readTime: "5 Min. Lesezeit",
+          cardTitle: "Die 5 besten kreativen Nutzungsmöglichkeiten für extrahierte Videobilder",
+          cardExcerpt: "Von Moodboards bis hin zu digitaler Kunst – entdecken Sie innovative Wege, Videobilder in Ihren kreativen Workflow und Ihre Designprojekte einzubinden."
+        },
+        {
+          slug: "understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif",
+          title: "Bildformate verstehen: Wann PNG vs. JPG vs. WebP vs. AVIF verwendet werden sollte - Video to Image Converter Blog",
+          description: "Lernen Sie, wie Sie das richtige Ausgabeformat für Ihre extrahierten Bilder auswählen. Vergleichen Sie PNG, JPG, WebP und AVIF hinsichtlich Qualität, Dateigröße und Anwendungsfällen bei der Nutzung unseres Konverters.",
+          category: "Technischer Leitfaden",
+          readTime: "7 Min. Lesezeit",
+          cardTitle: "Wann PNG vs. JPG vs. WebP vs. AVIF verwendet werden sollte",
+          cardExcerpt: "Ein umfassender Leitfaden zur Auswahl des richtigen Ausgabeformats für Ihre extrahierten Bilder basierend auf Qualität, Dateigröße und Anforderungen an den Anwendungsfall."
+        },
+        {
+          slug: "from-video-to-art-turning-frames-into-digital-masterpieces",
+          title: "Vom Video zur Kunst: Bilder in digitale Meisterwerke verwandeln - Video to Image Converter Blog",
+          description: "Erfahren Sie, wie Sie gewöhnliche Videobilder in beeindruckende digitale Kunstwerke verwandeln. Entdecken Sie kreative Techniken zur Erstellung digitaler Meisterwerke aus extrahierten Bildern – perfekt für Künstler und Designer.",
+          category: "Kreative Transformation",
+          readTime: "6 Min. Lesezeit",
+          cardTitle: "Vom Video zur Kunst: Bilder in digitale Meisterwerke verwandeln",
+          cardExcerpt: "Lernen Sie, wie Sie gewöhnliche Videobilder mit einfachen Bearbeitungstechniken und kostenlosen Online-Tools in umwerfende digitale Kunstwerke verwandeln."
+        }
+      ]
+    },
+    cta: {
+      title: "Jetzt Entdecken",
+      description: "Tauchen Sie in unseren Blog ein, um mehr über die Extraktion von Videobildern, Best Practices für den Datenschutz und kreative Anwendungen zu erfahren.",
+      buttonText: "Ersten Artikel lesen"
+    }
+  }
 };

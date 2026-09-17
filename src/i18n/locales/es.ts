@@ -412,4 +412,86 @@ export const es = {
       metaDescription: 'Extrae fotogramas específicos o secuencias completas de video. Precisión cuadro a cuadro, intervalos y descarga en ZIP.',
     },
   },
+
+  blogsPage: {
+    seo: {
+      title: "Blog - Free Video to Image",
+      description: "Explora nuestro blog para encontrar guías sobre extracción de fotogramas de video, privacidad, aplicaciones creativas y tutoriales técnicos.",
+      ogTitle: "Blog - Free Video to Image",
+      ogDescription: "Explora nuestro blog para encontrar guías sobre extracción de fotogramas de video, privacidad, aplicaciones creativas y tutoriales técnicos.",
+      ogImage: "/logo.svg",
+      ogUrl: "https://freevideotoimage.com/es/blogs",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      twitterTitle: "Blog - Free Video to Image",
+      twitterDescription: "Explora nuestro blog para encontrar guías sobre extracción de fotogramas de video, privacidad, aplicaciones creativas y tutoriales técnicos."
+    },
+    hero: {
+      eyebrow: "El diario de fotogramas",
+      title: "Mejores fotogramas comienzan con un mejor contexto.",
+      description: "Guías prácticas para extraer, proteger y transformar los momentos ocultos dentro de tus videos."
+    },
+    sectionHeader: {
+      eyebrow: "Últimos artículos",
+      title: "Lee, luego crea algo.",
+      subtitle: "Notas breves y útiles para transformar el video en un material creativo más flexible."
+    },
+    cards: {
+      featuredActionText: "Leer la guía",
+      regularActionText: "Leer artículo",
+      posts: [
+        {
+          slug: "how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide",
+          title: "Cómo extraer el fotograma perfecto de tus videos: Guía paso a paso - Video to Image Converter",
+          description: "Aprende a extraer fotogramas de videos usando nuestro convertidor gratuito de video a imagen. Guía paso a paso que cubre captura manual, extracción por intervalos y detección inteligente de escenas. Convierte video a JPG y PNG gratis en línea.",
+          category: "Guía destacada",
+          readTime: "8 min de lectura",
+          cardTitle: "Cómo extraer el fotograma perfecto de tus videos",
+          cardExcerpt: "Aprende los pasos exactos para capturar fotogramas de alta calidad de cualquier video usando nuestra herramienta en el navegador. Desde la captura manual hasta la detección inteligente de escenas, cubrimos todos los métodos de extracción.",
+          featured: true
+        },
+        {
+          slug: "why-client-side-video-processing-matters-for-your-privacy",
+          title: "Por qué el procesamiento de video en el navegador es importante para tu privacidad - Video to Image Converter Blog",
+          description: "Descubre por qué el procesamiento de video del lado del cliente es esencial para la privacidad al usar un convertidor de video a imagen. Descubre cómo nuestra herramienta garantiza que tus videos nunca salgan de tu navegador.",
+          category: "Privacidad y seguridad",
+          readTime: "6 min de lectura",
+          cardTitle: "Por qué el procesamiento de video en el navegador es importante para tu privacidad",
+          cardExcerpt: "Descubre por qué procesar videos completamente en tu navegador es crucial para proteger contenido confidencial y mantener un control total sobre tus archivos multimedia."
+        },
+        {
+          slug: "top-5-creative-uses-for-extracted-video-frames-in-design-projects",
+          title: "Los 5 principales usos creativos para fotogramas de video extraídos en proyectos de diseño - Video to Image Converter Blog",
+          description: "Descubre las 5 formas más creativas de usar fotogramas de video extraídos en tus proyectos de diseño. Aprende cómo nuestro convertidor de video a imagen ayuda a los diseñadores a crear moodboards, arte digital y más.",
+          category: "Aplicaciones creativas",
+          readTime: "5 min de lectura",
+          cardTitle: "Los 5 principales usos creativos para fotogramas de video extraídos",
+          cardExcerpt: "Desde moodboards hasta arte digital, explora formas innovadoras de incorporar fotogramas de video en tu flujo de trabajo creativo y proyectos de diseño."
+        },
+        {
+          slug: "understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif",
+          title: "Entendiendo los formatos de imagen: Cuándo usar PNG vs JPG vs WebP vs AVIF - Video to Image Converter Blog",
+          description: "Aprende a elegir el formato de salida adecuado para tus fotogramas extraídos. Compara PNG, JPG, WebP y AVIF en calidad, tamaño de archivo y casos de uso al utilizar nuestro convertidor.",
+          category: "Guía técnica",
+          readTime: "7 min de lectura",
+          cardTitle: "Cuándo usar PNG vs JPG vs WebP vs AVIF",
+          cardExcerpt: "Una guía completa para elegir el formato de salida ideal para tus fotogramas extraídos según los requisitos de calidad, tamaño de archivo y caso de uso."
+        },
+        {
+          slug: "from-video-to-art-turning-frames-into-digital-masterpieces",
+          title: "Del video al arte: Transformando fotogramas en obras maestras digitales - Video to Image Converter Blog",
+          description: "Aprende a transformar fotogramas de video ordinarios en impresionantes obras de arte digital. Descubre técnicas creativas para crear obras maestras digitales a partir de fotogramas extraídos.",
+          category: "Transformación creativa",
+          readTime: "6 min de lectura",
+          cardTitle: "Del video al arte: Transformando fotogramas en obras maestras digitales",
+          cardExcerpt: "Aprende a transformar fotogramas de video ordinarios en increíbles obras de arte digital utilizando técnicas sencillas de edición y herramientas gratuitas en línea."
+        }
+      ]
+    },
+    cta: {
+      title: "Empieza a explorar",
+      description: "Sumérgete en nuestro blog para aprender más sobre la extracción de fotogramas de video, mejores prácticas de privacidad y aplicaciones creativas.",
+      buttonText: "Leer el primer artículo"
+    }
+  }
 };

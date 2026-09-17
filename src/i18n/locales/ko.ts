@@ -376,7 +376,7 @@ export const ko = {
     eyebrow: "모든 비디오 툴",
     title: "비디오-이미지 변환 툴 풀 패키지",
     subtitle: "비디오-JPG 변환기, 비디오-PNG 변환기, 또는 전문 비디오 프레임 추출기를 찾고 계신다면, 저희의 종합 툴킷이 모든 니즈를 해결해 드립니다. 모든 툴은 100% 클라이언트 측(웹 브라우저)에서 작동하여 비디오가 브라우저 밖으로 절대 전송되지 않으므로 최고의 개인정보 보호와 보안을 보장합니다.",
-   videoToImageConverter: {
+    videoToImageConverter: {
       eyebrow: '당사의 대표 프레임 추출 툴',
       title: '비디오-이미지 변환기',
       description: '수동 캡처, 간격 추출 또는 스마트 장면 감지를 사용하여 프레임을 추출합니다. PNG, JPG, WebP 및 AVIF 형식을 지원합니다.',
@@ -412,4 +412,86 @@ export const ko = {
       metaDescription: '특정 프레임이나 전체 비디오 시퀀스를 추출하세요. 프레임 단위의 정밀함, 간격 설정 및 ZIP 다운로드를 지원합니다.',
     },
   },
+
+  blogsPage: {
+    seo: {
+      title: "블로그 - Free Video to Image",
+      description: "비디오 프레임 추출, 개인정보 보호, 크리에이티브 활용법 및 기술 튜토리얼 가이드는 블로그에서 확인하세요.",
+      ogTitle: "블로그 - Free Video to Image",
+      ogDescription: "비디오 프레임 추출, 개인정보 보호, 크리에이티브 활용법 및 기술 튜토리얼 가이드는 블로그에서 확인하세요.",
+      ogImage: "/logo.svg",
+      ogUrl: "https://freevideotoimage.com/ko/blogs",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      twitterTitle: "블로그 - Free Video to Image",
+      twitterDescription: "비디오 프레임 추출, 개인정보 보호, 크리에이티브 활용법 및 기술 튜토리얼 가이드는 블로그에서 확인하세요."
+    },
+    hero: {
+      eyebrow: "프레임 저널",
+      title: "더 나은 프레임은 더 나은 맥락에서 시작됩니다.",
+      description: "비디오 속에 숨겨진 순간들을 추출하고, 보호하며, 변환하기 위한 실용적인 가이드입니다."
+    },
+    sectionHeader: {
+      eyebrow: "최신 아티클",
+      title: "읽고, 나만의 작품을 만들어 보세요.",
+      subtitle: "비디오를 더욱 유연한 크리에이티브 소재로 활용할 수 있는 유용한 노트입니다."
+    },
+    cards: {
+      featuredActionText: "가이드 읽기",
+      regularActionText: "아티클 읽기",
+      posts: [
+        {
+          slug: "how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide",
+          title: "비디오에서 완벽한 프레임을 추출하는 방법: 단계별 가이드 - Video to Image Converter",
+          description: "무료 비디오-이미지 변환기를 사용하여 동영상에서 프레임을 추출하는 방법을 알아보세요. 수동 캡처, 간격 추출, 스마트 장면 감지를 다루는 단계별 가이드입니다. 온라인에서 동영상을 무료로 JPG, PNG로 변환하세요.",
+          category: "추천 가이드",
+          readTime: "8분 분량",
+          cardTitle: "비디오에서 완벽한 프레임을 추출하는 방법",
+          cardExcerpt: "클라이언트 측 툴을 사용하여 모든 동영상에서 고품질 프레임을 캡처하는 정확한 단계를 알아보세요. 수동 캡처부터 스마트 장면 감지까지 모든 추출 방법을 다룹니다.",
+          featured: true
+        },
+        {
+          slug: "why-client-side-video-processing-matters-for-your-privacy",
+          title: "개인정보 보호를 위해 클라이언트 측 비디오 처리가 중요한 이유 - Video to Image Converter Blog",
+          description: "비디오-이미지 변환기를 사용할 때 클라이언트 측 비디오 처리가 개인정보 보호에 필수적인 이유를 알아보세요. 동영상을 JPG, PNG 등으로 변환하는 동안 브라우저를 절대 벗어나지 않도록 보장하는 방법을 확인하세요.",
+          category: "개인정보 보호 및 보안",
+          readTime: "6분 분량",
+          cardTitle: "개인정보 보호를 위해 클라이언트 측 비디오 처리가 중요한 이유",
+          cardExcerpt: "민감한 콘텐츠를 보호하고 미디어 파일에 대한 완전한 제어권을 유지하기 위해 브라우저 내에서 동영상을 완전히 처리하는 것이 왜 중요한지 알아보세요."
+        },
+        {
+          slug: "top-5-creative-uses-for-extracted-video-frames-in-design-projects",
+          title: "디자인 프로젝트에서 추출한 비디오 프레임을 활용하는 상위 5가지 크리에이티브 방법 - Video to Image Converter Blog",
+          description: "디자인 프로젝트에서 추출한 비디오 프레임을 활용하는 상위 5가지 창의적인 방법을 알아보세요. 디자이너가 무드 보드, 디지털 아트 등을 만드는 데 당사 툴을 어떻게 활용하는지 확인하세요.",
+          category: "크리에이티브 활용",
+          readTime: "5분 분량",
+          cardTitle: "추출한 비디오 프레임을 활용하는 상위 5가지 크리에이티브 방법",
+          cardExcerpt: "무드 보드부터 디지털 아트까지, 크리에이티브 워크플로와 디자인 프로젝트에 비디오 프레임을 적용하는 혁신적인 방법을 탐색해 보세요."
+        },
+        {
+          slug: "understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif",
+          title: "이미지 포맷 이해하기: PNG vs JPG vs WebP vs AVIF 언제 사용해야 할까 - Video to Image Converter Blog",
+          description: "추출한 프레임에 적합한 출력 포맷을 선택하는 방법을 배워보세요. 화질, 파일 크기, 사용 사례에 따라 PNG, JPG, WebP, AVIF를 비교해 드립니다.",
+          category: "기술 가이드",
+          readTime: "7분 분량",
+          cardTitle: "PNG vs JPG vs WebP vs AVIF 언제 사용해야 할까",
+          cardExcerpt: "화질, 파일 크기 및 사용 요구 사항에 따라 추출된 프레임에 가장 적합한 출력 포맷을 선택할 수 있는 종합 가이드입니다."
+        },
+        {
+          slug: "from-video-to-art-turning-frames-into-digital-masterpieces",
+          title: "비디오에서 예술로: 프레임을 디지털 걸작으로 바꾸는 방법 - Video to Image Converter Blog",
+          description: "평범한 비디오 프레임을 멋진 디지털 아트로 변환하는 방법을 배워보세요. 아티스트와 디자이너를 위해 추출한 프레임으로 디지털 걸작을 만드는 창의적인 기술을 소개합니다.",
+          category: "크리에이티브 변환",
+          readTime: "6분 분량",
+          cardTitle: "비디오에서 예술로: 프레임을 디지털 걸작으로 바꾸는 방법",
+          cardExcerpt: "간단한 편집 기술과 무료 온라인 툴을 사용하여 평범한 비디오 프레임을 근사한 디지털 작품으로 변화시키는 방법을 배워보세요."
+        }
+      ]
+    },
+    cta: {
+      title: "탐색 시작하기",
+      description: "비디오 프레임 추출, 개인정보 보호 모범 사례 및 크리에이티브 활용법에 대해 자세히 알아보려면 블로그를 살펴보세요.",
+      buttonText: "첫 번째 아티클 읽기"
+    }
+  }
 };

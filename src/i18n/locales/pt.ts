@@ -412,4 +412,86 @@ export const pt = {
       metaDescription: 'Extraia quadros específicos ou sequências completas de vídeo. Precisão quadro a quadro, intervalos e download em ZIP.',
     },
   },
+
+  blogsPage: {
+    seo: {
+      title: "Blog - Free Video to Image",
+      description: "Explore nosso blog para guias sobre extração de quadros de vídeo, privacidade, aplicações criativas e tutoriais técnicos.",
+      ogTitle: "Blog - Free Video to Image",
+      ogDescription: "Explore nosso blog para guias sobre extração de quadros de vídeo, privacidade, aplicações criativas e tutoriais técnicos.",
+      ogImage: "/logo.svg",
+      ogUrl: "https://freevideotoimage.com/pt/blogs",
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      twitterTitle: "Blog - Free Video to Image",
+      twitterDescription: "Explore nosso blog para guias sobre extração de quadros de vídeo, privacidade, aplicações criativas e tutoriais técnicos."
+    },
+    hero: {
+      eyebrow: "O diário de quadros",
+      title: "Melhores quadros começam com um melhor contexto.",
+      description: "Guias práticos para extrair, proteger e transformar os momentos escondidos dentro dos seus vídeos."
+    },
+    sectionHeader: {
+      eyebrow: "Últimos artigos",
+      title: "Leia, depois crie algo.",
+      subtitle: "Notas curtas e úteis para transformar vídeos em um material criativo mais flexível."
+    },
+    cards: {
+      featuredActionText: "Ler o guia",
+      regularActionText: "Ler artigo",
+      posts: [
+        {
+          slug: "how-to-extract-the-perfect-frame-from-your-videos-a-step-by-step-guide",
+          title: "Como extrair o quadro perfeito dos seus vídeos: Guia passo a passo - Video to Image Converter",
+          description: "Aprenda a extrair quadros de vídeos usando nosso conversor gratuito de vídeo para imagem. Guia passo a passo cobrindo captura manual, extração por intervalo e detecção inteligente de cenas. Converta vídeo para JPG e PNG online grátis.",
+          category: "Guia em destaque",
+          readTime: "8 min de leitura",
+          cardTitle: "Como extrair o quadro perfeito dos seus vídeos",
+          cardExcerpt: "Aprenda os passos exatos para capturar quadros de alta qualidade de qualquer vídeo usando nossa ferramenta no navegador. Da captura manual à detecção inteligente de cenas, cobrimos todos os métodos.",
+          featured: true
+        },
+        {
+          slug: "why-client-side-video-processing-matters-for-your-privacy",
+          title: "Por que o processamento de vídeo no navegador é essencial para sua privacidade - Video to Image Converter Blog",
+          description: "Entenda por que o processamento de vídeo no lado do cliente é essencial para a privacidade ao converter vídeos em imagens. Descubra como nossa ferramenta garante que seus vídeos nunca saiam do seu navegador.",
+          category: "Privacidade e segurança",
+          readTime: "6 min de leitura",
+          cardTitle: "Por que o processamento de vídeo no navegador é essencial para sua privacidade",
+          cardExcerpt: "Descubra por que processar vídeos inteiramente no seu navegador é crucial para proteger conteúdos sensíveis e manter controle total sobre seus arquivos de mídia."
+        },
+        {
+          slug: "top-5-creative-uses-for-extracted-video-frames-in-design-projects",
+          title: "Os 5 principais usos criativos para quadros de vídeo extraídos em projetos de design - Video to Image Converter Blog",
+          description: "Descubra as 5 principais maneiras criativas de usar quadros de vídeo extraídos em seus projetos de design. Veja como nosso conversor ajuda designers a criar moodboards, arte digital e muito mais.",
+          category: "Aplicações criativas",
+          readTime: "5 min de leitura",
+          cardTitle: "Os 5 principais usos criativos para quadros de vídeo extraídos",
+          cardExcerpt: "De moodboards a arte digital, explore maneiras inovadoras de incorporar quadros de vídeo no seu fluxo de trabalho criativo e projetos de design."
+        },
+        {
+          slug: "understanding-video-formats-when-to-use-png-vs-jpg-vs-webp-vs-avif",
+          title: "Compreendendo formatos de imagem: Quando usar PNG vs JPG vs WebP vs AVIF - Video to Image Converter Blog",
+          description: "Aprenda a escolher o formato de saída correto para seus quadros extraídos. Compare PNG, JPG, WebP e AVIF para qualidade, tamanho de arquivo e casos de uso ao utilizar nosso conversor.",
+          category: "Guia técnico",
+          readTime: "7 min de leitura",
+          cardTitle: "Quando usar PNG vs JPG vs WebP vs AVIF",
+          cardExcerpt: "Um guia completo para escolher o formato de saída ideal para seus quadros extraídos com base em qualidade, tamanho de arquivo e requisitos de uso."
+        },
+        {
+          slug: "from-video-to-art-turning-frames-into-digital-masterpieces",
+          title: "Do vídeo à arte: Transformando quadros em obras-primas digitais - Video to Image Converter Blog",
+          description: "Aprenda a transformar quadros de vídeo comuns em artes digitais impressionantes. Descubra técnicas criativas para criar obras digitais usando nosso conversor gratuito.",
+          category: "Transformação criativa",
+          readTime: "6 min de leitura",
+          cardTitle: "Do vídeo à arte: Transformando quadros em obras-primas digitais",
+          cardExcerpt: "Aprenda a transformar quadros de vídeo comuns em artes digitais incríveis usando técnicas simples de edição e ferramentas online gratuitas."
+        }
+      ]
+    },
+    cta: {
+      title: "Comece a explorar",
+      description: "Explore nosso blog para aprender mais sobre extração de quadros de vídeo, melhores práticas de privacidade e aplicações criativas.",
+      buttonText: "Ler o primeiro artigo"
+    }
+  }
 };
