@@ -7,16 +7,55 @@ import Converter from '../components/converter/preact/Converter.jsx';
 
 <Layout>
   <slot name="head">
-    <title>Video Frame Extractor - Extract Frames from Videos at Intervals Online Free</title>
-    <meta name="description" content="Extract frames from videos at precise intervals or detect scene changes automatically with our professional video frame extractor. 100% client-side, no uploads, unlimited conversions. Supports JPG, PNG, WebP, AVIF formats.">
-    <meta property="og:title" content="Video Frame Extractor - Extract Frames from Videos at Intervals Online Free">
-    <meta property="og:description" content="Extract frames from videos at precise intervals or detect scene changes automatically with our professional video frame extractor. 100% client-side, no uploads, unlimited conversions. Supports JPG, PNG, WebP, AVIF formats.">
+    <title>Video Frame Extractor - Extract Frames from Videos Online Free</title>
+    <meta name="description" content="Use our free online video frame extractor to extract frames from any video at precise intervals or detect scene changes automatically. 100% client-side, no uploads, unlimited conversions. Supports JPG, PNG, WebP, AVIF formats.">
+    <meta name="keywords" content="video frame extractor, extract frames from video, video frame extraction, online video frame extractor, extract video frames, free video frame extractor">
+    <meta property="og:title" content="Video Frame Extractor - Extract Frames from Videos Online Free">
+    <meta property="og:description" content="Use our free online video frame extractor to extract frames from any video at precise intervals or detect scene changes automatically. 100% client-side, no uploads, unlimited conversions. Supports JPG, PNG, WebP, AVIF formats.">
     <meta property="og:image" content="/logo.svg">
     <meta property="og:url" content="https://freevideotoimage.com/video-frame-extractor">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Video Frame Extractor - Extract Frames from Videos at Intervals Online Free">
-    <meta name="twitter:description" content="Extract frames from videos at precise intervals or detect scene changes automatically with our professional video frame extractor. 100% client-side, no uploads, unlimited conversions. Supports JPG, PNG, WebP, AVIF formats.">
+    <meta name="twitter:title" content="Video Frame Extractor - Extract Frames from Videos Online Free">
+    <meta name="twitter:description" content="Use our free online video frame extractor to extract frames from any video at precise intervals or detect scene changes automatically. 100% client-side, no uploads, unlimited conversions. Supports JPG, PNG, WebP, AVIF formats.">
+    <!-- SoftwareApplication & BreadcrumbList Schema for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Video Frame Extractor",
+      "applicationCategory": "WebApplication",
+      "applicationSubCategory": "Video Converter",
+      "url": "https://freevideotoimage.com/video-frame-extractor",
+      "description": "Free online video frame extractor to extract frames from videos at precise intervals or detect scene changes automatically.",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://freevideotoimage.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Video Frame Extractor",
+          "item": "https://freevideotoimage.com/video-frame-extractor"
+        }
+      ]
+    }
+    </script>
   </slot>
   <Header currentPath="/video-frame-extractor" />
   <main class="flex-1">
@@ -27,8 +66,28 @@ import Converter from '../components/converter/preact/Converter.jsx';
             <p class="eyebrow mb-3">Professional Extraction</p>
             <h1 class="heading-lg mb-4">Video Frame Extractor</h1>
             <p class="body-lg text-body max-w-[600px] mx-auto">
-              Professional-grade frame extraction with advanced settings for interval timing, scene detection, and batch processing. Extract frames at precise intervals or detect scene changes automatically.
+              Our free <strong>video frame extractor</strong> lets you extract frames from any video at precise intervals or detect scene changes automatically. Advanced settings for interval timing, scene detection, and batch processing — all running client-side in your browser.
             </p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <a href="/video-to-image-converter" class="btn btn-outline btn-sm inline-flex items-center justify-center">
+                Video to Image Converter
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="ml-2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/video-to-jpg" class="btn btn-outline btn-sm inline-flex items-center justify-center">
+                Video to JPG
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="ml-2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/tools" class="btn btn-outline btn-sm inline-flex items-center justify-center">
+                All Tools
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="ml-2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
           </div>
 
           <Converter client:visible data-testid="video-converter" />

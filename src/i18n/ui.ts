@@ -27,7 +27,7 @@ export const ui = {
     'nav.tools': 'Tools',
     'nav.blogs': 'Blogs',
     'nav.convert': 'Convert',
-    'footer.description': 'Free, private, client-side video to image converter. Extract frames from any video with zero uploads.',
+    'footer.description': 'Free, private, client-side video to image converter and video frame extractor. Extract frames from any video with zero uploads.',
     'footer.navigation': 'Navigation',
     'footer.tools': 'Tools',
     'footer.legal': 'Legal',
