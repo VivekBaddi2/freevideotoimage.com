@@ -155,89 +155,56 @@ export default function Converter({ lang }) {
   }
 
   async function extractSceneFrames() {
-    try {
-      const { extractSlides } = await import('video-slide-extractor');
-
-      const options = {
-        threshold: sceneSettings.threshold,
-        minSlideDuration: sceneSettings.minSceneDuration,
-        onProgress: (progress) => {
-          // Could update UI with progress
-        }
-      };
-
-      const response = await fetch(videoUrl.current);
-      const blob = await response.blob();
-
-      const slides = await extractSlides(blob, options);
-
-      const newFrames = [];
-      for (const slide of slides) {
-        const frame = await convertImageToFormat(slide.imageData, outputSettings.format, outputSettings.quality);
-        newFrames.push({ ...frame, time: slide.timestamp, selected: true });
-      }
-
-      setFrames(prev => [...prev, ...newFrames]);
-    } catch (error) {
-      console.error('Scene detection failed:', error);
-      await extractIntervalFrames();
+    const { createSlideDetector } = await import('video-slide-extractor');
+    const video = videoElement.current;
+    if (!video) throw new Error('Video element not available');
+    if (!Number.isFinite(video.duration) || video.duration <= 0) {
+      throw new Error('Video duration is unavailable for scene detection');
     }
-  }
+    if (!Number.isFinite(sceneSettings.minSceneDuration) || sceneSettings.minSceneDuration <= 0) {
+      throw new Error('Minimum scene duration must be a positive number');
+    }
 
-  async function convertImageToFormat(imageDataUrl, format, quality) {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => {
-        try {
-          initCanvas();
-          canvas.current.width = img.width;
-          canvas.current.height = img.height;
-          ctx.current.drawImage(img, 0, 0);
+    const sampleWidth = 160;
+    const sampleHeight = 90;
+    const sampleCanvas = document.createElement('canvas');
+    sampleCanvas.width = sampleWidth;
+    sampleCanvas.height = sampleHeight;
+    const sampleContext = sampleCanvas.getContext('2d', { willReadFrequently: true });
+    if (!sampleContext) throw new Error('Unable to initialize scene detection canvas');
 
-          const mimeType = format === 'jpg' ? 'image/jpeg' : `image/${format}`;
-          const qualityValue = quality / 100;
-          const dataUrl = canvas.current.toDataURL(mimeType, qualityValue);
-
-          const thumbCanvas = document.createElement('canvas');
-          const thumbCtx = thumbCanvas.getContext('2d');
-          const maxThumbSize = 400;
-          const scale = Math.min(maxThumbSize / canvas.current.width, maxThumbSize / canvas.current.height);
-          thumbCanvas.width = canvas.current.width * scale;
-          thumbCanvas.height = canvas.current.height * scale;
-          thumbCtx.drawImage(canvas.current, 0, 0, thumbCanvas.width, thumbCanvas.height);
-          const thumbnail = thumbCanvas.toDataURL('image/jpeg', 0.7);
-
-          resolve({
-            time: 0, // Time is not relevant for converted images, but we need to set it
-            url: dataUrl,
-            thumbnail,
-            format,
-            quality
-          });
-        } catch (error) {
-          reject(error);
-        }
-      };
-      img.onerror = () => reject(new Error('Failed to load image for conversion'));
-      img.src = imageDataUrl;
+    const detectSlide = createSlideDetector(sampleWidth, sampleHeight, {
+      changedRatio: sceneSettings.threshold
     });
+    const sampleInterval = Math.max(0.1, sceneSettings.minSceneDuration);
+    const sceneTimes = [];
+
+    for (let time = 0; time <= video.duration; time += sampleInterval) {
+      await seekVideoToTime(video, time);
+      sampleContext.drawImage(video, 0, 0, sampleWidth, sampleHeight);
+      const { data } = sampleContext.getImageData(0, 0, sampleWidth, sampleHeight);
+      if (detectSlide(data).keep) sceneTimes.push(time);
+    }
+
+    const newFrames = [];
+    for (const time of sceneTimes) {
+      const frame = await captureFrameAtTime(time);
+      newFrames.push({ ...frame, selected: true });
+    }
+
+    setFrames(prev => [...prev, ...newFrames]);
   }
 
-  function captureFrameAtTime(time) {
+  function seekVideoToTime(video, time) {
     return new Promise((resolve, reject) => {
-      const video = videoElement.current;
-      if (!video) {
-        reject(new Error('Video element not available'));
-        return;
-      }
-
       const targetTime = Math.max(0, Math.min(video.duration || time, time));
       let seekTimeout;
       let settled = false;
 
       const cleanup = () => {
         clearTimeout(seekTimeout);
-        video.removeEventListener('seeked', handleSeeked);
+        video.removeEventListener('seeked', checkPosition);
+        video.removeEventListener('loadeddata', checkPosition);
         video.removeEventListener('error', handleError);
       };
 
@@ -248,62 +215,69 @@ export default function Converter({ lang }) {
         callback();
       };
 
-      const captureFrame = () => {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            try {
-              canvas.current.width = video.videoWidth;
-              canvas.current.height = video.videoHeight;
-              ctx.current.drawImage(video, 0, 0);
-
-              const format = outputSettings.format;
-              const quality = outputSettings.quality / 100;
-              const mimeType = format === 'jpg' ? 'image/jpeg' : `image/${format}`;
-
-              const dataUrl = canvas.current.toDataURL(mimeType, quality);
-
-              const thumbCanvas = document.createElement('canvas');
-              const thumbCtx = thumbCanvas.getContext('2d');
-              const maxThumbSize = 400;
-              const scale = Math.min(maxThumbSize / canvas.current.width, maxThumbSize / canvas.current.height);
-              thumbCanvas.width = canvas.current.width * scale;
-              thumbCanvas.height = canvas.current.height * scale;
-              thumbCtx.drawImage(canvas.current, 0, 0, thumbCanvas.width, thumbCanvas.height);
-              const thumbnail = thumbCanvas.toDataURL('image/jpeg', 0.7);
-
-              resolve({
-                time: targetTime,
-                url: dataUrl,
-                thumbnail,
-                format: outputSettings.format,
-                quality: outputSettings.quality
-              });
-            } catch (error) {
-              reject(error);
-            }
-          });
-        });
-      };
-
-      const handleSeeked = () => {
-        if (Math.abs(video.currentTime - targetTime) <= 0.05) {
-          settle(captureFrame);
+      const checkPosition = () => {
+        if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) <= 0.05) {
+          settle(resolve);
         }
       };
       const handleError = () => settle(() => reject(new Error('Video seek failed')));
 
-      video.addEventListener('seeked', handleSeeked);
+      video.addEventListener('seeked', checkPosition);
+      video.addEventListener('loadeddata', checkPosition);
       video.addEventListener('error', handleError);
       seekTimeout = setTimeout(() => {
         settle(() => reject(new Error(`Unable to seek video to ${targetTime.toFixed(2)}s`)));
       }, 10000);
 
       video.pause();
-      video.currentTime = targetTime;
+      if (Math.abs(video.currentTime - targetTime) > 0.05) video.currentTime = targetTime;
+      checkPosition();
+    });
+  }
 
-      if (Math.abs(video.currentTime - targetTime) <= 0.05 && video.readyState >= 2) {
-        settle(captureFrame);
-      }
+  async function captureFrameAtTime(time) {
+    const video = videoElement.current;
+    if (!video) throw new Error('Video element not available');
+
+    initCanvas();
+    const targetTime = Math.max(0, Math.min(video.duration || time, time));
+    await seekVideoToTime(video, targetTime);
+
+    return new Promise((resolve, reject) => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          try {
+            canvas.current.width = video.videoWidth;
+            canvas.current.height = video.videoHeight;
+            ctx.current.drawImage(video, 0, 0);
+
+            const format = outputSettings.format;
+            const quality = outputSettings.quality / 100;
+            const mimeType = format === 'jpg' ? 'image/jpeg' : `image/${format}`;
+
+            const dataUrl = canvas.current.toDataURL(mimeType, quality);
+
+            const thumbCanvas = document.createElement('canvas');
+            const thumbCtx = thumbCanvas.getContext('2d');
+            const maxThumbSize = 400;
+            const scale = Math.min(maxThumbSize / canvas.current.width, maxThumbSize / canvas.current.height);
+            thumbCanvas.width = canvas.current.width * scale;
+            thumbCanvas.height = canvas.current.height * scale;
+            thumbCtx.drawImage(canvas.current, 0, 0, thumbCanvas.width, thumbCanvas.height);
+            const thumbnail = thumbCanvas.toDataURL('image/jpeg', 0.7);
+
+            resolve({
+              time: targetTime,
+              url: dataUrl,
+              thumbnail,
+              format: outputSettings.format,
+              quality: outputSettings.quality
+            });
+          } catch (error) {
+            reject(error);
+          }
+        });
+      });
     });
   }
 
